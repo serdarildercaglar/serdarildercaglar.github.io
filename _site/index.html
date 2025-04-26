@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect - Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.">
+    <meta name="keywords" content="Data Scientist, Machine Learning Engineer, AI Architect, LLM, RAG, MLOps, NLP, Real-time AI, Serdar Çağlar">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect | Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems." />
+<meta property="og:description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.","headline":"Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect","name":"Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Hero Section -->
+<header class="pt-24 pb-12 px-6">
+    <div class="container mx-auto text-center">
+        <h1 class="text-5xl font-bold mb-6">
+            <span class="gradient-text"></span>
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            Architecting and deploying enterprise-scale AI solutions, specializing in Large Language Models (LLMs), RAG architectures, MLOps, and real-time AI systems. Proven track record in healthcare, education, and legal sectors.
+            <!-- Alternatif olarak site.description kullanılabilir: Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. -->
+        </p>
+        <div class="flex justify-center space-x-6">
+            <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                View Projects
+            </a>
+            <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition">
+                Contact Me
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+                <!-- About metni buraya eklenecek. Şimdilik placeholder: -->
+                <p class="text-lg mb-6">
+                    As an , I possess proven expertise in architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG architectures, MLOps, and real-time AI systems.
+                </p>
+                <p class="text-lg mb-6">
+                    My background includes leading ML engineering at Aimped (USA, Remote, 2023-2024), driving innovation in biomedical NLP at Nioyatech (2020-2023), and delivering high-impact solutions across healthcare, education, and legal sectors. Currently, I am contributing my expertise as a <strong>Senior Data Scientist (Contract) at DopingTech</strong> (Since approx. Aug/Sep 2023).
+                </p>
+                 <p class="text-lg mb-6">
+                    I hold a <strong>completed Master's degree (2024)</strong> in Measurement and Data Analytics from Anadolu University and actively contribute to the open-source community, particularly with Turkish and Spanish language models on Hugging Face (&gt;1000 downloads).
+                 </p>
+
+                <!-- Core Expertise (skills.json'dan alınacak) -->
+                
+
+                <!-- Technical Proficiency (skills.json'dan alınacak) -->
+                
+
+                <!-- Download CV Button -->
+                <div class="mt-8">
+                    <a href="/assets/cv/cv-serdar-caglar.pdf" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" download="">
+                        <i class="fas fa-download mr-2"></i>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <!-- Profil Resmi -->
+                <img src="/assets/images/profile.jpg" alt=" - " class="rounded-lg shadow-lg mb-8" />
+                 <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow">
+                     <h3 class="text-xl font-semibold mb-4">Education &amp; Research</h3>
+                     <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                         <li><i class="fas fa-graduation-cap text-blue-500 mr-2"></i><strong>M.S., Measurement and Data Analytics</strong><br />Anadolu University (2024)</li>
+                         <li><i class="fas fa-graduation-cap text-blue-500 mr-2"></i><strong>B.S., Education</strong><br />Gaziosmanpaşa University (2004-2008)</li>
+                         <!-- Yayınlar bölümünden link çekilebilir veya sabit bırakılabilir -->
+                         <li><i class="fas fa-file-alt text-blue-500 mr-2"></i><strong>Published Research:</strong> <a href="https://arxiv.org/abs/2407.12126" target="_blank" rel="noopener noreferrer" class="hover:underline">LLMs-in-the-loop... (arXiv:2407.12126)</a></li>
+                         <li><i class="fab fa-github text-blue-500 mr-2"></i><strong>Open Source:</strong> <a href="" target="_blank" rel="noopener noreferrer" class="hover:underline">Turkish &amp; Spanish Models on Hugging Face (1000+ downloads)</a></li>
+                     </ul>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section id="projects" class="py-20 px-6">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Signature Projects</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-headset text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Intelligent Language Learning Platform</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Real-time voice-based learning system integrating TTS, STT, and LLM services. Reduced response time by 65% with Redis caching. Scalable for 10K+ concurrent users. 95% user satisfaction.
+    </p>
+    <a href="/projects/intelligent-language-learning/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-file-medical-alt text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Biomedical Information Retrieval System</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Published research (arXiv:2407.12126).
+    </p>
+    <a href="/projects/biomedical-retrieval/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-flask text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Turkish Scientific Language Models</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Released transformer models on HuggingFace achieving 3-10% performance improvement. Specialized embeddings used by 1000+ researchers. Efficient training pipeline reduced resource usage by 50%.
+    </p>
+    <a href="/projects/turkish-bert/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+        </div>
+        <div class="text-center mt-12">
+            <a href="/projects/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                View All Projects
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Publications Section -->
+<section id="publications" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Publications &amp; Research</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+            
+            
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-file-alt text-blue-600 text-2xl mr-4"></i>
+                        <span class="text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded font-medium">arXiv Paper</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">
+                        <a href="/publications/llms-in-the-loop/" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation</a>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                        A novel "LLMs-in-the-loop" approach demonstrating that small, specialized models trained on high-quality synthetic data can outperform larger LLMs in medical translation. Covers 6 language pairs.
+                    </p>
+                    <div class="mb-4 text-xs text-gray-500 dark:text-gray-400 space-y-1">
+                        
+                            <p><i class="fas fa-users mr-2 w-4 text-center"></i>Authors: Bunyamin Keles, Murat Gunay, Serdar I. Caglar</p>
+                        
+                         
+                            <p><i class="fas fa-building mr-2 w-4 text-center"></i>AI Amplified (Aimped) Inc.</p>
+                        
+                         
+                            <p><i class="fas fa-calendar-alt mr-2 w-4 text-center"></i>July 29, 2024</p>
+                         
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        
+                            <a href="https://arxiv.org/pdf/2407.12126" target="_blank" rel="noopener noreferrer" class="flex items-center text-xs text-red-600 hover:underline"><i class="fas fa-file-pdf mr-1"></i>Read PDF</a>
+                        
+                         
+                            <a href="https://arxiv.org/abs/2407.12126" target="_blank" rel="noopener noreferrer" class="flex items-center text-xs text-green-600 hover:underline"><i class="ai ai-arxiv mr-1"></i>arXiv Link</a>
+                        
+                        <a href="/publications/llms-in-the-loop/" class="flex items-center text-xs text-purple-600 hover:underline"><i class="fas fa-info-circle mr-1"></i>Details</a>
+                    </div>
+                </div>
+            
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-graduation-cap text-blue-600 text-2xl mr-4"></i>
+                        <span class="text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded font-medium">Master's Thesis</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">
+                        <a href="/publications/social-network-analysis/" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Social Network Analysis of Oncology Theses</a>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                        Knowledge graph analysis of 1726 Turkish medical thesis abstracts to discover patterns and trends in national cancer research using Neo4j.
+                    </p>
+                    <div class="mb-4 text-xs text-gray-500 dark:text-gray-400 space-y-1">
+                        
+                            <p><i class="fas fa-users mr-2 w-4 text-center"></i>Authors: Serdar I. Caglar</p>
+                        
+                         
+                            <p><i class="fas fa-building mr-2 w-4 text-center"></i>Anadolu University (Measurement and Data Analytics)</p>
+                        
+                         
+                            <p><i class="fas fa-calendar-alt mr-2 w-4 text-center"></i>January 15, 2024</p>
+                         
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        
+                         
+                        <a href="/publications/social-network-analysis/" class="flex items-center text-xs text-purple-600 hover:underline"><i class="fas fa-info-circle mr-1"></i>Details</a>
+                    </div>
+                </div>
+            
+        </div>
+         <!-- İsteğe bağlı: Tüm yayınları göster linki -->
+        <!--
+        <div class="text-center mt-12">
+            <a href="/publications/" class="inline-block bg-gray-200 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-300 transition">
+                View All Publications
+            </a>
+        </div>
+        -->
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" class="py-20 px-6 bg-white dark:bg-gray-900">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Latest Blog Posts</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            
+                
+
+<article class="card p-6 rounded-lg flex flex-col h-full">
+    <div class="mb-4">
+        
+            <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Machine Learning</span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 mx-1">•</span>
+        
+        <time datetime="2024-11-01T00:00:00+03:00" class="text-xs text-gray-500 dark:text-gray-400">November 01, 2024</time>
+    </div>
+    <h3 class="text-xl font-bold mb-3">
+        <a href="/blog/2024-11-01-building-production-ready-rag/" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Building Production-Ready RAG Systems</a>
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        
+            Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation.
+        
+    </p>
+    <a href="/blog/2024-11-01-building-production-ready-rag/" class="text-blue-600 hover:underline mt-auto text-sm font-medium">
+        Read more →
+    </a>
+</article>
+            
+                
+
+<article class="card p-6 rounded-lg flex flex-col h-full">
+    <div class="mb-4">
+        
+            <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Machine Learning</span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 mx-1">•</span>
+        
+        <time datetime="2024-11-01T10:00:00+03:00" class="text-xs text-gray-500 dark:text-gray-400">November 01, 2024</time>
+    </div>
+    <h3 class="text-xl font-bold mb-3">
+        <a href="/blog/2024-11-01-building-better-rag/" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Building Production-Ready RAG Systems</a>
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        
+            Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation.
+        
+    </p>
+    <a href="/blog/2024-11-01-building-better-rag/" class="text-blue-600 hover:underline mt-auto text-sm font-medium">
+        Read more →
+    </a>
+</article>
+            
+        </div>
+        <div class="text-center mt-12">
+            <a href="/blog/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                View All Posts
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Contact Information -->
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+                <p class="text-lg mb-8">
+                    I'm always interested in hearing about new projects and opportunities. Let's connect!
+                </p>
+                <div class="space-y-4">
+                     <div class="flex items-center">
+                        <i class="fas fa-envelope text-blue-600 text-xl w-8"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600">serdarildercaglar@gmail.com</a>
+                    </div>
+                     <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-blue-600 text-xl w-8"></i>
+                        <span></span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-globe text-blue-600 text-xl w-8"></i>
+                        <span>Available for remote collaboration worldwide</span>
+                    </div>
+                </div>
+                <!-- Social Links -->
+                <div class="mt-8">
+                    <h4 class="font-semibold mb-4">Connect with me</h4>
+                    <div class="flex space-x-6">
+                        
+                        
+                        
+                         
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Form -->
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Send a Message</h3>
+                <!-- Formspree formu -->
+                <form id="contactForm" action="https://formspree.io/f/mjkwkwqj" method="POST" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-1">Name</label>
+                        <input type="text" id="name" name="name" required="" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600" />
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                        <input type="email" id="email" name="_replyto" required="" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600" />
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
+                        <input type="text" id="subject" name="_subject" required="" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600" />
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" required="" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600"></textarea>
+                    </div>
+                    <!-- Honeypot field (optional but recommended for spam) -->
+                    <input type="text" name="_gotcha" style="display:none" />
+                    <!-- Redirect URL (optional) -->
+                    <!-- <input type="hidden" name="_next" value="///thankyou"> -->
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span id="submitButtonText">Send Message</span>
+                        <i class="fas fa-spinner fa-spin ml-2 hidden" id="submitSpinner"></i>
+                    </button>
+                    <div id="formMessage" class="text-center mt-4 hidden"></div> <!-- Mesaj alanı main.js tarafından yönetilecek -->
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% comment %}
+  _includes/blog-card.html
+  Expects a 'post' variable in the context.
+  Used in index.md (Latest Blog Posts) and blog/index.md
+{% endcomment %}
+
+<article class="card p-6 rounded-lg flex flex-col h-full">
+    <div class="mb-4">
+        {% if post.category %}
+            <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">{{ post.category }}</span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 mx-1">•</span>
+        {% endif %}
+        <time datetime="{{ post.date | date_to_xmlschema }}" class="text-xs text-gray-500 dark:text-gray-400">{{ post.date | date: "%B %d, %Y" }}</time>
+    </div>
+    <h3 class="text-xl font-bold mb-3">
+        <a href="{{ post.url | relative_url }}" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{{ post.title }}</a>
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        {% if post.excerpt %}
+            {{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 25 }}
+        {% else %}
+            {{ post.content | strip_html | normalize_whitespace | truncatewords: 25 }}
+        {% endif %}
+    </p>
+    <a href="{{ post.url | relative_url }}" class="text-blue-600 hover:underline mt-auto text-sm font-medium">
+        Read more →
+    </a>
+</article>

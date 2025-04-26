@@ -1,0 +1,89 @@
+---
+# _layouts/publication.html
+layout: default # Temel layout'u kullan
+---
+
+<!-- Publication Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> {# İçeriği ortalamak ve sınırlamak için #}
+        <div class="flex items-center mb-6">
+            <!-- Geri Dönüş Linki (Ana sayfadaki publications bölümüne veya varsa /publications/ listesine) -->
+            <a href="{{ '/#publications' | relative_url }}" class="text-blue-600 hover:text-blue-800 mr-4 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Publications</span>
+            </a>
+        </div>
+        <!-- Yayın Başlığı -->
+        <h1 class="text-4xl font-bold mb-3 text-gray-900 dark:text-white">{{ page.title }}</h1>
+        <!-- Yayın Meta Bilgileri -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-400 mb-4">
+            {% if page.type %}
+                <span class="inline-flex items-center">
+                    <i class="fas fa-file-alt w-4 mr-1.5"></i> {{ page.type }}
+                </span>
+            {% endif %}
+            {% if page.date %}
+                 <span class="inline-flex items-center">
+                     <i class="fas fa-calendar-alt w-4 mr-1.5"></i> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+                 </span>
+            {% endif %}
+        </div>
+        {% if page.authors %}
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-1">
+                <strong>Authors:</strong> {{ page.authors }}
+            </p>
+        {% endif %}
+        {% if page.affiliation %}
+             <p class="text-sm text-gray-700 dark:text-gray-300">
+                 <strong>Affiliation:</strong> {{ page.affiliation }}
+             </p>
+        {% endif %}
+
+         <!-- Linkler -->
+         <div class="mt-6 flex flex-wrap gap-3">
+             {% if page.pdfUrl %}
+             <a href="{{ page.pdfUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-red-600 text-white text-xs rounded-md hover:bg-red-700 transition">
+                 <i class="fas fa-file-pdf mr-2"></i> Read PDF
+             </a>
+             {% endif %}
+              {% if page.arxivUrl %}
+             <a href="{{ page.arxivUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-green-600 text-white text-xs rounded-md hover:bg-green-700 transition">
+                 <i class="ai ai-arxiv mr-2"></i> View on arXiv
+             </a>
+             {% endif %}
+             <!-- Gerekirse GitHub veya başka linkler eklenebilir -->
+         </div>
+    </div>
+</header>
+
+<!-- Publication Content (Abstract/Details) -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <article class="prose dark:prose-invert lg:prose-lg mx-auto">
+            <h2 class="!text-2xl !mb-4">Abstract</h2> {# Başlığı küçülttük #}
+            {{ content }} {# Markdown içeriği buraya gelecek #}
+        </article>
+
+        <!-- Citation (varsa) -->
+        {% if page.citation %}
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Citation</h3>
+             <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                <pre class="text-xs overflow-x-auto whitespace-pre-wrap break-words"><code>{{ page.citation }}</code></pre>
+            </div>
+        </div>
+        {% endif %}
+
+         <!-- Keywords/Tags (varsa) -->
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="mt-8">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Keywords</h3>
+            <div class="flex flex-wrap gap-2">
+                {% for tag in page.tags %}
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</main>

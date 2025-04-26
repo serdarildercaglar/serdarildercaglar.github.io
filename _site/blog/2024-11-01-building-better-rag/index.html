@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            Building Production-Ready RAG Systems - Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation.">
+    <meta name="keywords" content="RAG, LLM, Production AI, Vector Database, Embeddings, LangChain, MLOps">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Building Production-Ready RAG Systems">
+    <meta property="og:description" content="Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://localhost:4000/blog/2024-11-01-building-better-rag/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building Production-Ready RAG Systems">
+    <meta name="twitter:description" content="Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation.">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/blog/2024-11-01-building-better-rag/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+        <!-- Veya Jekyll'in kendi Rouge highlighter'ı için stil dosyası -->
+        <!-- <link rel="stylesheet" href="/assets/css/syntax.css"> -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Building Production-Ready RAG Systems | Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Building Production-Ready RAG Systems" />
+<meta name="author" content="Serdar Çağlar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation." />
+<meta property="og:description" content="Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation." />
+<link rel="canonical" href="http://localhost:4000/blog/2024-11-01-building-better-rag/" />
+<meta property="og:url" content="http://localhost:4000/blog/2024-11-01-building-better-rag/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-11-01T10:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Building Production-Ready RAG Systems" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Serdar Çağlar"},"dateModified":"2024-11-01T10:00:00+03:00","datePublished":"2024-11-01T10:00:00+03:00","description":"Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation.","headline":"Building Production-Ready RAG Systems","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2024-11-01-building-better-rag/"},"url":"http://localhost:4000/blog/2024-11-01-building-better-rag/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Blog Post Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> {# İçeriği ortalamak ve sınırlamak için #}
+        <div class="mb-6">
+            <a href="/blog/" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
+            </a>
+        </div>
+        <!-- Post Meta -->
+        <div class="mb-4">
+            
+            <span class="text-sm font-semibold text-blue-600 uppercase">Machine Learning</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            
+            <time datetime="2024-11-01T10:00:00+03:00" class="text-sm text-gray-500 dark:text-gray-400">November 01, 2024</time>
+            
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">12 min read</span>
+            
+        </div>
+        <!-- Post Başlığı -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Building Production-Ready RAG Systems</h1>
+         <!-- Yazar Bilgisi (isteğe bağlı, config'den veya sayfa front matter'dan gelebilir) -->
+         
+         
+         <div class="flex items-center mt-4">
+            <!-- Yazar resmi eklenebilir: <img src="..." alt="Serdar Çağlar" class="w-10 h-10 rounded-full mr-3"> -->
+            <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Serdar Çağlar</p>
+                <!-- Yazar unvanı eklenebilir -->
+            </div>
+         </div>
+         
+    </div>
+</header>
+
+<!-- Blog Post Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> {# prose-xl daha büyük yazı tipi sağlar #}
+            <p>Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm for building LLM applications that leverage external, up-to-date knowledge. While basic RAG is straightforward, building a system that is truly production-ready – reliable, scalable, efficient, and maintainable – requires careful consideration of each component. This guide, drawing from practical experience, outlines key steps and advanced techniques.</p>
+
+<!-- ![Production RAG Pipeline Diagram](/assets/images/blog/rag-pipeline.png) -->
+<!-- Fig 1: A typical Production-Ready RAG Pipeline. -->
+
+<h2 id="core-components-of-a-production-rag-system">Core Components of a Production RAG System</h2>
+
+<h3 id="1-data-loading--chunking">1. Data Loading &amp; Chunking</h3>
+<p>The foundation of any RAG system is the knowledge base. Loading data from diverse sources (PDFs, websites, databases, APIs) requires robust connectors. More importantly, effective <strong>chunking</strong> is critical. Consider:</p>
+<ul>
+  <li><strong>Recursive Character Text Splitting:</strong> A good default.</li>
+  <li><strong>Semantic Chunking:</strong> Uses embedding models to find semantic break points.</li>
+  <li><strong>Chunk Size &amp; Overlap:</strong> Experimentation is key.</li>
+</ul>
+
+<h3 id="2-embedding-models">2. Embedding Models</h3>
+<p>Choosing the right embedding model is vital. Factors include:</p>
+<ul>
+  <li><strong>Performance vs. Size/Speed:</strong> Models like <code class="language-plaintext highlighter-rouge">bge-large</code> offer performance, <code class="language-plaintext highlighter-rouge">all-MiniLM-L6-v2</code> offers speed.</li>
+  <li><strong>Domain Specificity:</strong> Fine-tuning can significantly boost relevance.</li>
+  <li><strong>Multilinguality:</strong> Use models like E5-multilingual if needed.</li>
+</ul>
+
+<h3 id="3-vector-stores">3. Vector Stores</h3>
+<p>Index embeddings for efficient search. Options include:</p>
+<ul>
+  <li><strong>Managed Services:</strong> Pinecone, Weaviate Cloud.</li>
+  <li><strong>Self-Hosted:</strong> ChromaDB, Qdrant, Milvus.</li>
+  <li><strong>Database Extensions:</strong> pgvector.
+Metadata filtering is crucial.</li>
+</ul>
+
+<h3 id="4-retrieval-strategies">4. Retrieval Strategies</h3>
+<p>Enhance simple vector search with:</p>
+<ul>
+  <li><strong>Hybrid Search:</strong> Combine keyword (BM25) and vector search.</li>
+  <li><strong>Re-ranking:</strong> Use cross-encoders (e.g., Cohere Rerank) to improve top results.</li>
+  <li><strong>Query Transformations:</strong> Rewrite or expand queries using an LLM.</li>
+</ul>
+
+<h3 id="5-generation-llm-integration">5. Generation (LLM Integration)</h3>
+<p>Feed retrieved context and query to an LLM. Key aspects:</p>
+<ul>
+  <li><strong>Prompt Engineering:</strong> Clear instructions are vital.</li>
+  <li><strong>Context Stuffing:</strong> Format and insert context effectively.</li>
+  <li><strong>Model Selection:</strong> Choose appropriate LLM based on needs and budget.</li>
+</ul>
+
+<p>```python</p>
+<h1 id="conceptual-example-rag-pipeline-with-langchain-simplified">Conceptual Example: RAG pipeline with LangChain (Simplified)</h1>
+<p>from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI</p>
+<h1 id="-rest-of-the-python-code-example-">… (rest of the python code example) …</h1>
+
+<h1 id="invoke">Invoke</h1>
+<p>question = “What are the key challenges in Turkish NLP?”</p>
+<h1 id="response--rag_chaininvokequestion">response = rag_chain.invoke(question)</h1>
+<h1 id="printresponse">print(response)</h1>
+ {# Markdown içeriği buraya render edilecek #}
+        </article>
+
+        <!-- Etiketler (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <a href="/blog-tags-rag/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        RAG
+                    </a>
+                
+                    <a href="/blog-tags-llm/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        LLM
+                    </a>
+                
+                    <a href="/blog-tags-production-ai/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Production AI
+                    </a>
+                
+                    <a href="/blog-tags-vector-database/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Vector Database
+                    </a>
+                
+                    <a href="/blog-tags-embeddings/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Embeddings
+                    </a>
+                
+                    <a href="/blog-tags-langchain/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        LangChain
+                    </a>
+                
+                    <a href="/blog-tags-mlops/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        MLOps
+                    </a>
+                
+            </div>
+        </div>
+        
+
+        <!-- İsteğe Bağlı: Paylaşım Butonları -->
+        <!--
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Share this post</h3>
+            <div class="flex space-x-4">
+                <a href="https://twitter.com/intent/tweet?text=Building+Production-Ready+RAG+Systems&url=http://localhost:4000/blog/2024-11-01-building-better-rag/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/2024-11-01-building-better-rag/&title=Building+Production-Ready+RAG+Systems&summary=Key+steps+and+advanced+techniques+for+building+reliable%2C+scalable%2C+and+efficient+RAG+applications%2C+from+data+loading+to+evaluation.&source=Serdar+%C3%87a%C4%9Flar+-+AI%2FML+Engineering+Lead+%26+Solutions+Architect" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+            </div>
+        </div>
+        -->
+
+        <!-- İsteğe Bağlı: Önceki/Sonraki Yazı Linkleri -->
+        <!--
+        <nav class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex justify-between text-sm">
+            
+                <a href="/blog/2024-11-01-building-production-ready-rag/" class="text-blue-600 hover:underline">« Building Production-Ready RAG Systems</a>
+            
+            
+                 <span> </span> {# Boşluk bırakmak için #}
+            
+        </nav>
+        -->
+
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <!-- Veya Jekyll Rouge kullanıyorsanız JS gerekmez -->
+    
+
+</body>
+</html>

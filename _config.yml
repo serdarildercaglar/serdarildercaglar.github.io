@@ -1,0 +1,73 @@
+# _config.yml
+
+# Site Ayarları (site.json'dan alınan temel bilgiler)
+title: Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+email: serdarildercaglar@gmail.com
+description: >- # '>' işareti satır sonlarını kaldırır ama paragrafları korur
+  Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.
+baseurl: "" # GitHub Pages'da kullanıcı/organizasyon sitesi için boş bırakılır (serdarildercaglar.github.io)
+url: "https://serdarildercaglar.github.io" # Sitenizin ana URL'si
+github_username: serdarildercaglar
+linkedin_username: serdarildercaglar # Sadece kullanıcı adı, link başka yerde oluşturulacak
+medium_username: "@serdarildercaglar" # Link başka yerde oluşturulacak
+huggingface_username: serdar # Link başka yerde oluşturulacak
+location: "Istanbul / Malatya, Turkey (Remote)"
+
+# Build Ayarları
+markdown: kramdown
+# theme: minima # Tema kullanmıyoruz, kendi CSS'imiz var
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag # SEO etiketlerini otomatik yönetmek için iyi bir plugin
+
+# Koleksiyonlar (Sonraki adımlar için şimdiden tanımlayalım)
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year-:month-:day-:slug/
+  projects:
+    output: true
+    permalink: /projects/:slug/
+  publications:
+    output: true
+    permalink: /publications/:slug/
+
+# Varsayılan Ayarlar (Front Matter için)
+defaults:
+  - scope:
+      path: "" # Tüm dosyalar
+    values:
+      layout: "default" # Varsayılan layout
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post" # Blog yazılarına özel layout (sonra oluşturulacak)
+      author: "Serdar Çağlar" # Veya site.name kullanılabilir
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project" # Projelere özel layout (sonra oluşturulacak)
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "publication" # Yayınlara özel layout (sonra oluşturulacak)
+
+# Asset'leri dışarıda tut (Jekyll'in derlemeye çalışmaması için)
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+
+# Gerekirse ek ayarlar eklenebilir
+# sass:
+#   sass_dir: _sass
+#   style: compressed

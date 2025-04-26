@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation - Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="A novel "LLMs-in-the-loop" approach demonstrating that small, specialized models trained on high-quality synthetic data can outperform larger LLMs in medical...">
+    <meta name="keywords" content="Machine Translation, Medical Translation, LLMs-in-the-loop, Expert Small Models, MarianMT, NLP, Synthetic Data, BioMedical NLP">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation">
+    <meta property="og:description" content="A novel "LLMs-in-the-loop" approach demonstrating that small, specialized models trained on high-quality synthetic data can outperform larger LLMs in medical...">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/publications/llms-in-the-loop/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation">
+    <meta name="twitter:description" content="A novel "LLMs-in-the-loop" approach demonstrating that small, specialized models trained on high-quality synthetic data can outperform larger LLMs in medical...">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/publications/llms-in-the-loop/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation | Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A novel “LLMs-in-the-loop” approach demonstrating that small, specialized models trained on high-quality synthetic data can outperform larger LLMs in medical translation. Covers 6 language pairs." />
+<meta property="og:description" content="A novel “LLMs-in-the-loop” approach demonstrating that small, specialized models trained on high-quality synthetic data can outperform larger LLMs in medical translation. Covers 6 language pairs." />
+<link rel="canonical" href="http://localhost:4000/publications/llms-in-the-loop/" />
+<meta property="og:url" content="http://localhost:4000/publications/llms-in-the-loop/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-29T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-07-29T00:00:00+03:00","datePublished":"2024-07-29T00:00:00+03:00","description":"A novel “LLMs-in-the-loop” approach demonstrating that small, specialized models trained on high-quality synthetic data can outperform larger LLMs in medical translation. Covers 6 language pairs.","headline":"LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/publications/llms-in-the-loop/"},"url":"http://localhost:4000/publications/llms-in-the-loop/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Publication Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> {# İçeriği ortalamak ve sınırlamak için #}
+        <div class="flex items-center mb-6">
+            <!-- Geri Dönüş Linki (Ana sayfadaki publications bölümüne veya varsa /publications/ listesine) -->
+            <a href="/#publications" class="text-blue-600 hover:text-blue-800 mr-4 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Publications</span>
+            </a>
+        </div>
+        <!-- Yayın Başlığı -->
+        <h1 class="text-4xl font-bold mb-3 text-gray-900 dark:text-white">LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation</h1>
+        <!-- Yayın Meta Bilgileri -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-400 mb-4">
+            
+                <span class="inline-flex items-center">
+                    <i class="fas fa-file-alt w-4 mr-1.5"></i> arXiv Paper
+                </span>
+            
+            
+                 <span class="inline-flex items-center">
+                     <i class="fas fa-calendar-alt w-4 mr-1.5"></i> <time datetime="2024-07-29T00:00:00+03:00">July 29, 2024</time>
+                 </span>
+            
+        </div>
+        
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-1">
+                <strong>Authors:</strong> Bunyamin Keles, Murat Gunay, Serdar I. Caglar
+            </p>
+        
+        
+             <p class="text-sm text-gray-700 dark:text-gray-300">
+                 <strong>Affiliation:</strong> AI Amplified (Aimped) Inc.
+             </p>
+        
+
+         <!-- Linkler -->
+         <div class="mt-6 flex flex-wrap gap-3">
+             
+             <a href="https://arxiv.org/pdf/2407.12126" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-red-600 text-white text-xs rounded-md hover:bg-red-700 transition">
+                 <i class="fas fa-file-pdf mr-2"></i> Read PDF
+             </a>
+             
+              
+             <a href="https://arxiv.org/abs/2407.12126" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-green-600 text-white text-xs rounded-md hover:bg-green-700 transition">
+                 <i class="ai ai-arxiv mr-2"></i> View on arXiv
+             </a>
+             
+             <!-- Gerekirse GitHub veya başka linkler eklenebilir -->
+         </div>
+    </div>
+</header>
+
+<!-- Publication Content (Abstract/Details) -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <article class="prose dark:prose-invert lg:prose-lg mx-auto">
+            <h2 class="!text-2xl !mb-4">Abstract</h2> {# Başlığı küçülttük #}
+            <p>Machine translation is indispensable in healthcare for enabling the global dissemination of medical knowledge across languages. However, complex medical terminology poses unique challenges to achieving adequate translation quality and accuracy. This study introduces a novel “LLMs-in-the-loop” approach to develop supervised neural machine translation models optimized specifically for medical texts. While large language models (LLMs) have demonstrated powerful capabilities, this research shows that small, specialized models trained on high-quality in-domain (mostly synthetic) data can outperform even vastly larger LLMs. Custom parallel corpora in six languages were compiled from scientific articles, synthetically generated clinical documents, and medical texts. Our LLMs-in-the-loop methodology employs synthetic data generation, rigorous evaluation, and agent orchestration to enhance performance. We developed small medical translation models using the MarianMT base model. We introduce a new medical translation test dataset to standardize evaluation in this domain. Assessed using BLEU, METEOR, ROUGE, and BERT scores on this test set, our MarianMT-based models outperform Google Translate, DeepL, and GPT-4-Turbo. Results demonstrate that our LLMs-in-the-loop approach, combined with fine-tuning high-quality, domain-specific data, enables specialized models to outperform general-purpose and some larger systems. This research, part of a broader series on expert small models, paves the way for future healthcare-related AI developments, including deidentification and bio-medical entity extraction models. Our study underscores the potential of tailored neural translation models and the LLMs-in-the-loop methodology to advance the field through improved data generation, evaluation, agent, and modeling techniques.</p>
+ {# Markdown içeriği buraya gelecek #}
+        </article>
+
+        <!-- Citation (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Citation</h3>
+             <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                <pre class="text-xs overflow-x-auto whitespace-pre-wrap break-words"><code>@article{keles2024llms,
+  title={{LLMs-in-the-loop Part-1: Expert Small AI Models for Bio-Medical Text Translation}},
+  author={Keles, Bunyamin and Gunay, Murat and Caglar, Serdar I.},
+  journal={arXiv preprint arXiv:2407.12126},
+  year={2024},
+  eprint={2407.12126},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL}
+}
+</code></pre>
+            </div>
+        </div>
+        
+
+         <!-- Keywords/Tags (varsa) -->
+        
+        <div class="mt-8">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Keywords</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Machine Translation</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Medical Translation</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">LLMs-in-the-loop</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Expert Small Models</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">MarianMT</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">NLP</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Synthetic Data</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">BioMedical NLP</span>
+                
+            </div>
+        </div>
+        
+
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+
+</body>
+</html>

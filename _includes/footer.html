@@ -1,0 +1,92 @@
+<!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   {{ site.data.site.title | default: site.description }} specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    {% if site.data.site.social.linkedin %}
+                        <a href="{{ site.data.site.social.linkedin }}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                    {% endif %}
+                    {% if site.data.site.social.github %}
+                        <a href="{{ site.data.site.social.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="GitHub"><i class="fab fa-github fa-lg"></i></a>
+                    {% endif %}
+                    {% if site.data.site.social.medium %}
+                         <a href="{{ site.data.site.social.medium }}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Medium"><i class="fab fa-medium fa-lg"></i></a>
+                    {% endif %}
+                     {% if site.data.site.social.huggingface %}
+                         <a href="{{ site.data.site.social.huggingface }}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-xl" aria-label="Hugging Face">🤗</a>
+                    {% endif %}
+                    {% if site.data.site.social.arxiv %}
+                        <a href="{{ site.data.site.social.arxiv }}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="arXiv"><i class="ai ai-arxiv fa-lg"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="{{ '/#about' | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="{{ '/#projects' | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="{{ '/#publications' | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="{{ '/#blog' | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="{{ '/#contact' | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="{{ '/assets/cv/cv-serdar-caglar.pdf' | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    {% if site.data.skills.core %}
+                        {% for skill in site.data.skills.core limit:5 %} {# İlk 5 yeteneği listele #}
+                            <li>{{ skill }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    {% if site.email %}
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:{{ site.email }}" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">{{ site.email }}</a>
+                    </li>
+                    {% endif %}
+                    {% if site.data.site.location %}
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mr-2 mt-1 flex-shrink-0"></i>
+                        <span>{{ site.data.site.location }}</span>
+                    </li>
+                    {% endif %}
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© {{ 'now' | date: "%Y" }} {{ site.data.site.name | default: site.title }}. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            Biomedical Information Retrieval System - Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Pu...">
+    <meta name="keywords" content="RAG, NLP, Embeddings, Medical AI, Information Retrieval, Vector Database">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Biomedical Information Retrieval System">
+    <meta property="og:description" content="Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Pu...">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/projects/biomedical-retrieval/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Biomedical Information Retrieval System">
+    <meta name="twitter:description" content="Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Pu...">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/projects/biomedical-retrieval/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Biomedical Information Retrieval System | Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Biomedical Information Retrieval System" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Published research (arXiv:2407.12126)." />
+<meta property="og:description" content="Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Published research (arXiv:2407.12126)." />
+<link rel="canonical" href="http://localhost:4000/projects/biomedical-retrieval/" />
+<meta property="og:url" content="http://localhost:4000/projects/biomedical-retrieval/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-08-01T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Biomedical Information Retrieval System" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-08-01T00:00:00+03:00","datePublished":"2023-08-01T00:00:00+03:00","description":"Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Published research (arXiv:2407.12126).","headline":"Biomedical Information Retrieval System","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/projects/biomedical-retrieval/"},"url":"http://localhost:4000/projects/biomedical-retrieval/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Project Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl">
+        <div class="flex items-center mb-6">
+            <a href="/projects/" class="text-blue-600 hover:text-blue-800 mr-4 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Projects</span>
+            </a>
+        </div>
+        <h1 class="text-4xl font-bold mb-2">Biomedical Information Retrieval System</h1>
+        
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Completed/Published: <time datetime="2023-08-01T00:00:00+03:00">August 2023</time>
+            </p>
+        
+        
+            <p class="text-xl text-gray-600 dark:text-gray-300">Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Published research (arXiv:2407.12126).</p>
+        
+    </div>
+</header>
+
+<!-- Project Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <article class="prose dark:prose-invert lg:prose-lg mx-auto">
+            <h2 id="project-overview">Project Overview</h2>
+
+<p>This project focused on creating an advanced information retrieval system specifically for biomedical literature. A custom Retrieval-Augmented Generation (RAG) architecture was developed, coupled with specialized biomedical embeddings trained on domain-specific data. The system aimed to significantly improve the accuracy and relevancy of search results compared to general-purpose search methods when querying large volumes of medical documents like research papers and clinical abstracts.</p>
+
+<h3 id="key-achievements">Key Achievements</h3>
+
+<ul>
+  <li>Developed and implemented a custom RAG architecture achieving an <strong>85% relevancy rate</strong> in top-k retrieved documents for medical queries.</li>
+  <li>Created specialized biomedical sentence embeddings (potentially fine-tuned from models like BioBERT or trained from scratch) that improved search accuracy by <strong>40%</strong> compared to general-purpose embeddings on medical benchmarks.</li>
+  <li>Built an efficient document processing pipeline capable of ingesting, cleaning, chunking, and indexing over <strong>100,000 medical documents</strong>.</li>
+  <li>Integrated efficient vector stores (like FAISS or ChromaDB) for fast similarity search.</li>
+  <li>Findings and methodologies related to the specialized models partly developed during this work contributed to the publication: <a href="https://arxiv.org/abs/2407.12126">LLMs-in-the-loop Part-1 (arXiv:2407.12126)</a>.</li>
+</ul>
+
+<h3 id="rag-architecture--specialized-embeddings">RAG Architecture &amp; Specialized Embeddings</h3>
+
+<p>The core of the system is a RAG pipeline:</p>
+
+<ol>
+  <li><strong>Query Processing:</strong> User query is processed and potentially embedded using the same specialized biomedical embedding model.</li>
+  <li><strong>Retrieval:</strong> The query embedding is used to perform a similarity search against the indexed document chunk embeddings in the vector store. Advanced retrieval strategies like hybrid search (combining vector search with keyword search like BM25) were explored.</li>
+  <li><strong>Context Augmentation:</strong> Top relevant document chunks are retrieved and formatted as context.</li>
+  <li><strong>Generation:</strong> The original query and the retrieved context are fed to a Large Language Model (LLM) (e.g., a fine-tuned medical LLM or a powerful general model like GPT-3.5/4) instructed to synthesize an answer based <em>only</em> on the provided context.</li>
+</ol>
+
+<p>The <strong>specialized embeddings</strong> were crucial. Training these embeddings on large biomedical corpora (like PubMed abstracts) allowed them to capture the specific nuances and terminology of the medical domain far better than generalist embeddings like <code class="language-plaintext highlighter-rouge">all-MiniLM-L6-v2</code>.</p>
+
+<h3 id="document-processing-pipeline">Document Processing Pipeline</h3>
+
+<p>Handling large volumes of PDFs and text required an automated pipeline:</p>
+
+<ul>
+  <li><strong>Ingestion:</strong> Reading documents from various sources.</li>
+  <li><strong>Text Extraction:</strong> Using tools like PyMuPDF to extract text from PDFs.</li>
+  <li><strong>Cleaning:</strong> Removing headers, footers, references, and irrelevant artifacts.</li>
+  <li><strong>Chunking:</strong> Splitting documents into meaningful, overlapping chunks (e.g., paragraph-based or sentence-based splitting).</li>
+  <li><strong>Embedding:</strong> Generating vector representations for each chunk using the specialized model.</li>
+  <li><strong>Indexing:</strong> Storing chunks and their embeddings in a vector database for efficient retrieval.</li>
+</ul>
+
+<h3 id="technologies-used">Technologies Used</h3>
+
+<ul>
+  <li>Python</li>
+  <li>PyTorch / TensorFlow (for embedding models)</li>
+  <li>HuggingFace Transformers, Sentence Transformers</li>
+  <li>LangChain / LlamaIndex (for RAG framework)</li>
+  <li>Vector Databases (FAISS, ChromaDB, Milvus, Qdrant - specific choice depends on deployment)</li>
+  <li>LLMs (OpenAI API, local models like Llama/Mistral)</li>
+  <li>Information Retrieval techniques (Vector Search, BM25)</li>
+  <li>Document Processing libraries (PyMuPDF, NLTK, spaCy)</li>
+</ul>
+
+<hr />
+<p><em>This system significantly improves the ability for researchers and clinicians to find precise information within the vast body of medical literature.</em></p>
+
+        </article>
+
+        <!-- Tags (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4">Technologies & Concepts</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">RAG</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">NLP</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Embeddings</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Medical AI</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Information Retrieval</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Vector Database</span>
+                
+            </div>
+        </div>
+        
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+
+</body>
+</html>

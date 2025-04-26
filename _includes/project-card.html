@@ -1,0 +1,17 @@
+{% comment %}
+  _includes/project-card.html
+  Expects a 'project' variable in the context.
+  Used in index.md (Featured Projects) and projects/index.md
+{% endcomment %}
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="{{ project.icon | default: 'fas fa-project-diagram' }} text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">{{ project.title }}</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        {{ project.excerpt | strip_html | normalize_whitespace | truncatewords: 35 }}
+    </p>
+    <a href="{{ project.url | relative_url }}" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>

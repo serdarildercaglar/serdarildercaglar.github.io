@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            F5-TTS Turkish Model Development - Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning.">
+    <meta name="keywords" content="TTS, F5-TTS, Turkish NLP, Speech Synthesis, Web Scraping, Audio Processing">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="F5-TTS Turkish Model Development">
+    <meta property="og:description" content="Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/projects/f5-tts/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="F5-TTS Turkish Model Development">
+    <meta name="twitter:description" content="Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning.">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/projects/f5-tts/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>F5-TTS Turkish Model Development | Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="F5-TTS Turkish Model Development" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning." />
+<meta property="og:description" content="Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning." />
+<link rel="canonical" href="http://localhost:4000/projects/f5-tts/" />
+<meta property="og:url" content="http://localhost:4000/projects/f5-tts/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-05-01T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="F5-TTS Turkish Model Development" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-05-01T00:00:00+03:00","datePublished":"2023-05-01T00:00:00+03:00","description":"Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning.","headline":"F5-TTS Turkish Model Development","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/projects/f5-tts/"},"url":"http://localhost:4000/projects/f5-tts/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Project Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl">
+        <div class="flex items-center mb-6">
+            <a href="/projects/" class="text-blue-600 hover:text-blue-800 mr-4 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Projects</span>
+            </a>
+        </div>
+        <h1 class="text-4xl font-bold mb-2">F5-TTS Turkish Model Development</h1>
+        
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Completed/Published: <time datetime="2023-05-01T00:00:00+03:00">May 2023</time>
+            </p>
+        
+        
+            <p class="text-xl text-gray-600 dark:text-gray-300">Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning.</p>
+        
+    </div>
+</header>
+
+<!-- Project Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <article class="prose dark:prose-invert lg:prose-lg mx-auto">
+            <!-- Overview -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-4">
+        This project focused on building a custom Text-to-Speech (TTS) model specifically for the Turkish language, leveraging the F5-TTS architecture known for its efficiency and quality. Due to the scarcity of large, high-quality Turkish TTS datasets, a significant part of the project involved developing web scraping pipelines to collect Turkish audio-text pairs from various online sources. The collected data underwent rigorous cleaning, normalization, and processing before being used to fine-tune the F5-TTS model, addressing the unique phonetic and prosodic challenges of Turkish.
+    </p>
+    <div class="bg-blue-50 dark:bg-blue-900 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-2">Key Achievements</h3>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+            <li>Developed automated web scraping tools (using Scrapy/Selenium) to gather Turkish audio and corresponding text.</li>
+            <li>Created a custom Turkish TTS dataset from scratch, involving extensive cleaning, alignment, and validation.</li>
+            <li>Fine-tuned the F5-TTS model, adapting its acoustic model and vocoder for natural Turkish speech synthesis.</li>
+            <li>Implemented Turkish-specific text normalization and phonetization pipelines.</li>
+             <li>Achieved promising results in terms of Mean Opinion Score (MOS) for naturalness and intelligibility (details to be added).</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Data Acquisition & Processing -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Data Acquisition &amp; Processing</h2>
+     <p class="text-gray-700 dark:text-gray-300 mb-4">
+        Building a suitable dataset was a core challenge. Our pipeline involved:
+    </p>
+    <div class="grid md:grid-cols-2 gap-8">
+        <div>
+            <h3 class="text-lg font-semibold mb-3">Web Scraping &amp; Collection</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                <li>Identifying potential sources (news sites, audiobooks, public broadcasts).</li>
+                <li>Automated download of audio files and extraction of corresponding text transcripts.</li>
+                <li>Handling dynamic web content and anti-scraping measures.</li>
+                 <li>Initial filtering based on audio quality and transcript availability.</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold mb-3">Dataset Preparation &amp; Cleaning</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                 <li>Audio segmentation and noise reduction.</li>
+                <li>Forced alignment to ensure accurate audio-text synchronization.</li>
+                <li>Turkish text normalization (numbers, abbreviations, punctuation).</li>
+                <li>Phonetic transcription using Turkish phoneme sets (G2P conversion).</li>
+                <li>Manual validation and quality checks on a subset of the data.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<p><!-- Model & Training --></p>
+<section class="mb-12">
+     <h2 class="text-2xl font-bold mb-4">F5-TTS Model &amp; Training</h2>
+     <p class="text-gray-700 dark:text-gray-300 mb-4">
+        The F5-TTS architecture, known for its Fast, Focused, Flexible, Functional, and Fine-tunable characteristics, was selected. The process involved:
+    </p>
+     <ul class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300">
+         <li>Adapting the text processing frontend for Turkish phonemes and linguistic features.</li>
+        <li>Fine-tuning the acoustic model (Transformer/CNN based) on the prepared Turkish dataset to learn the mapping from phonemes to mel-spectrograms.</li>
+        <li>Training or fine-tuning a neural vocoder (like HiFi-GAN) to convert mel-spectrograms into high-fidelity audio waveforms.</li>
+        <li>Experimenting with different hyperparameters, learning rates, and batch sizes for optimal convergence and speech quality.</li>
+     </ul>
+</section>
+
+<p><!-- Turkish Language Challenges in TTS --></p>
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Turkish Language Specific Challenges Addressed</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg">
+            <i class="fas fa-language text-3xl text-blue-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Agglutination &amp; Morphology</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Ensuring correct pronunciation of long words formed by multiple suffixes required accurate phonetization and potentially morphologically aware text processing.
+            </p>
+        </div>
+         <div class="card p-6 rounded-lg">
+             <i class="fas fa-assistive-listening-systems text-3xl text-blue-600 mb-4"></i> <!-- İkon değiştirildi -->
+            <h3 class="text-lg font-semibold mb-2">Vowel Harmony &amp; Phonetics</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                 The model needed to learn subtle phonetic variations dictated by vowel harmony rules to produce natural-sounding Turkish.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg">
+            <i class="fas fa-music text-3xl text-blue-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Prosody &amp; Intonation</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Capturing the natural rhythm, stress, and intonation patterns of spoken Turkish, which can differ significantly from English.
+            </p>
+        </div>
+         <div class="card p-6 rounded-lg">
+             <i class="fas fa-text-slash text-3xl text-blue-600 mb-4"></i> <!-- İkon değiştirildi -->
+            <h3 class="text-lg font-semibold mb-2">Text Normalization Complexity</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Handling the expansion of Turkish numerals, dates, abbreviations, and symbols correctly before phonetization.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies Used -->
+<section>
+    <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
+    <div class="flex flex-wrap gap-2">
+        <span class="tech-tag">F5-TTS</span>
+        <span class="tech-tag">PyTorch</span>
+         <span class="tech-tag">Python</span>
+        <span class="tech-tag">Web Scraping (Scrapy, Selenium, BeautifulSoup)</span>
+        <span class="tech-tag">Audio Processing (Librosa, SoundFile)</span>
+        <span class="tech-tag">Text Normalization</span>
+        <span class="tech-tag">Phonetization (G2P)</span>
+         <span class="tech-tag">Neural Vocoders (e.g., HiFi-GAN)</span>
+        <span class="tech-tag">TTS Fine-tuning</span>
+        <span class="tech-tag">Speech Synthesis</span>
+         <span class="tech-tag">Turkish NLP</span>
+    </div>
+</section>
+
+        </article>
+
+        <!-- Tags (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4">Technologies & Concepts</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">TTS</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">F5-TTS</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Turkish NLP</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Speech Synthesis</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Web Scraping</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Audio Processing</span>
+                
+            </div>
+        </div>
+        
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+---
+# _layouts/post.html
+# Kullanılacak temel layout (default.html)
+layout: default
+# Syntax highlighting için CSS/JS'in yüklenmesini tetiklemek için
+# _config.yml'de layout: post olanlar için zaten ayarlanmıştı,
+# ama garanti olması için ekleyebiliriz veya front matter'dan kontrol edilebilir.
+# includeHighlight: true
+---
+
+<!-- Blog Post Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> {# İçeriği ortalamak ve sınırlamak için #}
+        <div class="mb-6">
+            <a href="{{ '/blog/' | relative_url }}" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
+            </a>
+        </div>
+        <!-- Post Meta -->
+        <div class="mb-4">
+            {% if page.category %}
+            <span class="text-sm font-semibold text-blue-600 uppercase">{{ page.category }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            {% endif %}
+            <time datetime="{{ page.date | date_to_xmlschema }}" class="text-sm text-gray-500 dark:text-gray-400">{{ page.date | date: "%B %d, %Y" }}</time>
+            {% if page.readTime %}
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">{{ page.readTime }} min read</span>
+            {% endif %}
+        </div>
+        <!-- Post Başlığı -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">{{ page.title }}</h1>
+         <!-- Yazar Bilgisi (isteğe bağlı, config'den veya sayfa front matter'dan gelebilir) -->
+         {% assign author = page.author | default: site.author | default: site.data.site.name %}
+         {% if author %}
+         <div class="flex items-center mt-4">
+            <!-- Yazar resmi eklenebilir: <img src="..." alt="{{ author }}" class="w-10 h-10 rounded-full mr-3"> -->
+            <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ author }}</p>
+                <!-- Yazar unvanı eklenebilir -->
+            </div>
+         </div>
+         {% endif %}
+    </div>
+</header>
+
+<!-- Blog Post Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> {# prose-xl daha büyük yazı tipi sağlar #}
+            {{ content }} {# Markdown içeriği buraya render edilecek #}
+        </article>
+
+        <!-- Etiketler (varsa) -->
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+                {% for tag in page.tags %}
+                    <a href="{{ '/blog/tags/' | append: tag | slugify | relative_url }}/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        {{ tag }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- İsteğe Bağlı: Paylaşım Butonları -->
+        <!--
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Share this post</h3>
+            <div class="flex space-x-4">
+                <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}&summary={{ page.excerpt | strip_html | url_encode }}&source={{ site.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+            </div>
+        </div>
+        -->
+
+        <!-- İsteğe Bağlı: Önceki/Sonraki Yazı Linkleri -->
+        <!--
+        <nav class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex justify-between text-sm">
+            {% if page.previous.url %}
+                <a href="{{ page.previous.url | relative_url }}" class="text-blue-600 hover:underline">« {{ page.previous.title }}</a>
+            {% else %}
+                <span> </span> {# Boşluk bırakmak için #}
+            {% endif %}
+            {% if page.next.url %}
+                <a href="{{ page.next.url | relative_url }}" class="text-blue-600 hover:underline">{{ page.next.title }} »</a>
+            {% else %}
+                 <span> </span> {# Boşluk bırakmak için #}
+            {% endif %}
+        </nav>
+        -->
+
+    </div>
+</main>

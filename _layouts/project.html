@@ -1,0 +1,45 @@
+---
+# _layouts/project.html
+layout: default # Temel layout'u kullan
+---
+
+<!-- Project Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl">
+        <div class="flex items-center mb-6">
+            <a href="{{ '/projects/' | relative_url }}" class="text-blue-600 hover:text-blue-800 mr-4 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Projects</span>
+            </a>
+        </div>
+        <h1 class="text-4xl font-bold mb-2">{{ page.title }}</h1>
+        {% if page.date %}
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Completed/Published: <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %Y" }}</time>
+            </p>
+        {% endif %}
+        {% if page.excerpt %}
+            <p class="text-xl text-gray-600 dark:text-gray-300">{{ page.excerpt }}</p>
+        {% endif %}
+    </div>
+</header>
+
+<!-- Project Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <article class="prose dark:prose-invert lg:prose-lg mx-auto">
+            {{ content }}
+        </article>
+
+        <!-- Tags (varsa) -->
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4">Technologies & Concepts</h3>
+            <div class="flex flex-wrap gap-2">
+                {% for tag in page.tags %}
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</main>

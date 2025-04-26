@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            All Projects - Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.">
+    <meta name="keywords" content="Data Scientist, Machine Learning Engineer, AI Architect, LLM, RAG, MLOps, NLP, Real-time AI, Serdar Çağlar">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="All Projects">
+    <meta property="og:description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/projects/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="All Projects">
+    <meta name="twitter:description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/projects/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>All Projects | Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="All Projects" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems." />
+<meta property="og:description" content="Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems." />
+<link rel="canonical" href="http://localhost:4000/projects/" />
+<meta property="og:url" content="http://localhost:4000/projects/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="All Projects" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.","headline":"All Projects","url":"http://localhost:4000/projects/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Project Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto text-center">
+        <h1 class="text-4xl font-bold mb-4">All Projects</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300">
+            A collection of my machine learning, NLP, and AI projects
+        </p>
+    </div>
+</header>
+
+<!-- Projects Grid -->
+<main class="py-12 px-6">
+    <div class="container mx-auto">
+        <!-- Section for Filtering/Sorting (Optional - Future enhancement) -->
+        <!--
+        <div class="mb-8 text-center">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="NLP">NLP</button>
+            <button class="filter-btn" data-filter="RAG">RAG</button>
+            ... other tags ...
+        </div>
+        -->
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-robot text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Advanced RAG System Development</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Implementing state-of-the-art Retrieval-Augmented Generation with agentic capabilities, advanced retrieval, and multi-agent architectures.
+    </p>
+    <a href="/projects/advanced-rag/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-headset text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Intelligent Language Learning Platform</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Real-time voice-based learning system integrating TTS, STT, and LLM services. Reduced response time by 65% with Redis caching. Scalable for 10K+ concurrent users. 95% user satisfaction.
+    </p>
+    <a href="/projects/intelligent-language-learning/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-brain text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">LLM Fine-tuning for Domain Adaptation</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Leveraging Parameter-Efficient Fine-Tuning (PEFT) techniques like LoRA and QLoRA to adapt foundation models for specialized domains like healthcare and legal.
+    </p>
+    <a href="/projects/llm-finetuning/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-bolt text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">ONNX Model Optimization Pipeline</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Converting and optimizing ML models (especially sentence-transformers) to ONNX format for efficient cross-platform deployment and accelerated inference.
+    </p>
+    <a href="/projects/onnx-optimization/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-file-medical-alt text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Biomedical Information Retrieval System</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Custom RAG architecture for medical literature achieving 85% relevancy. Specialized embeddings improved search accuracy by 40%. Processed 100K+ documents. Published research (arXiv:2407.12126).
+    </p>
+    <a href="/projects/biomedical-retrieval/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-language text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Medical Translation AI</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Advanced English-Turkish medical document translation system using MarianMT architecture and domain-specific fine-tuning.
+    </p>
+    <a href="/projects/medical-translation/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-microphone text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">F5-TTS Turkish Model Development</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Creating a high-quality Turkish Text-to-Speech system using the F5-TTS architecture, web-scraped data, and language-specific fine-tuning.
+    </p>
+    <a href="/projects/f5-tts/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-stethoscope text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Medical Dictation System</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        High-accuracy speech recognition for clinical settings using fine-tuned Whisper models with medical domain adaptation.
+    </p>
+    <a href="/projects/medical-dictation/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-dna text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Cancer Genetics Relation Extraction</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        NLP system using BioBERT for Named Entity Recognition (NER) and Relation Extraction (RE) to identify cancer-gene relationships in medical texts.
+    </p>
+    <a href="/projects/cancer-genetics/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+                
+<div class="card p-6 rounded-lg flex flex-col">
+    <div class="mb-4">
+        <i class="fas fa-flask text-4xl text-blue-600"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-3">Turkish Scientific Language Models</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow">
+        Released transformer models on HuggingFace achieving 3-10% performance improvement. Specialized embeddings used by 1000+ researchers. Efficient training pipeline reduced resource usage by 50%.
+    </p>
+    <a href="/projects/turkish-bert/" class="text-blue-600 hover:underline mt-auto">
+        Learn more →
+    </a>
+</div>
+            
+        </div>
+    </div>
+</main>
+
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+
+</body>
+</html>
