@@ -1,0 +1,47 @@
+# .gitignore dosyası
+
+# Jekyll Tarafından Oluşturulanlar
+####################################
+_site/          # Jekyll'in build ettiği statik sitenin tamamı. BU ÇOK ÖNEMLİ!
+.jekyll-cache/  # Jekyll'in build hızlandırma için kullandığı cache klasörü.
+.jekyll-metadata # Jekyll tarafından oluşturulan metadata dosyası.
+
+# Sass/SCSS Cache (Eğer Sass kullanıyorsanız/kullanacaksanız)
+####################################
+.sass-cache/
+_sass_cache/
+
+# Bundler (Ruby Gem Bağımlılıkları)
+####################################
+vendor/bundle/  # Gem'lerin kurulduğu yer (bundle install --path vendor/bundle ile)
+.bundle/        # Bundler yapılandırma dosyaları
+
+# İşletim Sistemi Dosyaları
+####################################
+.DS_Store       # macOS
+Thumbs.db       # Windows
+
+# Editör/IDE Özel Dosyaları (İsteğe bağlı)
+####################################
+.vscode/        # Visual Studio Code
+*.sublime-*     # Sublime Text
+*~              # Vim ve diğer editörler yedek dosyaları
+*.swp           # Vim swap dosyaları
+
+# Log Dosyaları (Varsa)
+####################################
+*.log
+log/
+
+# Geçici Dosyalar (Varsa)
+####################################
+tmp/
+
+# Node Modülleri (Eğer frontend için Node.js araçları kullanırsanız)
+####################################
+node_modules/
+
+# Hassas Bilgiler / Ortam Değişkenleri (Genellikle reponun dışında tutulur ama önlem)
+####################################
+.env*
+!.env.example # Örnek .env dosyaları genellikle repoda tutulur
