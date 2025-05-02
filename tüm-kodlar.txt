@@ -19399,7 +19399,7 @@ layout: default
 
 <!-- Blog Post Header -->
 <header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto max-w-4xl"> {# İçeriği ortalamak ve sınırlamak için #}
+    <div class="container mx-auto max-w-4xl"> <!-- İçeriği ortalamak ve sınırlamak için -->
         <div class="mb-6">
             <a href="{{ '/blog/' | relative_url }}" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
                 <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
@@ -19437,8 +19437,8 @@ layout: default
 <main class="py-12 px-6">
     <div class="container mx-auto max-w-4xl">
         <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
-        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> {# prose-xl daha büyük yazı tipi sağlar #}
-            {{ content }} {# Markdown içeriği buraya render edilecek #}
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> <!-- prose-xl daha büyük yazı tipi sağlar -->
+            {{ content }} 
         </article>
 
         <!-- Etiketler (varsa) -->
@@ -19630,180 +19630,492 @@ layout: default # Temel layout'u kullan
 </main>
 
 
-<!-- DOSYA: _posts/2024-11-01-building-better-rag.md -->
----
-layout: post # Blog yazısı layout'unu kullanacak
-title: Building Production-Ready RAG Systems
-date: 2024-11-01 10:00:00 +0300 # Tarih ve saat (saat dilimi isteğe bağlı)
-category: Machine Learning # Yazının kategorisi
-tags: [RAG, LLM, Production AI, Vector Database, Embeddings, LangChain, MLOps] # Etiketler
-excerpt: "Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation." # Kısa özet
-author: Serdar Çağlar
-# image: /assets/images/blog/rag-pipeline.png # Yazıya özel bir görsel (varsa)
-readTime: 12 # Tahmini okuma süresi (dakika) - manuel
-includeHighlight: true # Kod vurgulama CSS/JS'ini dahil etsin mi?
----
-
-Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm for building LLM applications that leverage external, up-to-date knowledge. While basic RAG is straightforward, building a system that is truly production-ready – reliable, scalable, efficient, and maintainable – requires careful consideration of each component. This guide, drawing from practical experience, outlines key steps and advanced techniques.
-
-<!-- ![Production RAG Pipeline Diagram](/assets/images/blog/rag-pipeline.png) -->
-<!-- Fig 1: A typical Production-Ready RAG Pipeline. -->
-
-## Core Components of a Production RAG System
-
-### 1. Data Loading & Chunking
-The foundation of any RAG system is the knowledge base. Loading data from diverse sources (PDFs, websites, databases, APIs) requires robust connectors. More importantly, effective **chunking** is critical. Consider:
-*   **Recursive Character Text Splitting:** A good default.
-*   **Semantic Chunking:** Uses embedding models to find semantic break points.
-*   **Chunk Size & Overlap:** Experimentation is key.
-
-### 2. Embedding Models
-Choosing the right embedding model is vital. Factors include:
-*   **Performance vs. Size/Speed:** Models like `bge-large` offer performance, `all-MiniLM-L6-v2` offers speed.
-*   **Domain Specificity:** Fine-tuning can significantly boost relevance.
-*   **Multilinguality:** Use models like E5-multilingual if needed.
-
-### 3. Vector Stores
-Index embeddings for efficient search. Options include:
-*   **Managed Services:** Pinecone, Weaviate Cloud.
-*   **Self-Hosted:** ChromaDB, Qdrant, Milvus.
-*   **Database Extensions:** pgvector.
-Metadata filtering is crucial.
-
-### 4. Retrieval Strategies
-Enhance simple vector search with:
-*   **Hybrid Search:** Combine keyword (BM25) and vector search.
-*   **Re-ranking:** Use cross-encoders (e.g., Cohere Rerank) to improve top results.
-*   **Query Transformations:** Rewrite or expand queries using an LLM.
-
-### 5. Generation (LLM Integration)
-Feed retrieved context and query to an LLM. Key aspects:
-*   **Prompt Engineering:** Clear instructions are vital.
-*   **Context Stuffing:** Format and insert context effectively.
-*   **Model Selection:** Choose appropriate LLM based on needs and budget.
-
-```python
-# Conceptual Example: RAG pipeline with LangChain (Simplified)
-from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-# ... (rest of the python code example) ...
-
-# Invoke
-question = "What are the key challenges in Turkish NLP?"
-# response = rag_chain.invoke(question)
-# print(response)
-
-
 <!-- DOSYA: _posts/2024-11-01-building-production-ready-rag.md -->
 ---
-layout: post # Oluşturduğumuz post layout'unu kullanacak
-title: Building Production-Ready RAG Systems
-date: 2024-11-01 # Jekyll bu tarihi kullanacak
-category: Machine Learning # İsteğe bağlı kategori
-tags: [RAG, LLM, Machine Learning, Production AI, Vector Database, Embeddings, LangChain, Information Retrieval, MLOps] # Etiketler
-excerpt: "Key steps and advanced techniques for building reliable, scalable, and efficient RAG applications, from data loading to evaluation." # Kartlarda gösterilecek özet
-readTime: 12 # Okuma süresi (isteğe bağlı)
-includeHighlight: true # Syntax highlighting JS/CSS'i yüklemesini söyle (default layout'ta ayarlı)
+layout: post
+title: "Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies"
+date: 2024-11-01 11:00:00 +0300
+category: AI Engineering
+tags: [RAG, LLM, Production AI, MLOps, Vector Database, Embeddings, Information Retrieval, LangChain, LlamaIndex, Agentic AI, Evaluation, Scalability]
+excerpt: "Dive deep into building robust, scalable, and efficient Retrieval-Augmented Generation systems for production, covering advanced retrieval, agentic patterns, evaluation, and MLOps."
+readTime: 18
+includeHighlight: true
 ---
 
-Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm for building LLM applications that leverage external, up-to-date knowledge. While basic RAG is straightforward, building a system that is truly production-ready – reliable, scalable, efficient, and maintainable – requires careful consideration of each component. This guide, drawing from practical experience detailed in my [Medium series](https://medium.com/@serdarildercaglar/building-production-ready-rag-from-scratch-1-of-n-e59647e44f78), outlines key steps and advanced techniques.
+# Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies
 
-![Production RAG Pipeline Diagram](/assets/images/blog/rag-pipeline.png) {# GÖRSEL EKLENMELİ #}
-*Fig 1: A typical Production-Ready RAG Pipeline.*
+Retrieval-Augmented Generation (RAG) has rapidly transitioned from a promising research concept to a cornerstone of modern Large Language Model (LLM) applications. By grounding LLMs in external, verifiable knowledge sources, RAG systems mitigate hallucination and provide up-to-date, contextually relevant responses. However, moving a RAG prototype from a Jupyter notebook to a robust, scalable, and maintainable production system presents significant engineering challenges.
 
-## Core Components of a Production RAG System
+This post delves into the essential components and, more importantly, the advanced strategies and production considerations required to architect truly production-grade RAG systems. We'll explore techniques beyond basic similarity search and touch upon the operational complexities vital for real-world deployment, drawing insights from practical implementations like those discussed in my .
 
-### 1. Data Loading & Chunking
 
-The foundation of any RAG system is the knowledge base. Loading data from diverse sources (PDFs, websites, databases, APIs) requires robust connectors (like those in LlamaHub or LangChain). More importantly, effective **chunking** is critical. Simply splitting by fixed size often breaks semantic context. Consider:
 
-*   **Recursive Character Text Splitting:** A good default, attempts to split based on semantic separators (paragraphs, sentences).
-*   **Semantic Chunking:** Uses embedding models to find semantic break points – often yields better results but is computationally more expensive.
-*   **Agentic Chunking:** Uses an LLM agent to determine optimal chunk boundaries based on content understanding.
-*   **Chunk Size & Overlap:** Experimentation is key. Smaller chunks might be better for specific fact retrieval, larger ones for summarization. Overlap helps maintain context across chunk boundaries.
+## The Anatomy of a Production RAG Pipeline
 
-### 2. Embedding Models
+While the core idea remains retrieve-then-generate, each stage requires careful consideration for production:
 
-Choosing the right embedding model is vital for retrieval quality. Consider models from leaderboards like the MTEB (Massive Text Embedding Benchmark). Factors include:
+### 1. Data Ingestion & Processing
 
-*   **Performance vs. Size/Speed:** Larger models often perform better but have higher latency and cost. Models like `bge-large` or `E5-large` offer strong performance, while smaller variants like `bge-base`, `all-MiniLM-L6-v2` offer speed.
-*   **Domain Specificity:** Fine-tuning an embedding model on your specific domain data (if feasible) can significantly boost retrieval relevance.
-*   **Multilinguality:** If supporting multiple languages, use a dedicated multilingual model (e.g., `paraphrase-multilingual-mpnet-base-v2`, E5-multilingual).
+- **Connectors:** Robustly handle diverse sources (PDFs, HTML, APIs, Databases - structured & unstructured). Need error handling and incremental updates.
+- **Cleaning & Preprocessing:** Remove boilerplate, normalize text, handle special characters specific to the domain.
+- **Chunking Strategy:** This is *critical*. Naive fixed-size chunking often fails. Production systems benefit from:
+  - *Recursive Character Splitting:* Good baseline, respects semantic boundaries (paragraphs, sentences).
+  - *Semantic Chunking:* Uses embedding models to find optimal split points based on meaning. More computationally intensive but often yields better context.
+  - *Agentic Chunking:* Employs an LLM to intelligently segment documents based on content understanding.
+  - *Chunk Size/Overlap Tuning:* Requires experimentation; depends heavily on the embedding model and downstream task (fact retrieval vs. summarization).
 
-### 3. Vector Stores
+### 2. Embedding Generation
 
-Vector stores index the chunk embeddings for efficient similarity search. Production choices often involve trade-offs between performance, scalability, cost, and features (like metadata filtering). Popular options include:
+- **Model Choice:** Balance performance (e.g., `bge-large`, `E5-large`, OpenAI `text-embedding-3-large`), cost, latency, and dimensionality. MTEB leaderboard is a good starting point.
+- **Domain Adaptation:** Fine-tuning embeddings on domain-specific data can drastically improve retrieval relevance but adds complexity.
+- **Infrastructure:** Efficiently embed large datasets using batching and potentially distributed processing.
 
-*   **Managed Services:** Pinecone, Weaviate Cloud, Zilliz Cloud offer scalability and ease of use but can be costly.
-*   **Self-Hosted / Open Source:** ChromaDB, Qdrant, Milvus provide flexibility but require infrastructure management. FAISS is a library, not a full database, often used as a backend.
-*   **Database Extensions:** pgvector (PostgreSQL) allows integrating vector search into existing relational databases.
+### 3. Vector Store & Indexing
 
-Metadata filtering (e.g., retrieving only chunks from a specific document ID or date range) is crucial for production systems.
+- **Scalability & Performance:** Choose a vector DB (Pinecone, Weaviate, Qdrant, Milvus, ChromaDB, pgvector) that meets latency requirements under load and scales cost-effectively.
+- **Metadata Filtering:** Essential for production to narrow searches (e.g., by date, source, user permissions). Indexing strategy must support efficient metadata filtering alongside vector search.
+- **Indexing Options:** Techniques like HNSW (Hierarchical Navigable Small World) offer tunable trade-offs between search speed and recall accuracy.
 
-### 4. Retrieval Strategies
+### 4. Retrieval Strategy - Beyond Basic Similarity
 
-Simple vector similarity search is often insufficient. Enhance retrieval with:
+- **Hybrid Search:** Combines dense (vector) search with sparse keyword search (BM25, TF-IDF) to capture both semantic similarity and lexical matches. Crucial for keyword-heavy queries.
+- **Re-ranking:** Employ a more powerful (but slower) cross-encoder model (e.g., Cohere Rerank, `bge-reranker`) on the top-k results from the initial retrieval phase to significantly improve precision.
+- **Query Transformations:** Use an LLM to enhance the user query *before* retrieval:
+  - *HyDE (Hypothetical Document Embeddings):* Generate a hypothetical answer first, embed that, and retrieve documents similar to the hypothetical answer.
+  - *Multi-Query Retriever:* Generate multiple variations of the original query to broaden the search space.
+  - *Step-Back Prompting:* Generate a more general query to retrieve broader context first.
+- **Parent Document Retriever:** Index fine-grained chunks but retrieve larger "parent" chunks containing them, providing more context to the LLM without sacrificing retrieval precision.
 
-*   **Hybrid Search:** Combine keyword-based search (like BM25) with vector search to capture both lexical and semantic relevance.
-*   **Re-ranking:** Use a more sophisticated (often slower) cross-encoder model to re-rank the initial set of retrieved documents, pushing the most relevant ones to the top. Models like Cohere Rerank or `bge-reranker` are common.
-*   **Query Transformations:** Use an LLM to rewrite the user query, expand it with synonyms, or break down complex questions into sub-queries (HyDE, Multi-Query Retriever).
-*   **Parent Document Retriever / Smaller Child Chunks:** Index small chunks but retrieve larger parent chunks containing them to provide more context to the LLM.
+### 5. Generation & Synthesis
 
-### 5. Generation (LLM Integration)
+- **Prompt Engineering:** Design robust prompts that clearly instruct the LLM how to use the retrieved context, handle conflicting information, cite sources, and avoid answering if the context is insufficient.
+- **Context Management:** Efficiently format and insert potentially large amounts of context into the LLM prompt, respecting context window limits. Techniques like context compression or focusing on the most relevant snippets are key.
+- **LLM Selection:** Choose the right generator model (GPT-4, Claude 3, Llama 3, Mistral Large etc.) based on cost, latency, quality, and task requirements. Consider fine-tuning the generator for specific response styles or domain knowledge.
 
-The final step involves feeding the retrieved context and the original query to an LLM (like GPT-4, Claude, Llama, Mistral) to generate the answer. Key aspects include:
+## Advanced Architectures & Production Imperatives
 
-*   **Prompt Engineering:** Craft clear prompts instructing the LLM how to use the provided context to answer the query accurately and avoid hallucination.
-*   **Context Stuffing:** How retrieved chunks are formatted and inserted into the prompt. Ensure the most relevant chunks appear where the LLM pays most attention (often beginning or end).
-*   **Model Selection:** Choose an LLM appropriate for the task complexity, latency requirements, and budget. Fine-tuning the generator LLM can further improve performance.
+Building beyond the core pipeline involves adopting more sophisticated patterns and addressing operational realities:
 
-## Advanced & Production Considerations
+### Agentic RAG
 
-*   **Agentic RAG:** Implement agents (using frameworks like LangChain or LlamaIndex) that can reason, plan, and decide *when* and *how* to retrieve information, potentially using different tools or knowledge sources.
-*   **Evaluation:** Implement robust evaluation frameworks (e.g., RAGAS, TruLens, DeepEval) measuring metrics like context precision/recall, faithfulness (does the answer stick to the context?), and answer relevance. End-to-end evaluation is critical.
-*   **Monitoring & Observability:** Track retrieval latency, generation quality, costs, and user feedback in production. Use tools like LangSmith or Arize AI.
-*   **Scalability & Cost Management:** Design for horizontal scaling. Optimize embedding and generation steps (e.g., using optimized inference servers like vLLM or TGI). Monitor API costs carefully.
-*   **Security & Privacy:** Ensure data security at rest and in transit, especially if handling sensitive information. Implement access controls for the knowledge base.
+Empowering the system to *reason* about the query and orchestrate retrieval. An agent might decide:
+- Does this query *need* retrieval, or can the LLM answer directly?
+- Which retrieval strategy (vector, keyword, graph, SQL) is best?
+- Is the retrieved context sufficient, or should I search again with refined queries?
+- Frameworks like LangChain and LlamaIndex provide tools for building such agents (e.g., ReAct pattern).
+
+### Evaluation Framework
+
+Production requires continuous evaluation.
+- **Metrics:** Context Precision/Recall, Faithfulness (Answer vs. Context), Answer Relevance (Answer vs. Query), Latency, Cost.
+- **Frameworks:** RAGAS, TruLens, DeepEval provide standardized metrics and evaluation pipelines.
+- **Human-in-the-loop:** Crucial for assessing nuanced quality aspects.
+
+### Monitoring & Observability
+
+Instrument every stage.
+- Track retrieval scores, latency, LLM token usage, costs per query.
+- Log prompts, contexts, and generated responses for debugging and analysis.
+- Tools like LangSmith, Arize AI, Weights & Biases are essential.
+
+### Scalability & Cost Optimization
+
+- Design for horizontal scaling (Kubernetes, serverless functions).
+- Optimize embedding/inference endpoints (e.g., ONNX, TensorRT, vLLM).
+- Implement smart caching strategies (embeddings, LLM responses for common queries).
+- Monitor and manage cloud and API costs diligently.
+
+### Security, Privacy & Governance
+
+- Secure data storage and transmission.
+- Implement access controls on knowledge sources.
+- Anonymize sensitive data if necessary.
+- Ensure compliance with relevant regulations (GDPR, HIPAA).
+
+### MLOps for RAG
+
+- Automate data ingestion, embedding, and indexing pipelines.
+- Implement CI/CD for deploying updates to models, prompts, and retrieval strategies.
+- Version control for prompts, datasets, and model artifacts.
+
+## Conceptual Code Example (LangChain)
 
 ```python
 # Conceptual Example: RAG pipeline with LangChain (Simplified)
+# --- Assumes libraries installed & API keys set ---
+
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_core.runnables import RunnablePassthrough
+from langchain_core.runnables import RunnablePassthrough, RunnableParallel
 from langchain_core.output_parsers import StrOutputParser
 from langchain import hub
+from langchain_community.document_loaders import TextLoader  # Example
 
-# 1. Load & Chunk (Assume 'docs' is loaded)
-# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-# splits = text_splitter.split_documents(docs)
+# --- Configuration ---
+VECTOR_DB_PATH = "./chroma_db_rag_prod"
+SOURCE_DOC_PATH = "./sample_rag_doc.txt"
+CHUNK_SIZE = 1000
+CHUNK_OVERLAP = 150
+TOP_K_RETRIEVAL = 5
 
-# 2. Embed & Store
-# vectorstore = Chroma.from_documents(documents=splits,
-#                                     embedding=OpenAIEmbeddings()) # Choose your embedding
+# --- Helper: Create dummy data if needed ---
+import os
+if not os.path.exists(SOURCE_DOC_PATH):
+    with open(SOURCE_DOC_PATH, "w") as f:
+        f.write("RAG combines retrieval with generation.\n")
+        f.write("Production RAG needs careful architecture.\n")
+        f.write("Key components include data loading, embedding, retrieval, and generation.\n")
+        f.write("Advanced techniques like re-ranking improve results.\n")
 
-# 3. Retriever (with re-ranking potentially added here)
-# retriever = vectorstore.as_retriever(search_kwargs={"k": 5}) # Retrieve top 5
+# --- 1. Load & Chunk ---
+try:
+    loader = TextLoader(SOURCE_DOC_PATH)
+    docs = loader.load()
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=CHUNK_SIZE,
+        chunk_overlap=CHUNK_OVERLAP
+    )
+    splits = text_splitter.split_documents(docs)
+    print(f"Loaded and split {len(docs)} document(s) into {len(splits)} chunks.")
+except Exception as e:
+    print(f"Error during loading/chunking: {e}")
+    splits = []
 
-# 4. Prompt & LLM
-# prompt = hub.pull("rlm/rag-prompt") # Pull a standard RAG prompt
-# llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # Choose your LLM
+# --- 2. Embedding & Vector Store ---
+# (Consider using more performant / domain-specific embeddings in production)
+embedding_function = OpenAIEmbeddings()
 
-# 5. Chain Definition
-# def format_docs(docs):
-#     return "\\n\\n".join(doc.page_content for doc in docs)
+try:
+    # Using persistence for demonstration
+    if os.path.exists(VECTOR_DB_PATH):
+        print(f"Loading existing vector store from: {VECTOR_DB_PATH}")
+        vectorstore = Chroma(persist_directory=VECTOR_DB_PATH, embedding_function=embedding_function)
+    elif splits:
+        print(f"Creating new vector store at: {VECTOR_DB_PATH}")
+        vectorstore = Chroma.from_documents(
+            documents=splits,
+            embedding=embedding_function,
+            persist_directory=VECTOR_DB_PATH
+        )
+    else:
+        print("No documents to create vector store.")
+        vectorstore = None
+except Exception as e:
+    print(f"Error initializing vector store: {e}")
+    vectorstore = None
 
-# rag_chain = (
-#     {"context": retriever | format_docs, "question": RunnablePassthrough()}
-#     | prompt
-#     | llm
-#     | StrOutputParser()
-# )
+# --- 3. Retriever ---
+# (In production, consider adding Hybrid Search and Re-ranking here)
+if vectorstore:
+    retriever = vectorstore.as_retriever(search_kwargs={"k": TOP_K_RETRIEVAL})
+    print(f"Retriever initialized to fetch top {TOP_K_RETRIEVAL} results.")
+else:
+    retriever = None
+    print("Retriever could not be initialized.")
 
-# 6. Invoke
-# question = "What are the key challenges in Turkish NLP?"
-# response = rag_chain.invoke(question)
-# print(response)
+# --- 4. Prompt & LLM ---
+try:
+    # Using a common RAG prompt from LangChain Hub
+    rag_prompt = hub.pull("rlm/rag-prompt")
+    # Using a standard Chat model (replace with fine-tuned or specific model if needed)
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.1)
+    print("Prompt and LLM initialized.")
+except Exception as e:
+    print(f"Error initializing prompt/LLM: {e}")
+    rag_prompt = None
+    llm = None
+
+# --- 5. RAG Chain Definition ---
+def format_docs(docs):
+    """Helper function to format retrieved documents for the prompt."""
+    return "\n\n".join(doc.page_content for doc in docs)
+
+if retriever and rag_prompt and llm:
+    # Define the processing steps using LangChain Expression Language (LCEL)
+    rag_chain_from_docs = (
+        RunnablePassthrough.assign(context=(lambda x: format_docs(x["context"])))
+        | rag_prompt
+        | llm
+        | StrOutputParser()
+    )
+
+    # Combine retriever and the generation part
+    rag_chain_with_source = RunnableParallel(
+        {"context": retriever, "question": RunnablePassthrough()}
+    ).assign(answer=rag_chain_from_docs)
+
+    print("RAG chain defined successfully.")
+else:
+    rag_chain_with_source = None
+    print("RAG chain could not be defined due to missing components.")
+
+
+# --- 6. Example Invocation ---
+if rag_chain_with_source:
+    try:
+        question = "What are key parts of a production RAG system?"
+        print(f"\nInvoking chain with question: '{question}'")
+        result = rag_chain_with_source.invoke(question)
+
+        print("\n--- Generated Answer ---")
+        print(result["answer"])
+
+        # Optionally print retrieved context for debugging
+        # print("\n--- Retrieved Context ---")
+        # for i, doc in enumerate(result["context"]):
+        #     print(f"Doc {i+1}:\n{doc.page_content}\n---")
+
+    except Exception as e:
+        print(f"\nError invoking RAG chain: {e}")
+else:
+    print("\nCannot invoke chain as it was not initialized.")
+
+# --- Optional Cleanup ---
+# import shutil
+# if os.path.exists(VECTOR_DB_PATH):
+#     print(f"\nCleaning up vector store: {VECTOR_DB_PATH}")
+#     # shutil.rmtree(VECTOR_DB_PATH)  # Uncomment carefully to delete
+# if os.path.exists(SOURCE_DOC_PATH):
+#     print(f"Cleaning up source doc: {SOURCE_DOC_PATH}")
+#     # os.remove(SOURCE_DOC_PATH)  # Uncomment carefully to delete
+```
+
+## Conclusion
+
+Production-grade RAG is a multifaceted engineering challenge that extends far beyond the basic retrieval-then-generate pattern. It requires thoughtful architecture across data processing, embedding generation, retrieval strategies, and synthesis, all while addressing the operational imperatives of scalability, monitoring, and governance.
+
+As RAG continues to evolve, we're seeing the emergence of more sophisticated architectures that incorporate multiple retrieval mechanisms, self-reflecting agents, and continuous learning loops. These advanced systems don't just retrieve information – they reason about how to retrieve it most effectively.
+
+For engineers building such systems, the key is to start with a solid foundation and iteratively enhance components based on empirical evaluation. Remember that the best RAG system isn't necessarily the one with the most complex architecture, but rather the one that reliably delivers relevant, accurate, and trustworthy responses to users while maintaining operational excellence.
+
+*If you have questions or want to discuss RAG implementation details further, feel free to reach out via comments or [contact me directly](mailto:your-email@example.com).*
+
+---
+
+**Additional Resources:**
+- [LlamaIndex Documentation](https://docs.llamaindex.ai)
+- [LangChain RAG Guide](https://python.langchain.com/docs/use_cases/question_answering)
+- [RAGAS Evaluation Framework](https://github.com/explodinggradients/ragas)
+- [TruLens for LLM Evaluation](https://www.trulens.org/)
+- [DeepEval Framework](https://github.com/confident-ai/deepeval)
+
+
+<!-- DOSYA: _posts/2025-05-03-bridging-gap-domain-specific-glove-embeddings-healthcare-nlp.md -->
+---
+layout: post
+title: "Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP"
+date: 2025-05-03
+author: Serdar Ileri Caglar
+categories: [AI, Healthcare, NLP]
+tags: [medical NLP, word embeddings, GloVe, clinical text analysis, medical informatics, RAG]
+image: /assets/images/blog/healthcare-embeddings.jpg
+description: "Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficiency."
+featured: true
+---
+
+# Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP
+
+In the complex world of healthcare, language presents unique challenges for artificial intelligence. Medical terminology, with its specialized vocabulary, abundant acronyms, and nuanced relationships between concepts, has long been a stumbling block for natural language processing (NLP) systems. While general-purpose language models have made tremendous strides in recent years, they often lack the domain-specific understanding needed for healthcare applications.
+
+This is where our Healthcare Clinical GloVe Embeddings come in – a specialized 300-dimensional word vector model designed specifically for clinical and biomedical text analysis. These embeddings represent a powerful tool for enhancing medical NLP applications, offering a balance of domain knowledge, interpretability, and computational efficiency.
+
+## The Challenge of Medical Language
+
+Healthcare communication is filled with specialized terminology that can be challenging even for general-purpose AI systems. Consider the following examples:
+
+- "DVT" means "deep vein thrombosis" to healthcare professionals, not "digital video technology"
+- "Cold" could refer to a temperature or a common viral infection
+- "Clear" could describe transparency, the absence of disease, or a directive to remove something
+- Subtle distinctions between related terms like "dyspnea," "shortness of breath," and "respiratory distress" carry important clinical meaning
+
+Additionally, medical concepts exist in complex hierarchical relationships. Understanding that "metformin" is an "antidiabetic agent" which is a "medication" is critical for many healthcare NLP tasks. General word embeddings often miss these nuanced relationships.
+
+## Domain-Specific Embeddings: A Focused Solution
+
+Our clinical GloVe embeddings address these challenges by training specifically on extensive corpora of medical literature, clinical notes, and healthcare documentation. This domain-specific training creates vector representations where:
+
+1. Medical terms are properly situated in relation to one another
+2. Acronyms align with their expanded forms
+3. Symptoms cluster near their associated conditions
+4. Medications group with their therapeutic classes
+5. Anatomical terms relate to their biological systems
+
+The 300-dimensional representation strikes an optimal balance – sufficient dimensionality to capture the complexity of medical language while remaining computationally efficient for production applications.
+
+## Real-World Applications in Healthcare
+
+Domain-specific embeddings enable numerous high-value applications in healthcare:
+
+### Enhanced Clinical Information Retrieval
+
+Electronic Health Records (EHRs) contain vast amounts of unstructured text that hold valuable clinical insights. Our embeddings allow for semantic search capabilities that understand the meaning behind queries, not just keywords.
+
+For example, a search for "heart attack treatments" will return relevant documents discussing "myocardial infarction therapy," "coronary thrombosis management," and "acute MI interventions" – even if these exact search terms don't appear in the documents.
+
+### Automated Medical Coding and Classification
+
+Medical coding is a time-consuming process that requires assigning standardized codes (ICD, CPT, SNOMED CT) to medical documentation. Our embeddings help automate this process by understanding the semantic meaning in clinical notes and matching it to appropriate medical codes, reducing administrative burden on healthcare staff.
+
+### Clinical Decision Support
+
+By understanding medical language at a deeper level, NLP systems using these embeddings can extract relevant clinical information from patient records to support decision-making. Risk factors, contraindications, and treatment histories can be automatically identified and flagged for clinician review.
+
+### Biomedical Literature Analysis
+
+Researchers can leverage these embeddings to analyze large volumes of scientific literature more effectively. Similar research concepts cluster together in the vector space, allowing for more intuitive exploration of research themes and potentially uncovering non-obvious connections between studies.
+
+## Powering Next-Generation RAG Systems in Healthcare
+
+One of the most promising applications for our clinical embeddings is in Retrieval-Augmented Generation (RAG) systems that combine large language models (LLMs) with specialized knowledge retrieval.
+
+RAG systems using our embeddings can:
+
+1. **Retrieve medically relevant information** from trusted sources based on semantic understanding rather than just keyword matching
+2. **Ground LLM outputs** in factual medical information, reducing hallucination
+3. **Provide contextually appropriate responses** to healthcare queries based on domain-specific knowledge
+4. **Maintain patient privacy** by processing sensitive information locally rather than sending it to external LLMs
+
+This integration is particularly valuable for applications like medical question-answering systems, automated clinical documentation, and patient education tools.
+
+## The Advantages of GloVe for Healthcare
+
+While newer embedding techniques continue to emerge, GloVe (Global Vectors for Word Representation) offers distinct advantages for healthcare applications:
+
+### Interpretability
+
+GloVe's training on co-occurrence statistics creates a vector space where the relationships between medical terms are intuitive and analyzable. This interpretability is crucial in healthcare, where understanding model behavior can be as important as performance.
+
+### Efficiency
+
+With 300 dimensions, our embeddings balance expressiveness with computational efficiency. They can be deployed in production environments without extensive hardware requirements, making them practical for healthcare organizations of all sizes.
+
+### Interoperability
+
+These embeddings can be easily integrated with existing NLP libraries and frameworks, allowing for straightforward adoption within current healthcare IT infrastructures.
+
+### Privacy Considerations
+
+Unlike systems that require sending data to external API-based language models, embeddings can be deployed locally, helping healthcare organizations maintain compliance with privacy regulations like HIPAA.
+
+## Looking Ahead: The Future of Healthcare NLP
+
+As we continue to refine and expand our healthcare embeddings, we see several exciting directions:
+
+1. **Multimodal integration** with medical imaging and structured data
+2. **Temporal modeling** to better represent disease progression and treatment timelines
+3. **Cross-lingual medical embeddings** to support global healthcare applications
+4. **Deeper integration with specialized medical ontologies** like UMLS, SNOMED CT, and MeSH
+
+The ongoing revolution in NLP is transforming healthcare, and specialized embeddings are a foundational piece of this transformation. By bridging the gap between general language understanding and domain-specific medical knowledge, these embeddings enable more accurate, efficient, and trustworthy healthcare AI applications.
+
+Through continued innovation in this space, we aim to support healthcare professionals, researchers, and organizations in their mission to improve patient care through better information access and analysis.
+
+---
+
+*The Healthcare Clinical GloVe Embeddings model is available for research and commercial use. For more information, please visit our [project page](/projects/healthcare-clinical-glove-embeddings) or contact us directly.*
+
+
+<!-- DOSYA: _posts/2025-05-03-revolutionizing-cancer-research-deep-dive-relation-extraction-model.md -->
+---
+layout: post
+title: "Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model"
+date: 2025-05-03
+author: Serdar Ileri Caglar
+categories: [AI, Healthcare, NLP]
+tags: [cancer research, relation extraction, BioBERT, medical NLP, oncology]
+image: /assets/images/blog/cancer-gene-relation.jpg
+description: "Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical decision-making."
+featured: true
+---
+
+# Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model
+
+In the rapidly evolving landscape of cancer research, understanding the complex interplay between genes and cancer development is crucial for advancing treatment strategies and improving patient outcomes. The exponential growth of scientific literature in this field presents both an opportunity and a challenge: while there's more information available than ever before, extracting meaningful insights from this vast corpus has become increasingly difficult for researchers.
+
+Our Cancer-Gene Relation Extraction Model addresses this challenge head-on by leveraging advanced natural language processing techniques to automatically identify and classify relationships between cancer entities and genes in scientific literature.
+
+## The Challenge: Making Sense of Complex Cancer-Gene Relationships
+
+Cancer is fundamentally a genetic disease, with various genes playing different roles in its development and progression. Understanding these roles is essential for developing targeted therapies and personalized treatment approaches. In scientific literature, three key gene classifications frequently appear:
+
+**Tumor Suppressors**: These genes regulate cellular growth and inhibit cancer development through DNA repair and cell cycle regulation. When mutated, they lose this protective function, allowing unrestricted cell growth.
+
+**Oncogenes**: These genes control cell growth and division under normal circumstances. When mutated or overexpressed, they become active drivers of cancer, promoting uncontrolled cell replication.
+
+**Driver Genes**: These genes harbor specific mutations that directly initiate and maintain cancer growth, forming the foundation of cancer genetics research and targeted therapies.
+
+Beyond these classifications, genes can interact with cancer through numerous relationship types, including activation, inhibition, regulation, and more. Manually identifying and cataloging these relationships across thousands of research papers is virtually impossible.
+
+## Our Solution: A Specialized NLP Model for Cancer Genetics
+
+Our Cancer-Gene Relation Extraction Model combines named entity recognition (NER) and relation classification to automatically extract and categorize these complex relationships from scientific text. Fine-tuned on BioBERT—a biomedical-specific version of BERT pre-trained on PubMed abstracts and PMC full-text articles—our model offers several advantages:
+
+1. **Specialized Focus**: Unlike general-purpose NLP models, ours is specifically trained to understand the nuanced language of cancer genetics.
+
+2. **High Precision**: The model achieves up to 92% precision for certain relation types, such as antagonistic relationships.
+
+3. **Comprehensive Classification**: Our model can distinguish between 11 distinct relationship types, including activators, inhibitors, regulators, and more.
+
+4. **End-to-End Pipeline**: The system works in conjunction with a specialized NER model to deliver a complete solution from raw text to structured knowledge.
+
+## Real-World Impact on Cancer Research
+
+The implications of this technology for cancer research and clinical practice are substantial:
+
+### Accelerating Literature Review
+
+Researchers who previously spent weeks manually combing through literature can now extract relevant gene-cancer relationships in minutes. This dramatically speeds up the hypothesis generation and testing process, potentially accelerating the pace of discoveries.
+
+### Building Comprehensive Knowledge Bases
+
+The model facilitates the creation and maintenance of cancer genetics databases by automatically extracting structured information from newly published research. This ensures that knowledge bases remain current with the latest findings.
+
+### Enhancing Clinical Decision Support
+
+For oncologists, understanding the genetic factors relevant to a patient's specific cancer type is crucial for personalized treatment planning. Our model can help identify potential therapeutic targets based on the functional relationships between genes and specific cancers.
+
+### Supporting Drug Discovery
+
+By systematically mapping the interactions between genes and different cancer types, pharmaceutical researchers can identify novel therapeutic targets and better understand resistance mechanisms.
+
+## Technical Performance
+
+Our model demonstrates excellent performance across various relation types, with particularly strong results for critical cancer-related relationships:
+
+| Relation Type | Precision | Recall | F1-Score |
+|---------------|-----------|--------|----------|
+| ANTAGONIST    | 0.92      | 0.88   | 0.90     |
+| INHIBITOR     | 0.83      | 0.87   | 0.85     |
+| AGONIST       | 0.85      | 0.72   | 0.78     |
+| INDIRECT-DOWNREGULATOR | 0.82 | 0.76 | 0.79 |
+| Overall Accuracy | - | - | 0.83 |
+
+These performance metrics translate to real-world reliability, ensuring that researchers can trust the extracted relationships for their work.
+
+## The Future of AI-Assisted Cancer Research
+
+As we continue to refine our model and expand its capabilities, we envision an increasingly symbiotic relationship between AI systems and cancer researchers. Rather than replacing human expertise, our model augments it—handling the tedious and time-consuming task of literature analysis while allowing researchers to focus on hypothesis generation, experimental design, and clinical translation.
+
+The future developments we're exploring include:
+
+1. **Temporal Analysis**: Tracking how our understanding of specific cancer-gene relationships evolves over time based on publication dates.
+
+2. **Cross-Modal Learning**: Incorporating information from figures, tables, and supplementary materials for more comprehensive relationship extraction.
+
+3. **Confidence-Based Retrieval**: Developing interfaces that allow researchers to filter results based on confidence scores for different relationship types.
+
+4. **Multi-Entity Relationships**: Expanding beyond binary relationships to capture complex interactions involving multiple genes, cancer types, and environmental factors.
+
+## Conclusion
+
+The Cancer-Gene Relation Extraction Model represents a significant step forward in applying artificial intelligence to cancer research. By automating the extraction and classification of complex relationships from scientific literature, we're helping researchers navigate the information explosion in cancer genetics and accelerating the path to new discoveries and treatments.
+
+As the model continues to evolve, we remain committed to our core mission: harnessing the power of natural language processing to advance our understanding of cancer biology and, ultimately, improve outcomes for cancer patients worldwide.
+
+---
+
+*This project is part of our ongoing work in biomedical natural language processing. The model is available on HuggingFace for researchers and organizations working in cancer research and treatment. For more information, please visit our [project page](/projects/cancer-gene-relation-extraction-model).*
 
 
 <!-- DOSYA: _projects/advanced-rag.md -->
@@ -19981,6 +20293,176 @@ Handling large volumes of PDFs and text required an automated pipeline:
 
 ---
 *This system significantly improves the ability for researchers and clinicians to find precise information within the vast body of medical literature.*
+
+
+<!-- DOSYA: _projects/cancer-gene-relation-extraction-model.md -->
+---
+title: Cancer-Gene Relation Extraction Model
+date: 2023-08-15
+excerpt: A fine-tuned biobert model for extracting complex relationships between cancer and genes, achieving up to 92% precision. Specialized to detect tumor suppressors, oncogenes, and driver genes in scientific literature.
+icon: fas fa-dna
+tags: [BERT, Relation Extraction, Biomedical NLP, Cancer Research, NER, HuggingFace]
+layout: project
+featured: true
+order: 2
+---
+<!-- Overview -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-4">
+        This project addresses the critical need for advanced NLP tools in cancer genetics research. I developed a specialized Relation Extraction Model fine-tuned to detect and classify complex relationships between cancer entities and genes in scientific literature. The model works in conjunction with a Named Entity Recognition (NER) system to identify critical genetic factors and their roles in cancer development and progression.
+    </p>
+    <div class="bg-blue-50 dark:bg-blue-900 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-2">Key Achievements</h3>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+            <li>Developed a fine-tuned BioBERT model achieving up to 92% precision for specific relation types.</li>
+            <li>Created a comprehensive pipeline for cancer-gene relation extraction with 83% overall accuracy.</li>
+            <li>Trained model to recognize 11 distinct relation types between cancer and genetic entities.</li>
+            <li>Integrated with a specialized NER model for end-to-end information extraction.</li>
+            <li>Optimized for detecting critical cancer-related genetic factors: tumor suppressors, oncogenes, and driver genes.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Model Details -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Model Details & Performance</h2>
+     <p class="text-gray-700 dark:text-gray-300 mb-4">
+        The model was fine-tuned using BioBERT as the base architecture, specializing in biomedical text. It works as part of a pipeline that first identifies named entities (genes, mutations, cancer types) and then classifies the relationships between them. The model demonstrates exceptional performance on critical relation types relevant to cancer genetics research.
+    </p>
+    <div class="bg-green-50 dark:bg-green-900 p-6 rounded-lg">
+         <h3 class="text-lg font-semibold mb-2">Performance Highlights</h3>
+         <div class="overflow-x-auto">
+             <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700">
+                 <thead>
+                     <tr>
+                         <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-left">Relation Type</th>
+                         <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">Precision</th>
+                         <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">Recall</th>
+                         <th class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">F1-Score</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">ANTAGONIST</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.92</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.88</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.90</td>
+                     </tr>
+                     <tr>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">INHIBITOR</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.83</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.87</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.85</td>
+                     </tr>
+                     <tr>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">AGONIST</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.85</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.72</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.78</td>
+                     </tr>
+                     <tr>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">INDIRECT-DOWNREGULATOR</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.82</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.76</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right">0.79</td>
+                     </tr>
+                     <tr>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700">Overall Accuracy</td>
+                         <td class="py-2 px-4 border-b border-gray-300 dark:border-gray-700 text-right" colspan="3">0.83</td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+</section>
+
+<!-- Key Concepts -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Key Cancer Genetics Concepts</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-ban text-3xl text-red-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Tumor Suppressors</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Genes that regulate cellular growth and inhibit cancer development through DNA repair and cell cycle regulation. When mutated, they lose this protective function, allowing unrestricted cell growth.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-virus text-3xl text-purple-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Oncogenes</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Genes that control cell growth and division. When mutated or overexpressed, they become drivers of cancer, promoting uncontrolled replication and survival of cancer cells.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-car text-3xl text-blue-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Driver Genes</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Genes with critical mutations that directly initiate and maintain cancer growth. They are fundamental triggers of disease, forming the foundation of cancer genetics research and targeted therapies.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Applications -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Applications</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-microscope text-3xl text-blue-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Oncology Research</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Accelerates cancer research by automatically extracting gene-cancer relationships from vast scientific literature.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-hospital-user text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Clinical Decision Support</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Helps clinicians identify potential genetic factors relevant to specific cancer cases for personalized treatment approaches.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-database text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Knowledge Base Construction</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+               Automates the creation and maintenance of cancer genetics databases by extracting structured information from research papers.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+             <i class="fas fa-pills text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Drug Discovery</h3>
+             <p class="text-gray-600 dark:text-gray-300">
+                 Identifies potential therapeutic targets by understanding the functional relationships between genes and cancer types.
+             </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Technologies Used -->
+<section>
+    <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
+    <div class="flex flex-wrap gap-2">
+        <span class="tech-tag">PyTorch</span>
+        <span class="tech-tag">HuggingFace Transformers</span>
+        <span class="tech-tag">BioBERT</span>
+        <span class="tech-tag">Aimped NLP</span>
+        <span class="tech-tag">NLTK</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Biomedical NLP</span>
+        <span class="tech-tag">Relation Extraction</span>
+        <span class="tech-tag">Named Entity Recognition</span>
+    </div>
+     <div class="mt-8">
+         <a href="https://huggingface.co/aimped/nlp-health-relation-cancer-genetics-base-en" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-yellow-500 text-black rounded-lg hover:bg-yellow-600 transition">
+             <i class="fab fa-hugging-face mr-2"></i>
+             <span>View Model on Hugging Face</span>
+         </a>
+     </div>
+</section>
 
 
 <!-- DOSYA: _projects/cancer-genetics.md -->
@@ -20164,6 +20646,167 @@ featured: false
         <span class="tech-tag">Scikit-learn</span> <!-- Değerlendirme için -->
          <span class="tech-tag">Medical Informatics</span>
     </div>
+</section>
+
+
+<!-- DOSYA: _projects/clinical-glove-embeddings.md -->
+---
+title: Healthcare Clinical GloVe Embeddings
+date: 2023-05-20
+excerpt: Domain-specific GloVe embeddings for healthcare NLP applications, offering 300-dimensional vectors that balance performance, interpretability, and efficiency for clinical text understanding and retrieval.
+icon: fas fa-heartbeat
+tags: [GloVe, Embeddings, Medical NLP, Healthcare AI, Word Vectors, Clinical Text, RAG, HuggingFace]
+layout: project
+featured: true
+order: 1
+---
+<!-- Overview -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-4">
+        This project provides specialized 300-dimensional GloVe embeddings trained specifically for healthcare and clinical NLP applications. Unlike general-purpose word vectors, these embeddings capture the nuanced relationships between medical terms, procedures, conditions, and treatments found in clinical documentation. They provide an optimal balance between performance, interpretability, and computational efficiency for healthcare-specific language understanding.
+    </p>
+    <div class="bg-blue-50 dark:bg-blue-900 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-2">Key Advantages</h3>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+            <li>Trained on extensive clinical corpora to ensure domain relevance.</li>
+            <li>300-dimensional vectors offering optimal balance between detail and computational efficiency.</li>
+            <li>Enhanced semantic understanding of medical terminology and relationships.</li>
+            <li>Interpretable vector space where related medical concepts cluster meaningfully.</li>
+            <li>Production-ready implementation for immediate integration into healthcare NLP pipelines.</li>
+            <li>Ideal foundation for retrieval-augmented generation (RAG) in healthcare LLM applications.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Applications -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Applications</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-search-plus text-3xl text-blue-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Clinical Information Retrieval</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Enhances search capabilities in electronic health records (EHRs) by understanding medical terminology and their relationships.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-book-medical text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Medical Document Analysis</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Powers automated classification, summarization, and information extraction from clinical notes, research papers, and medical literature.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-robot text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Healthcare RAG Systems</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+               Enhances retrieval-augmented generation with large language models for medical question-answering, clinical report generation, and patient information summarization.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+             <i class="fas fa-pills text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Pharmaceutical Research</h3>
+             <p class="text-gray-600 dark:text-gray-300">
+                 Supports drug discovery processes through improved analysis of research literature, clinical trial reports, and patient data.
+             </p>
+        </div>
+    </div>
+</section>
+
+<!-- Performance & Use Cases -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Performance & Capabilities</h2>
+     <p class="text-gray-700 dark:text-gray-300 mb-4">
+        The clinical GloVe embeddings demonstrate superior performance in healthcare-specific semantic similarity tasks. The model captures nuanced relationships between medical concepts, symptoms, treatments, and conditions, making it particularly valuable for information retrieval and text understanding in clinical settings.
+    </p>
+    <div class="bg-green-50 dark:bg-green-900 p-6 rounded-lg mb-6">
+         <h3 class="text-lg font-semibold mb-2">Key Features</h3>
+         <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+             <li>Accurate representation of medical term relationships and hierarchies.</li>
+             <li>Effective semantic similarity scoring for clinical text comparison.</li>
+             <li>Robust handling of medical abbreviations, acronyms, and specialized terminology.</li>
+             <li>Balanced coverage of general medical knowledge and specialized clinical domains.</li>
+             <li>Compatible with standard NLP libraries and frameworks for seamless integration.</li>
+         </ul>
+     </div>
+</section>
+
+<!-- Target Users -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Target Users</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-hospital text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Healthcare Providers</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Hospitals and clinics seeking to enhance EHR systems with intelligent search and information extraction.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-flask text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Research Institutions</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Medical researchers analyzing large volumes of clinical literature and patient data.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-laptop-medical text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Health Tech Companies</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Startups and established firms developing AI-powered healthcare applications and clinical decision support systems.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Key Benefits -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Key Benefits</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+            <h3 class="text-lg font-semibold mb-2">Domain Specificity</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Unlike general-purpose word embeddings, these vectors are finely tuned to healthcare terminology and relationships, resulting in more accurate representations of medical concepts.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+             <h3 class="text-lg font-semibold mb-2">Interpretability</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                GloVe's co-occurrence based approach creates an interpretable vector space where similar medical concepts cluster together, aiding in explainability for healthcare applications.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+             <h3 class="text-lg font-semibold mb-2">RAG Enhancement</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+               When used in retrieval-augmented generation systems with large language models, these embeddings significantly improve the accuracy and relevance of medical information retrieval.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+             <h3 class="text-lg font-semibold mb-2">Data Privacy</h3>
+             <p class="text-gray-600 dark:text-gray-300">
+                 Enables more privacy-preserving NLP implementations by allowing local processing of sensitive medical data without requiring constant communication with external LLMs.
+             </p>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies Used -->
+<section>
+    <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
+    <div class="flex flex-wrap gap-2">
+        <span class="tech-tag">GloVe</span>
+        <span class="tech-tag">Word Embeddings</span>
+        <span class="tech-tag">Healthcare NLP</span>
+        <span class="tech-tag">Clinical Text Analysis</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">NumPy</span>
+        <span class="tech-tag">Scikit-learn</span>
+        <span class="tech-tag">Aimped API</span>
+        <span class="tech-tag">Medical Information Retrieval</span>
+    </div>
+     
 </section>
 
 
@@ -20930,32 +21573,3 @@ citation: | # Alıntı bilgisi (isteğe bağlı)
 ---
 
 Machine translation is indispensable in healthcare for enabling the global dissemination of medical knowledge across languages. However, complex medical terminology poses unique challenges to achieving adequate translation quality and accuracy. This study introduces a novel "LLMs-in-the-loop" approach to develop supervised neural machine translation models optimized specifically for medical texts. While large language models (LLMs) have demonstrated powerful capabilities, this research shows that small, specialized models trained on high-quality in-domain (mostly synthetic) data can outperform even vastly larger LLMs. Custom parallel corpora in six languages were compiled from scientific articles, synthetically generated clinical documents, and medical texts. Our LLMs-in-the-loop methodology employs synthetic data generation, rigorous evaluation, and agent orchestration to enhance performance. We developed small medical translation models using the MarianMT base model. We introduce a new medical translation test dataset to standardize evaluation in this domain. Assessed using BLEU, METEOR, ROUGE, and BERT scores on this test set, our MarianMT-based models outperform Google Translate, DeepL, and GPT-4-Turbo. Results demonstrate that our LLMs-in-the-loop approach, combined with fine-tuning high-quality, domain-specific data, enables specialized models to outperform general-purpose and some larger systems. This research, part of a broader series on expert small models, paves the way for future healthcare-related AI developments, including deidentification and bio-medical entity extraction models. Our study underscores the potential of tailored neural translation models and the LLMs-in-the-loop methodology to advance the field through improved data generation, evaluation, agent, and modeling techniques.
-
-
-<!-- DOSYA: _publications/social-network-analysis.md -->
----
-layout: publication
-title: "Social Network Analysis of Oncology Theses"
-date: 2024-01-15 # Tahmini bir tarih, gerçek tarihle değiştirilebilir
-type: Master's Thesis
-authors: "Serdar I. Caglar"
-affiliation: "Anadolu University (Measurement and Data Analytics)"
-excerpt: "Knowledge graph analysis of 1726 Turkish medical thesis abstracts to discover patterns and trends in national cancer research using Neo4j."
-icon: fas fa-graduation-cap # Veya fas fa-project-diagram
-tags: [Social Network Analysis, Knowledge Graph, Neo4j, Oncology, Medical Informatics, Data Science, Thesis]
-# order: 2
----
-
-This Master's thesis project involved performing a Social Network Analysis (SNA) and Knowledge Graph analysis on a corpus of 1,726 Turkish medical thesis abstracts focused on oncology. The primary objective was to uncover hidden patterns, trends, and key areas of focus within the national cancer research landscape in Turkey as reflected in these academic works.
-
-By extracting entities (like genes, cancer types, treatment methods, institutions, researchers) and their relationships from the abstracts using NLP techniques, a knowledge graph was constructed within a Neo4j database.
-
-Network analysis techniques and graph algorithms (such as centrality measures like PageRank, Betweenness, and community detection algorithms like Louvain) were then applied using Cypher queries to analyze the structure of the research network.
-
-Key insights aimed to identify:
-*   The most influential or central research topics and keywords.
-*   Clusters of related research areas.
-*   Temporal trends in research focus over the period covered by the theses.
-*   Potential gaps or under-researched connections within the Turkish oncology field based on the thesis data.
-
-The project utilized Python for data processing and NLP, and Neo4j with Cypher for graph storage and analysis.

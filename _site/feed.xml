@@ -1,4 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-03T01:12:30+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Serdar Çağlar - AI/ML Engineering Lead &amp;amp; Solutions Architect</title><subtitle>Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.</subtitle><entry><title type="html">Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</title><link href="http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/" rel="alternate" type="text/html" title="Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model" /><published>2025-05-03T00:00:00+03:00</published><updated>2025-05-03T00:00:00+03:00</updated><id>http://localhost:4000/blog/A%20Deep%20Dive%20into%20Our%20Cancer-Gene%20Relation%20Extraction%20Model</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/"><![CDATA[<h1 id="revolutionizing-cancer-research-a-deep-dive-into-our-cancer-gene-relation-extraction-model">Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-03T01:55:35+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Serdar Çağlar - AI/ML Engineering Lead &amp;amp; Solutions Architect</title><subtitle>Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.</subtitle><entry><title type="html">Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP</title><link href="http://localhost:4000/blog/2025-05-03-bridging-gap-domain-specific-glove-embeddings-healthcare-nlp/" rel="alternate" type="text/html" title="Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP" /><published>2025-05-03T00:00:00+03:00</published><updated>2025-05-03T00:00:00+03:00</updated><id>http://localhost:4000/blog/bridging-gap-domain-specific-glove-embeddings-healthcare-nlp</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-03-bridging-gap-domain-specific-glove-embeddings-healthcare-nlp/"><![CDATA[<h1 id="bridging-the-gap-how-domain-specific-glove-embeddings-are-transforming-healthcare-nlp">Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP</h1>
+
+<p>In the complex world of healthcare, language presents unique challenges for artificial intelligence. Medical terminology, with its specialized vocabulary, abundant acronyms, and nuanced relationships between concepts, has long been a stumbling block for natural language processing (NLP) systems. While general-purpose language models have made tremendous strides in recent years, they often lack the domain-specific understanding needed for healthcare applications.</p>
+
+<p>This is where our Healthcare Clinical GloVe Embeddings come in – a specialized 300-dimensional word vector model designed specifically for clinical and biomedical text analysis. These embeddings represent a powerful tool for enhancing medical NLP applications, offering a balance of domain knowledge, interpretability, and computational efficiency.</p>
+
+<h2 id="the-challenge-of-medical-language">The Challenge of Medical Language</h2>
+
+<p>Healthcare communication is filled with specialized terminology that can be challenging even for general-purpose AI systems. Consider the following examples:</p>
+
+<ul>
+  <li>“DVT” means “deep vein thrombosis” to healthcare professionals, not “digital video technology”</li>
+  <li>“Cold” could refer to a temperature or a common viral infection</li>
+  <li>“Clear” could describe transparency, the absence of disease, or a directive to remove something</li>
+  <li>Subtle distinctions between related terms like “dyspnea,” “shortness of breath,” and “respiratory distress” carry important clinical meaning</li>
+</ul>
+
+<p>Additionally, medical concepts exist in complex hierarchical relationships. Understanding that “metformin” is an “antidiabetic agent” which is a “medication” is critical for many healthcare NLP tasks. General word embeddings often miss these nuanced relationships.</p>
+
+<h2 id="domain-specific-embeddings-a-focused-solution">Domain-Specific Embeddings: A Focused Solution</h2>
+
+<p>Our clinical GloVe embeddings address these challenges by training specifically on extensive corpora of medical literature, clinical notes, and healthcare documentation. This domain-specific training creates vector representations where:</p>
+
+<ol>
+  <li>Medical terms are properly situated in relation to one another</li>
+  <li>Acronyms align with their expanded forms</li>
+  <li>Symptoms cluster near their associated conditions</li>
+  <li>Medications group with their therapeutic classes</li>
+  <li>Anatomical terms relate to their biological systems</li>
+</ol>
+
+<p>The 300-dimensional representation strikes an optimal balance – sufficient dimensionality to capture the complexity of medical language while remaining computationally efficient for production applications.</p>
+
+<h2 id="real-world-applications-in-healthcare">Real-World Applications in Healthcare</h2>
+
+<p>Domain-specific embeddings enable numerous high-value applications in healthcare:</p>
+
+<h3 id="enhanced-clinical-information-retrieval">Enhanced Clinical Information Retrieval</h3>
+
+<p>Electronic Health Records (EHRs) contain vast amounts of unstructured text that hold valuable clinical insights. Our embeddings allow for semantic search capabilities that understand the meaning behind queries, not just keywords.</p>
+
+<p>For example, a search for “heart attack treatments” will return relevant documents discussing “myocardial infarction therapy,” “coronary thrombosis management,” and “acute MI interventions” – even if these exact search terms don’t appear in the documents.</p>
+
+<h3 id="automated-medical-coding-and-classification">Automated Medical Coding and Classification</h3>
+
+<p>Medical coding is a time-consuming process that requires assigning standardized codes (ICD, CPT, SNOMED CT) to medical documentation. Our embeddings help automate this process by understanding the semantic meaning in clinical notes and matching it to appropriate medical codes, reducing administrative burden on healthcare staff.</p>
+
+<h3 id="clinical-decision-support">Clinical Decision Support</h3>
+
+<p>By understanding medical language at a deeper level, NLP systems using these embeddings can extract relevant clinical information from patient records to support decision-making. Risk factors, contraindications, and treatment histories can be automatically identified and flagged for clinician review.</p>
+
+<h3 id="biomedical-literature-analysis">Biomedical Literature Analysis</h3>
+
+<p>Researchers can leverage these embeddings to analyze large volumes of scientific literature more effectively. Similar research concepts cluster together in the vector space, allowing for more intuitive exploration of research themes and potentially uncovering non-obvious connections between studies.</p>
+
+<h2 id="powering-next-generation-rag-systems-in-healthcare">Powering Next-Generation RAG Systems in Healthcare</h2>
+
+<p>One of the most promising applications for our clinical embeddings is in Retrieval-Augmented Generation (RAG) systems that combine large language models (LLMs) with specialized knowledge retrieval.</p>
+
+<p>RAG systems using our embeddings can:</p>
+
+<ol>
+  <li><strong>Retrieve medically relevant information</strong> from trusted sources based on semantic understanding rather than just keyword matching</li>
+  <li><strong>Ground LLM outputs</strong> in factual medical information, reducing hallucination</li>
+  <li><strong>Provide contextually appropriate responses</strong> to healthcare queries based on domain-specific knowledge</li>
+  <li><strong>Maintain patient privacy</strong> by processing sensitive information locally rather than sending it to external LLMs</li>
+</ol>
+
+<p>This integration is particularly valuable for applications like medical question-answering systems, automated clinical documentation, and patient education tools.</p>
+
+<h2 id="the-advantages-of-glove-for-healthcare">The Advantages of GloVe for Healthcare</h2>
+
+<p>While newer embedding techniques continue to emerge, GloVe (Global Vectors for Word Representation) offers distinct advantages for healthcare applications:</p>
+
+<h3 id="interpretability">Interpretability</h3>
+
+<p>GloVe’s training on co-occurrence statistics creates a vector space where the relationships between medical terms are intuitive and analyzable. This interpretability is crucial in healthcare, where understanding model behavior can be as important as performance.</p>
+
+<h3 id="efficiency">Efficiency</h3>
+
+<p>With 300 dimensions, our embeddings balance expressiveness with computational efficiency. They can be deployed in production environments without extensive hardware requirements, making them practical for healthcare organizations of all sizes.</p>
+
+<h3 id="interoperability">Interoperability</h3>
+
+<p>These embeddings can be easily integrated with existing NLP libraries and frameworks, allowing for straightforward adoption within current healthcare IT infrastructures.</p>
+
+<h3 id="privacy-considerations">Privacy Considerations</h3>
+
+<p>Unlike systems that require sending data to external API-based language models, embeddings can be deployed locally, helping healthcare organizations maintain compliance with privacy regulations like HIPAA.</p>
+
+<h2 id="looking-ahead-the-future-of-healthcare-nlp">Looking Ahead: The Future of Healthcare NLP</h2>
+
+<p>As we continue to refine and expand our healthcare embeddings, we see several exciting directions:</p>
+
+<ol>
+  <li><strong>Multimodal integration</strong> with medical imaging and structured data</li>
+  <li><strong>Temporal modeling</strong> to better represent disease progression and treatment timelines</li>
+  <li><strong>Cross-lingual medical embeddings</strong> to support global healthcare applications</li>
+  <li><strong>Deeper integration with specialized medical ontologies</strong> like UMLS, SNOMED CT, and MeSH</li>
+</ol>
+
+<p>The ongoing revolution in NLP is transforming healthcare, and specialized embeddings are a foundational piece of this transformation. By bridging the gap between general language understanding and domain-specific medical knowledge, these embeddings enable more accurate, efficient, and trustworthy healthcare AI applications.</p>
+
+<p>Through continued innovation in this space, we aim to support healthcare professionals, researchers, and organizations in their mission to improve patient care through better information access and analysis.</p>
+
+<hr />
+
+<p><em>The Healthcare Clinical GloVe Embeddings model is available for research and commercial use. For more information, please visit our <a href="/projects/healthcare-clinical-glove-embeddings">project page</a> or contact us directly.</em></p>]]></content><author><name>Serdar Ileri Caglar</name></author><category term="AI" /><category term="Healthcare" /><category term="NLP" /><category term="medical NLP" /><category term="word embeddings" /><category term="GloVe" /><category term="clinical text analysis" /><category term="medical informatics" /><category term="RAG" /><summary type="html"><![CDATA[Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficiency.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</title><link href="http://localhost:4000/blog/2025-05-03-revolutionizing-cancer-research-deep-dive-relation-extraction-model/" rel="alternate" type="text/html" title="Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model" /><published>2025-05-03T00:00:00+03:00</published><updated>2025-05-03T00:00:00+03:00</updated><id>http://localhost:4000/blog/revolutionizing-cancer-research-deep-dive-relation-extraction-model</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-03-revolutionizing-cancer-research-deep-dive-relation-extraction-model/"><![CDATA[<h1 id="revolutionizing-cancer-research-a-deep-dive-into-our-cancer-gene-relation-extraction-model">Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</h1>
 
 <p>In the rapidly evolving landscape of cancer research, understanding the complex interplay between genes and cancer development is crucial for advancing treatment strategies and improving patient outcomes. The exponential growth of scientific literature in this field presents both an opportunity and a challenge: while there’s more information available than ever before, extracting meaningful insights from this vast corpus has become increasingly difficult for researchers.</p>
 
@@ -133,114 +240,7 @@
 
 <hr />
 
-<p><em>This project is part of our ongoing work in biomedical natural language processing. The model is available on HuggingFace for researchers and organizations working in cancer research and treatment. For more information, please visit our <a href="/projects/cancer-gene-relation-extraction-model">project page</a>.</em></p>]]></content><author><name>Serdar Ileri Caglar</name></author><category term="AI" /><category term="Healthcare" /><category term="NLP" /><category term="cancer research" /><category term="relation extraction" /><category term="BioBERT" /><category term="medical NLP" /><category term="oncology" /><summary type="html"><![CDATA[Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical decision-making.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP</title><link href="http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/" rel="alternate" type="text/html" title="Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP" /><published>2025-05-03T00:00:00+03:00</published><updated>2025-05-03T00:00:00+03:00</updated><id>http://localhost:4000/blog/Domain-Specific-GloVe-Embeddings</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/"><![CDATA[<h1 id="bridging-the-gap-how-domain-specific-glove-embeddings-are-transforming-healthcare-nlp">Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP</h1>
-
-<p>In the complex world of healthcare, language presents unique challenges for artificial intelligence. Medical terminology, with its specialized vocabulary, abundant acronyms, and nuanced relationships between concepts, has long been a stumbling block for natural language processing (NLP) systems. While general-purpose language models have made tremendous strides in recent years, they often lack the domain-specific understanding needed for healthcare applications.</p>
-
-<p>This is where our Healthcare Clinical GloVe Embeddings come in – a specialized 300-dimensional word vector model designed specifically for clinical and biomedical text analysis. These embeddings represent a powerful tool for enhancing medical NLP applications, offering a balance of domain knowledge, interpretability, and computational efficiency.</p>
-
-<h2 id="the-challenge-of-medical-language">The Challenge of Medical Language</h2>
-
-<p>Healthcare communication is filled with specialized terminology that can be challenging even for general-purpose AI systems. Consider the following examples:</p>
-
-<ul>
-  <li>“DVT” means “deep vein thrombosis” to healthcare professionals, not “digital video technology”</li>
-  <li>“Cold” could refer to a temperature or a common viral infection</li>
-  <li>“Clear” could describe transparency, the absence of disease, or a directive to remove something</li>
-  <li>Subtle distinctions between related terms like “dyspnea,” “shortness of breath,” and “respiratory distress” carry important clinical meaning</li>
-</ul>
-
-<p>Additionally, medical concepts exist in complex hierarchical relationships. Understanding that “metformin” is an “antidiabetic agent” which is a “medication” is critical for many healthcare NLP tasks. General word embeddings often miss these nuanced relationships.</p>
-
-<h2 id="domain-specific-embeddings-a-focused-solution">Domain-Specific Embeddings: A Focused Solution</h2>
-
-<p>Our clinical GloVe embeddings address these challenges by training specifically on extensive corpora of medical literature, clinical notes, and healthcare documentation. This domain-specific training creates vector representations where:</p>
-
-<ol>
-  <li>Medical terms are properly situated in relation to one another</li>
-  <li>Acronyms align with their expanded forms</li>
-  <li>Symptoms cluster near their associated conditions</li>
-  <li>Medications group with their therapeutic classes</li>
-  <li>Anatomical terms relate to their biological systems</li>
-</ol>
-
-<p>The 300-dimensional representation strikes an optimal balance – sufficient dimensionality to capture the complexity of medical language while remaining computationally efficient for production applications.</p>
-
-<h2 id="real-world-applications-in-healthcare">Real-World Applications in Healthcare</h2>
-
-<p>Domain-specific embeddings enable numerous high-value applications in healthcare:</p>
-
-<h3 id="enhanced-clinical-information-retrieval">Enhanced Clinical Information Retrieval</h3>
-
-<p>Electronic Health Records (EHRs) contain vast amounts of unstructured text that hold valuable clinical insights. Our embeddings allow for semantic search capabilities that understand the meaning behind queries, not just keywords.</p>
-
-<p>For example, a search for “heart attack treatments” will return relevant documents discussing “myocardial infarction therapy,” “coronary thrombosis management,” and “acute MI interventions” – even if these exact search terms don’t appear in the documents.</p>
-
-<h3 id="automated-medical-coding-and-classification">Automated Medical Coding and Classification</h3>
-
-<p>Medical coding is a time-consuming process that requires assigning standardized codes (ICD, CPT, SNOMED CT) to medical documentation. Our embeddings help automate this process by understanding the semantic meaning in clinical notes and matching it to appropriate medical codes, reducing administrative burden on healthcare staff.</p>
-
-<h3 id="clinical-decision-support">Clinical Decision Support</h3>
-
-<p>By understanding medical language at a deeper level, NLP systems using these embeddings can extract relevant clinical information from patient records to support decision-making. Risk factors, contraindications, and treatment histories can be automatically identified and flagged for clinician review.</p>
-
-<h3 id="biomedical-literature-analysis">Biomedical Literature Analysis</h3>
-
-<p>Researchers can leverage these embeddings to analyze large volumes of scientific literature more effectively. Similar research concepts cluster together in the vector space, allowing for more intuitive exploration of research themes and potentially uncovering non-obvious connections between studies.</p>
-
-<h2 id="powering-next-generation-rag-systems-in-healthcare">Powering Next-Generation RAG Systems in Healthcare</h2>
-
-<p>One of the most promising applications for our clinical embeddings is in Retrieval-Augmented Generation (RAG) systems that combine large language models (LLMs) with specialized knowledge retrieval.</p>
-
-<p>RAG systems using our embeddings can:</p>
-
-<ol>
-  <li><strong>Retrieve medically relevant information</strong> from trusted sources based on semantic understanding rather than just keyword matching</li>
-  <li><strong>Ground LLM outputs</strong> in factual medical information, reducing hallucination</li>
-  <li><strong>Provide contextually appropriate responses</strong> to healthcare queries based on domain-specific knowledge</li>
-  <li><strong>Maintain patient privacy</strong> by processing sensitive information locally rather than sending it to external LLMs</li>
-</ol>
-
-<p>This integration is particularly valuable for applications like medical question-answering systems, automated clinical documentation, and patient education tools.</p>
-
-<h2 id="the-advantages-of-glove-for-healthcare">The Advantages of GloVe for Healthcare</h2>
-
-<p>While newer embedding techniques continue to emerge, GloVe (Global Vectors for Word Representation) offers distinct advantages for healthcare applications:</p>
-
-<h3 id="interpretability">Interpretability</h3>
-
-<p>GloVe’s training on co-occurrence statistics creates a vector space where the relationships between medical terms are intuitive and analyzable. This interpretability is crucial in healthcare, where understanding model behavior can be as important as performance.</p>
-
-<h3 id="efficiency">Efficiency</h3>
-
-<p>With 300 dimensions, our embeddings balance expressiveness with computational efficiency. They can be deployed in production environments without extensive hardware requirements, making them practical for healthcare organizations of all sizes.</p>
-
-<h3 id="interoperability">Interoperability</h3>
-
-<p>These embeddings can be easily integrated with existing NLP libraries and frameworks, allowing for straightforward adoption within current healthcare IT infrastructures.</p>
-
-<h3 id="privacy-considerations">Privacy Considerations</h3>
-
-<p>Unlike systems that require sending data to external API-based language models, embeddings can be deployed locally, helping healthcare organizations maintain compliance with privacy regulations like HIPAA.</p>
-
-<h2 id="looking-ahead-the-future-of-healthcare-nlp">Looking Ahead: The Future of Healthcare NLP</h2>
-
-<p>As we continue to refine and expand our healthcare embeddings, we see several exciting directions:</p>
-
-<ol>
-  <li><strong>Multimodal integration</strong> with medical imaging and structured data</li>
-  <li><strong>Temporal modeling</strong> to better represent disease progression and treatment timelines</li>
-  <li><strong>Cross-lingual medical embeddings</strong> to support global healthcare applications</li>
-  <li><strong>Deeper integration with specialized medical ontologies</strong> like UMLS, SNOMED CT, and MeSH</li>
-</ol>
-
-<p>The ongoing revolution in NLP is transforming healthcare, and specialized embeddings are a foundational piece of this transformation. By bridging the gap between general language understanding and domain-specific medical knowledge, these embeddings enable more accurate, efficient, and trustworthy healthcare AI applications.</p>
-
-<p>Through continued innovation in this space, we aim to support healthcare professionals, researchers, and organizations in their mission to improve patient care through better information access and analysis.</p>
-
-<hr />
-
-<p><em>The Healthcare Clinical GloVe Embeddings model is available for research and commercial use. For more information, please visit our <a href="/projects/healthcare-clinical-glove-embeddings">project page</a> or contact us directly.</em></p>]]></content><author><name>Serdar Ileri Caglar</name></author><category term="AI" /><category term="Healthcare" /><category term="NLP" /><category term="medical NLP" /><category term="word embeddings" /><category term="GloVe" /><category term="clinical text analysis" /><category term="medical informatics" /><category term="RAG" /><summary type="html"><![CDATA[Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficiency.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies</title><link href="http://localhost:4000/blog/2024-11-01-building-production-ready-rag/" rel="alternate" type="text/html" title="Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies" /><published>2024-11-01T11:00:00+03:00</published><updated>2024-11-01T11:00:00+03:00</updated><id>http://localhost:4000/blog/building-production-ready-rag</id><content type="html" xml:base="http://localhost:4000/blog/2024-11-01-building-production-ready-rag/"><![CDATA[<h1 id="architecting-production-grade-rag-from-core-concepts-to-advanced-strategies">Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies</h1>
+<p><em>This project is part of our ongoing work in biomedical natural language processing. The model is available on HuggingFace for researchers and organizations working in cancer research and treatment. For more information, please visit our <a href="/projects/cancer-gene-relation-extraction-model">project page</a>.</em></p>]]></content><author><name>Serdar Ileri Caglar</name></author><category term="AI" /><category term="Healthcare" /><category term="NLP" /><category term="cancer research" /><category term="relation extraction" /><category term="BioBERT" /><category term="medical NLP" /><category term="oncology" /><summary type="html"><![CDATA[Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical decision-making.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies</title><link href="http://localhost:4000/blog/2024-11-01-building-production-ready-rag/" rel="alternate" type="text/html" title="Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies" /><published>2024-11-01T11:00:00+03:00</published><updated>2024-11-01T11:00:00+03:00</updated><id>http://localhost:4000/blog/building-production-ready-rag</id><content type="html" xml:base="http://localhost:4000/blog/2024-11-01-building-production-ready-rag/"><![CDATA[<h1 id="architecting-production-grade-rag-from-core-concepts-to-advanced-strategies">Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies</h1>
 
 <p>Retrieval-Augmented Generation (RAG) has rapidly transitioned from a promising research concept to a cornerstone of modern Large Language Model (LLM) applications. By grounding LLMs in external, verifiable knowledge sources, RAG systems mitigate hallucination and provide up-to-date, contextually relevant responses. However, moving a RAG prototype from a Jupyter notebook to a robust, scalable, and maintainable production system presents significant engineering challenges.</p>
 
