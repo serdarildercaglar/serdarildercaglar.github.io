@@ -15,8 +15,7 @@ Retrieval-Augmented Generation (RAG) has rapidly transitioned from a promising r
 
 This post delves into the essential components and, more importantly, the advanced strategies and production considerations required to architect truly production-grade RAG systems. We'll explore techniques beyond basic similarity search and touch upon the operational complexities vital for real-world deployment, drawing insights from practical implementations like those discussed in my .
 
-![Conceptual Diagram of an Advanced RAG System](/assets/images/blog/rag-pipeline-advanced.png)
-*Fig 1: High-level architecture of an advanced, production-ready RAG system incorporating multiple retrieval stages and evaluation.*
+
 
 ## The Anatomy of a Production RAG Pipeline
 
