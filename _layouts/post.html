@@ -10,7 +10,7 @@ layout: default
 
 <!-- Blog Post Header -->
 <header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto max-w-4xl"> {# İçeriği ortalamak ve sınırlamak için #}
+    <div class="container mx-auto max-w-4xl"> <!-- İçeriği ortalamak ve sınırlamak için -->
         <div class="mb-6">
             <a href="{{ '/blog/' | relative_url }}" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
                 <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
@@ -48,8 +48,8 @@ layout: default
 <main class="py-12 px-6">
     <div class="container mx-auto max-w-4xl">
         <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
-        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> {# prose-xl daha büyük yazı tipi sağlar #}
-            {{ content }} {# Markdown içeriği buraya render edilecek #}
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> <!-- prose-xl daha büyük yazı tipi sağlar -->
+            {{ content }} 
         </article>
 
         <!-- Etiketler (varsa) -->
