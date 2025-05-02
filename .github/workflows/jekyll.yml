@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main  # veya master, ya da default branch'iniz neyse
+      - master  # veya master, ya da default branch'iniz neyse
 
 jobs:
   deploy:
