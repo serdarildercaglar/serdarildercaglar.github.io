@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics ve google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6131416231697546"
+    crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="ulI-UipVTfQgHN4YO2WdmK7ejarz3rgUCMAyecEqD7g" />
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model - Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical d...">
+    <meta name="keywords" content="cancer research, relation extraction, BioBERT, medical NLP, oncology">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model">
+    <meta property="og:description" content="Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical d...">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model">
+    <meta name="twitter:description" content="Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical d...">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+        <!-- Veya Jekyll'in kendi Rouge highlighter'ı için stil dosyası -->
+        <!-- <link rel="stylesheet" href="/assets/css/syntax.css"> -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model | Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model" />
+<meta name="author" content="Serdar Ileri Caglar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical decision-making." />
+<meta property="og:description" content="Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical decision-making." />
+<link rel="canonical" href="http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/" />
+<meta property="og:url" content="http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:image" content="http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-03T00:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg" />
+<meta property="twitter:title" content="Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Serdar Ileri Caglar"},"dateModified":"2025-05-03T00:00:00+03:00","datePublished":"2025-05-03T00:00:00+03:00","description":"Explore how our specialized NLP model uncovers complex relationships between cancer entities and genes to accelerate oncology research and improve clinical decision-making.","headline":"Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model","image":"http://localhost:4000/assets/images/blog/cancer-gene-relation.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/"},"url":"http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Blog Post Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> <!-- İçeriği ortalamak ve sınırlamak için -->
+        <div class="mb-6">
+            <a href="/blog/" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
+            </a>
+        </div>
+        <!-- Post Meta -->
+        <div class="mb-4">
+            
+            <time datetime="2025-05-03T00:00:00+03:00" class="text-sm text-gray-500 dark:text-gray-400">May 03, 2025</time>
+            
+        </div>
+        <!-- Post Başlığı -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</h1>
+         <!-- Yazar Bilgisi (isteğe bağlı, config'den veya sayfa front matter'dan gelebilir) -->
+         
+         
+         <div class="flex items-center mt-4">
+            <!-- Yazar resmi eklenebilir: <img src="..." alt="Serdar Ileri Caglar" class="w-10 h-10 rounded-full mr-3"> -->
+            <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Serdar Ileri Caglar</p>
+                <!-- Yazar unvanı eklenebilir -->
+            </div>
+         </div>
+         
+    </div>
+</header>
+
+<!-- Blog Post Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> <!-- prose-xl daha büyük yazı tipi sağlar -->
+            <h1 id="revolutionizing-cancer-research-a-deep-dive-into-our-cancer-gene-relation-extraction-model">Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</h1>
+
+<p>In the rapidly evolving landscape of cancer research, understanding the complex interplay between genes and cancer development is crucial for advancing treatment strategies and improving patient outcomes. The exponential growth of scientific literature in this field presents both an opportunity and a challenge: while there’s more information available than ever before, extracting meaningful insights from this vast corpus has become increasingly difficult for researchers.</p>
+
+<p>Our Cancer-Gene Relation Extraction Model addresses this challenge head-on by leveraging advanced natural language processing techniques to automatically identify and classify relationships between cancer entities and genes in scientific literature.</p>
+
+<h2 id="the-challenge-making-sense-of-complex-cancer-gene-relationships">The Challenge: Making Sense of Complex Cancer-Gene Relationships</h2>
+
+<p>Cancer is fundamentally a genetic disease, with various genes playing different roles in its development and progression. Understanding these roles is essential for developing targeted therapies and personalized treatment approaches. In scientific literature, three key gene classifications frequently appear:</p>
+
+<p><strong>Tumor Suppressors</strong>: These genes regulate cellular growth and inhibit cancer development through DNA repair and cell cycle regulation. When mutated, they lose this protective function, allowing unrestricted cell growth.</p>
+
+<p><strong>Oncogenes</strong>: These genes control cell growth and division under normal circumstances. When mutated or overexpressed, they become active drivers of cancer, promoting uncontrolled cell replication.</p>
+
+<p><strong>Driver Genes</strong>: These genes harbor specific mutations that directly initiate and maintain cancer growth, forming the foundation of cancer genetics research and targeted therapies.</p>
+
+<p>Beyond these classifications, genes can interact with cancer through numerous relationship types, including activation, inhibition, regulation, and more. Manually identifying and cataloging these relationships across thousands of research papers is virtually impossible.</p>
+
+<h2 id="our-solution-a-specialized-nlp-model-for-cancer-genetics">Our Solution: A Specialized NLP Model for Cancer Genetics</h2>
+
+<p>Our Cancer-Gene Relation Extraction Model combines named entity recognition (NER) and relation classification to automatically extract and categorize these complex relationships from scientific text. Fine-tuned on BioBERT—a biomedical-specific version of BERT pre-trained on PubMed abstracts and PMC full-text articles—our model offers several advantages:</p>
+
+<ol>
+  <li>
+    <p><strong>Specialized Focus</strong>: Unlike general-purpose NLP models, ours is specifically trained to understand the nuanced language of cancer genetics.</p>
+  </li>
+  <li>
+    <p><strong>High Precision</strong>: The model achieves up to 92% precision for certain relation types, such as antagonistic relationships.</p>
+  </li>
+  <li>
+    <p><strong>Comprehensive Classification</strong>: Our model can distinguish between 11 distinct relationship types, including activators, inhibitors, regulators, and more.</p>
+  </li>
+  <li>
+    <p><strong>End-to-End Pipeline</strong>: The system works in conjunction with a specialized NER model to deliver a complete solution from raw text to structured knowledge.</p>
+  </li>
+</ol>
+
+<h2 id="real-world-impact-on-cancer-research">Real-World Impact on Cancer Research</h2>
+
+<p>The implications of this technology for cancer research and clinical practice are substantial:</p>
+
+<h3 id="accelerating-literature-review">Accelerating Literature Review</h3>
+
+<p>Researchers who previously spent weeks manually combing through literature can now extract relevant gene-cancer relationships in minutes. This dramatically speeds up the hypothesis generation and testing process, potentially accelerating the pace of discoveries.</p>
+
+<h3 id="building-comprehensive-knowledge-bases">Building Comprehensive Knowledge Bases</h3>
+
+<p>The model facilitates the creation and maintenance of cancer genetics databases by automatically extracting structured information from newly published research. This ensures that knowledge bases remain current with the latest findings.</p>
+
+<h3 id="enhancing-clinical-decision-support">Enhancing Clinical Decision Support</h3>
+
+<p>For oncologists, understanding the genetic factors relevant to a patient’s specific cancer type is crucial for personalized treatment planning. Our model can help identify potential therapeutic targets based on the functional relationships between genes and specific cancers.</p>
+
+<h3 id="supporting-drug-discovery">Supporting Drug Discovery</h3>
+
+<p>By systematically mapping the interactions between genes and different cancer types, pharmaceutical researchers can identify novel therapeutic targets and better understand resistance mechanisms.</p>
+
+<h2 id="technical-performance">Technical Performance</h2>
+
+<p>Our model demonstrates excellent performance across various relation types, with particularly strong results for critical cancer-related relationships:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Relation Type</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1-Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ANTAGONIST</td>
+      <td>0.92</td>
+      <td>0.88</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <td>INHIBITOR</td>
+      <td>0.83</td>
+      <td>0.87</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <td>AGONIST</td>
+      <td>0.85</td>
+      <td>0.72</td>
+      <td>0.78</td>
+    </tr>
+    <tr>
+      <td>INDIRECT-DOWNREGULATOR</td>
+      <td>0.82</td>
+      <td>0.76</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <td>Overall Accuracy</td>
+      <td>-</td>
+      <td>-</td>
+      <td>0.83</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These performance metrics translate to real-world reliability, ensuring that researchers can trust the extracted relationships for their work.</p>
+
+<h2 id="the-future-of-ai-assisted-cancer-research">The Future of AI-Assisted Cancer Research</h2>
+
+<p>As we continue to refine our model and expand its capabilities, we envision an increasingly symbiotic relationship between AI systems and cancer researchers. Rather than replacing human expertise, our model augments it—handling the tedious and time-consuming task of literature analysis while allowing researchers to focus on hypothesis generation, experimental design, and clinical translation.</p>
+
+<p>The future developments we’re exploring include:</p>
+
+<ol>
+  <li>
+    <p><strong>Temporal Analysis</strong>: Tracking how our understanding of specific cancer-gene relationships evolves over time based on publication dates.</p>
+  </li>
+  <li>
+    <p><strong>Cross-Modal Learning</strong>: Incorporating information from figures, tables, and supplementary materials for more comprehensive relationship extraction.</p>
+  </li>
+  <li>
+    <p><strong>Confidence-Based Retrieval</strong>: Developing interfaces that allow researchers to filter results based on confidence scores for different relationship types.</p>
+  </li>
+  <li>
+    <p><strong>Multi-Entity Relationships</strong>: Expanding beyond binary relationships to capture complex interactions involving multiple genes, cancer types, and environmental factors.</p>
+  </li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The Cancer-Gene Relation Extraction Model represents a significant step forward in applying artificial intelligence to cancer research. By automating the extraction and classification of complex relationships from scientific literature, we’re helping researchers navigate the information explosion in cancer genetics and accelerating the path to new discoveries and treatments.</p>
+
+<p>As the model continues to evolve, we remain committed to our core mission: harnessing the power of natural language processing to advance our understanding of cancer biology and, ultimately, improve outcomes for cancer patients worldwide.</p>
+
+<hr />
+
+<p><em>This project is part of our ongoing work in biomedical natural language processing. The model is available on HuggingFace for researchers and organizations working in cancer research and treatment. For more information, please visit our <a href="/projects/cancer-gene-relation-extraction-model">project page</a>.</em></p>
+ 
+        </article>
+
+        <!-- Etiketler (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <a href="/blog-tags-cancer-research/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        cancer research
+                    </a>
+                
+                    <a href="/blog-tags-relation-extraction/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        relation extraction
+                    </a>
+                
+                    <a href="/blog-tags-biobert/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        BioBERT
+                    </a>
+                
+                    <a href="/blog-tags-medical-nlp/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        medical NLP
+                    </a>
+                
+                    <a href="/blog-tags-oncology/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        oncology
+                    </a>
+                
+            </div>
+        </div>
+        
+
+        <!-- İsteğe Bağlı: Paylaşım Butonları -->
+        <!--
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Share this post</h3>
+            <div class="flex space-x-4">
+                <a href="https://twitter.com/intent/tweet?text=Revolutionizing+Cancer+Research%3A+A+Deep+Dive+into+Our+Cancer-Gene+Relation+Extraction+Model&url=http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/&title=Revolutionizing+Cancer+Research%3A+A+Deep+Dive+into+Our+Cancer-Gene+Relation+Extraction+Model&summary=Revolutionizing+Cancer+Research%3A+A+Deep+Dive+into+Our+Cancer-Gene+Relation+Extraction+Model%0A&source=Serdar+%C3%87a%C4%9Flar+-+AI%2FML+Engineering+Lead+%26+Solutions+Architect" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+            </div>
+        </div>
+        -->
+
+        <!-- İsteğe Bağlı: Önceki/Sonraki Yazı Linkleri -->
+        <!--
+        <nav class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex justify-between text-sm">
+            
+                <a href="/blog/2024-11-01-building-production-ready-rag/" class="text-blue-600 hover:underline">« Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies</a>
+            
+            
+                <a href="/blog/2025-05-03-domain-specific-glove-embeddings/" class="text-blue-600 hover:underline">Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP »</a>
+            
+        </nav>
+        -->
+
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <!-- Veya Jekyll Rouge kullanıyorsanız JS gerekmez -->
+    
+
+</body>
+</html>

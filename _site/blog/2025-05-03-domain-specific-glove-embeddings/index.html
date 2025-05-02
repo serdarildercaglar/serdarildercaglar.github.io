@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics ve google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6131416231697546"
+    crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="ulI-UipVTfQgHN4YO2WdmK7ejarz3rgUCMAyecEqD7g" />
+    <!-- Sayfa Başlığı -->
+    <title>
+        
+            Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP - Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect
+        
+    </title>
+
+    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
+    
+    <meta name="description" content="Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficie...">
+    <meta name="keywords" content="medical NLP, word embeddings, GloVe, clinical text analysis, medical informatics, RAG">
+    <meta name="author" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP">
+    <meta property="og:description" content="Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficie...">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/">
+    
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg">
+    <meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP">
+    <meta name="twitter:description" content="Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficie...">
+    
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/twitter-card.jpg">
+    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
+    <meta name="twitter:creator" content="Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+        <!-- Veya Jekyll'in kendi Rouge highlighter'ı için stil dosyası -->
+        <!-- <link rel="stylesheet" href="/assets/css/syntax.css"> -->
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "",
+        "jobTitle": "",
+        "description": "Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.",
+        "url": "http://localhost:4000",
+        "email": "serdarildercaglar@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressRegion": "Malatya",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University",
+                "description": "M.S., Measurement and Data Analytics (2024)"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Gaziosmanpaşa University",
+                "description": "B.S., Education (2004-2008)"
+            }
+        ],
+         "worksFor": {
+            "@type": "Organization",
+            "name": "DopingTech (Contract)",
+            "jobTitle": "Senior Data Scientist"
+         }
+    }
+    </script>
+
+    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP | Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP" />
+<meta name="author" content="Serdar Ileri Caglar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficiency." />
+<meta property="og:description" content="Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficiency." />
+<link rel="canonical" href="http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/" />
+<meta property="og:url" content="http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/" />
+<meta property="og:site_name" content="Serdar Çağlar - AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:image" content="http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-03T00:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg" />
+<meta property="twitter:title" content="Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Serdar Ileri Caglar"},"dateModified":"2025-05-03T00:00:00+03:00","datePublished":"2025-05-03T00:00:00+03:00","description":"Explore how specialized clinical GloVe embeddings are enhancing medical NLP applications with domain knowledge while maintaining interpretability and efficiency.","headline":"Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP","image":"http://localhost:4000/assets/images/blog/healthcare-embeddings.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/"},"url":"http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Blog Post Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> <!-- İçeriği ortalamak ve sınırlamak için -->
+        <div class="mb-6">
+            <a href="/blog/" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
+            </a>
+        </div>
+        <!-- Post Meta -->
+        <div class="mb-4">
+            
+            <time datetime="2025-05-03T00:00:00+03:00" class="text-sm text-gray-500 dark:text-gray-400">May 03, 2025</time>
+            
+        </div>
+        <!-- Post Başlığı -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP</h1>
+         <!-- Yazar Bilgisi (isteğe bağlı, config'den veya sayfa front matter'dan gelebilir) -->
+         
+         
+         <div class="flex items-center mt-4">
+            <!-- Yazar resmi eklenebilir: <img src="..." alt="Serdar Ileri Caglar" class="w-10 h-10 rounded-full mr-3"> -->
+            <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Serdar Ileri Caglar</p>
+                <!-- Yazar unvanı eklenebilir -->
+            </div>
+         </div>
+         
+    </div>
+</header>
+
+<!-- Blog Post Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> <!-- prose-xl daha büyük yazı tipi sağlar -->
+            <h1 id="bridging-the-gap-how-domain-specific-glove-embeddings-are-transforming-healthcare-nlp">Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP</h1>
+
+<p>In the complex world of healthcare, language presents unique challenges for artificial intelligence. Medical terminology, with its specialized vocabulary, abundant acronyms, and nuanced relationships between concepts, has long been a stumbling block for natural language processing (NLP) systems. While general-purpose language models have made tremendous strides in recent years, they often lack the domain-specific understanding needed for healthcare applications.</p>
+
+<p>This is where our Healthcare Clinical GloVe Embeddings come in – a specialized 300-dimensional word vector model designed specifically for clinical and biomedical text analysis. These embeddings represent a powerful tool for enhancing medical NLP applications, offering a balance of domain knowledge, interpretability, and computational efficiency.</p>
+
+<h2 id="the-challenge-of-medical-language">The Challenge of Medical Language</h2>
+
+<p>Healthcare communication is filled with specialized terminology that can be challenging even for general-purpose AI systems. Consider the following examples:</p>
+
+<ul>
+  <li>“DVT” means “deep vein thrombosis” to healthcare professionals, not “digital video technology”</li>
+  <li>“Cold” could refer to a temperature or a common viral infection</li>
+  <li>“Clear” could describe transparency, the absence of disease, or a directive to remove something</li>
+  <li>Subtle distinctions between related terms like “dyspnea,” “shortness of breath,” and “respiratory distress” carry important clinical meaning</li>
+</ul>
+
+<p>Additionally, medical concepts exist in complex hierarchical relationships. Understanding that “metformin” is an “antidiabetic agent” which is a “medication” is critical for many healthcare NLP tasks. General word embeddings often miss these nuanced relationships.</p>
+
+<h2 id="domain-specific-embeddings-a-focused-solution">Domain-Specific Embeddings: A Focused Solution</h2>
+
+<p>Our clinical GloVe embeddings address these challenges by training specifically on extensive corpora of medical literature, clinical notes, and healthcare documentation. This domain-specific training creates vector representations where:</p>
+
+<ol>
+  <li>Medical terms are properly situated in relation to one another</li>
+  <li>Acronyms align with their expanded forms</li>
+  <li>Symptoms cluster near their associated conditions</li>
+  <li>Medications group with their therapeutic classes</li>
+  <li>Anatomical terms relate to their biological systems</li>
+</ol>
+
+<p>The 300-dimensional representation strikes an optimal balance – sufficient dimensionality to capture the complexity of medical language while remaining computationally efficient for production applications.</p>
+
+<h2 id="real-world-applications-in-healthcare">Real-World Applications in Healthcare</h2>
+
+<p>Domain-specific embeddings enable numerous high-value applications in healthcare:</p>
+
+<h3 id="enhanced-clinical-information-retrieval">Enhanced Clinical Information Retrieval</h3>
+
+<p>Electronic Health Records (EHRs) contain vast amounts of unstructured text that hold valuable clinical insights. Our embeddings allow for semantic search capabilities that understand the meaning behind queries, not just keywords.</p>
+
+<p>For example, a search for “heart attack treatments” will return relevant documents discussing “myocardial infarction therapy,” “coronary thrombosis management,” and “acute MI interventions” – even if these exact search terms don’t appear in the documents.</p>
+
+<h3 id="automated-medical-coding-and-classification">Automated Medical Coding and Classification</h3>
+
+<p>Medical coding is a time-consuming process that requires assigning standardized codes (ICD, CPT, SNOMED CT) to medical documentation. Our embeddings help automate this process by understanding the semantic meaning in clinical notes and matching it to appropriate medical codes, reducing administrative burden on healthcare staff.</p>
+
+<h3 id="clinical-decision-support">Clinical Decision Support</h3>
+
+<p>By understanding medical language at a deeper level, NLP systems using these embeddings can extract relevant clinical information from patient records to support decision-making. Risk factors, contraindications, and treatment histories can be automatically identified and flagged for clinician review.</p>
+
+<h3 id="biomedical-literature-analysis">Biomedical Literature Analysis</h3>
+
+<p>Researchers can leverage these embeddings to analyze large volumes of scientific literature more effectively. Similar research concepts cluster together in the vector space, allowing for more intuitive exploration of research themes and potentially uncovering non-obvious connections between studies.</p>
+
+<h2 id="powering-next-generation-rag-systems-in-healthcare">Powering Next-Generation RAG Systems in Healthcare</h2>
+
+<p>One of the most promising applications for our clinical embeddings is in Retrieval-Augmented Generation (RAG) systems that combine large language models (LLMs) with specialized knowledge retrieval.</p>
+
+<p>RAG systems using our embeddings can:</p>
+
+<ol>
+  <li><strong>Retrieve medically relevant information</strong> from trusted sources based on semantic understanding rather than just keyword matching</li>
+  <li><strong>Ground LLM outputs</strong> in factual medical information, reducing hallucination</li>
+  <li><strong>Provide contextually appropriate responses</strong> to healthcare queries based on domain-specific knowledge</li>
+  <li><strong>Maintain patient privacy</strong> by processing sensitive information locally rather than sending it to external LLMs</li>
+</ol>
+
+<p>This integration is particularly valuable for applications like medical question-answering systems, automated clinical documentation, and patient education tools.</p>
+
+<h2 id="the-advantages-of-glove-for-healthcare">The Advantages of GloVe for Healthcare</h2>
+
+<p>While newer embedding techniques continue to emerge, GloVe (Global Vectors for Word Representation) offers distinct advantages for healthcare applications:</p>
+
+<h3 id="interpretability">Interpretability</h3>
+
+<p>GloVe’s training on co-occurrence statistics creates a vector space where the relationships between medical terms are intuitive and analyzable. This interpretability is crucial in healthcare, where understanding model behavior can be as important as performance.</p>
+
+<h3 id="efficiency">Efficiency</h3>
+
+<p>With 300 dimensions, our embeddings balance expressiveness with computational efficiency. They can be deployed in production environments without extensive hardware requirements, making them practical for healthcare organizations of all sizes.</p>
+
+<h3 id="interoperability">Interoperability</h3>
+
+<p>These embeddings can be easily integrated with existing NLP libraries and frameworks, allowing for straightforward adoption within current healthcare IT infrastructures.</p>
+
+<h3 id="privacy-considerations">Privacy Considerations</h3>
+
+<p>Unlike systems that require sending data to external API-based language models, embeddings can be deployed locally, helping healthcare organizations maintain compliance with privacy regulations like HIPAA.</p>
+
+<h2 id="looking-ahead-the-future-of-healthcare-nlp">Looking Ahead: The Future of Healthcare NLP</h2>
+
+<p>As we continue to refine and expand our healthcare embeddings, we see several exciting directions:</p>
+
+<ol>
+  <li><strong>Multimodal integration</strong> with medical imaging and structured data</li>
+  <li><strong>Temporal modeling</strong> to better represent disease progression and treatment timelines</li>
+  <li><strong>Cross-lingual medical embeddings</strong> to support global healthcare applications</li>
+  <li><strong>Deeper integration with specialized medical ontologies</strong> like UMLS, SNOMED CT, and MeSH</li>
+</ol>
+
+<p>The ongoing revolution in NLP is transforming healthcare, and specialized embeddings are a foundational piece of this transformation. By bridging the gap between general language understanding and domain-specific medical knowledge, these embeddings enable more accurate, efficient, and trustworthy healthcare AI applications.</p>
+
+<p>Through continued innovation in this space, we aim to support healthcare professionals, researchers, and organizations in their mission to improve patient care through better information access and analysis.</p>
+
+<hr />
+
+<p><em>The Healthcare Clinical GloVe Embeddings model is available for research and commercial use. For more information, please visit our <a href="/projects/healthcare-clinical-glove-embeddings">project page</a> or contact us directly.</em></p>
+ 
+        </article>
+
+        <!-- Etiketler (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <a href="/blog-tags-medical-nlp/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        medical NLP
+                    </a>
+                
+                    <a href="/blog-tags-word-embeddings/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        word embeddings
+                    </a>
+                
+                    <a href="/blog-tags-glove/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        GloVe
+                    </a>
+                
+                    <a href="/blog-tags-clinical-text-analysis/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        clinical text analysis
+                    </a>
+                
+                    <a href="/blog-tags-medical-informatics/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        medical informatics
+                    </a>
+                
+                    <a href="/blog-tags-rag/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        RAG
+                    </a>
+                
+            </div>
+        </div>
+        
+
+        <!-- İsteğe Bağlı: Paylaşım Butonları -->
+        <!--
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Share this post</h3>
+            <div class="flex space-x-4">
+                <a href="https://twitter.com/intent/tweet?text=Bridging+the+Gap%3A+How+Domain-Specific+GloVe+Embeddings+are+Transforming+Healthcare+NLP&url=http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/2025-05-03-domain-specific-glove-embeddings/&title=Bridging+the+Gap%3A+How+Domain-Specific+GloVe+Embeddings+are+Transforming+Healthcare+NLP&summary=Bridging+the+Gap%3A+How+Domain-Specific+GloVe+Embeddings+are+Transforming+Healthcare+NLP%0A&source=Serdar+%C3%87a%C4%9Flar+-+AI%2FML+Engineering+Lead+%26+Solutions+Architect" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+            </div>
+        </div>
+        -->
+
+        <!-- İsteğe Bağlı: Önceki/Sonraki Yazı Linkleri -->
+        <!--
+        <nav class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex justify-between text-sm">
+            
+                <a href="/blog/2025-05-03-a-deep-dive-into-our-cancer-gene-relation-extraction-model/" class="text-blue-600 hover:underline">« Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</a>
+            
+            
+                 <span> </span> {# Boşluk bırakmak için #}
+            
+        </nav>
+        -->
+
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   Architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar - AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <!-- Veya Jekyll Rouge kullanıyorsanız JS gerekmez -->
+    
+
+</body>
+</html>
