@@ -181,13 +181,12 @@
 </section>
 
 <!-- Blog Section -->
-<!-- Blog Section -->
 <section id="blog" class="py-20 px-6 bg-white dark:bg-gray-900">
     <div class="container mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12">Latest Blog Posts</h2>
         <div class="grid md:grid-cols-3 gap-8">
             {% assign latest_posts = site.posts | reverse %} {# En yeniden eskiye sırala #}
-            {% for post in latest_posts limit:3 %} {# İlk 3'ü al #}
+            {% for post in latest_posts limit:3 %}        {# İlk 3'ü al #}
                 {% include blog-card.html post=post %}
             {% endfor %}
         </div>
