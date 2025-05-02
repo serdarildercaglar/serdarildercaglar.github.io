@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model"
-date: 2025-05-03
+date: 2025-04-26
 author: Serdar Ileri Caglar
 categories: [AI, Healthcare, NLP]
 tags: [cancer research, relation extraction, BioBERT, medical NLP, oncology]

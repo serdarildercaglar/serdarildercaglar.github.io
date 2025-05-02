@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bridging the Gap: How Domain-Specific GloVe Embeddings are Transforming Healthcare NLP"
-date: 2025-05-03
+date: 2025-04-26
 author: Serdar Ileri Caglar
 categories: [AI, Healthcare, NLP]
 tags: [medical NLP, word embeddings, GloVe, clinical text analysis, medical informatics, RAG]
