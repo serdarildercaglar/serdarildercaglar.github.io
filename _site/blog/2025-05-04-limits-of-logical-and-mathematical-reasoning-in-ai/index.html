@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics ve google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6131416231697546" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="ulI-UipVTfQgHN4YO2WdmK7ejarz3rgUCMAyecEqD7g" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Gerekiyorsa) -->
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Jekyll SEO Tag - Tüm önemli SEO etiketlerini bu üretir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The Limits of Logical and Mathematical Reasoning in AI | Serdar Çağlar AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="The Limits of Logical and Mathematical Reasoning in AI" />
+<meta name="author" content="Serdar Çağlar" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Explore why modern AI systems falter on formal logic and complex mathematical tasks, and discover emerging solutions like neuro-symbolic integration, abstraction alignment, and multimodal reasoning." />
+<meta property="og:description" content="Explore why modern AI systems falter on formal logic and complex mathematical tasks, and discover emerging solutions like neuro-symbolic integration, abstraction alignment, and multimodal reasoning." />
+<link rel="canonical" href="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/" />
+<meta property="og:url" content="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/" />
+<meta property="og:site_name" content="Serdar Çağlar AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-04T09:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The Limits of Logical and Mathematical Reasoning in AI" />
+<meta name="twitter:site" content="@serdarilder" />
+<meta name="twitter:creator" content="@Serdar Çağlar" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Serdar Çağlar"},"dateModified":"2025-05-04T09:00:00+03:00","datePublished":"2025-05-04T09:00:00+03:00","description":"Explore why modern AI systems falter on formal logic and complex mathematical tasks, and discover emerging solutions like neuro-symbolic integration, abstraction alignment, and multimodal reasoning.","headline":"The Limits of Logical and Mathematical Reasoning in AI","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/favicon.png"},"name":"Serdar Çağlar"},"url":"http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Jekyll SEO Tag Bitiş -->
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar | AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Blog Post Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> <!-- İçeriği ortalamak ve sınırlamak için -->
+        <div class="mb-6">
+            <a href="/blog/" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
+            </a>
+        </div>
+        <!-- Post Meta -->
+        <div class="mb-4">
+            
+            <span class="text-sm font-semibold text-blue-600 uppercase">AI Engineering</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            
+            <time datetime="2025-05-04T09:00:00+03:00" class="text-sm text-gray-500 dark:text-gray-400">May 04, 2025</time>
+            
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">18 min read</span>
+            
+        </div>
+        <!-- Post Başlığı -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">The Limits of Logical and Mathematical Reasoning in AI</h1>
+         <!-- Yazar Bilgisi (isteğe bağlı, config'den veya sayfa front matter'dan gelebilir) -->
+         
+         
+         <div class="flex items-center mt-4">
+            <!-- Yazar resmi eklenebilir: <img src="..." alt="Serdar Çağlar" class="w-10 h-10 rounded-full mr-3"> -->
+            <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Serdar Çağlar</p>
+                <!-- Yazar unvanı eklenebilir -->
+            </div>
+         </div>
+         
+    </div>
+</header>
+
+<!-- Blog Post Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> <!-- prose-xl daha büyük yazı tipi sağlar -->
+            <p><strong>Summary:</strong> Modern AI excels at pattern recognition and language tasks but still faces significant hurdles in genuine logical inference and mathematical reasoning. Issues such as data-leakage on benchmarks, reliance on heuristics, and brittle chain-of-thought prompting highlight these limitations. Neuro-symbolic hybrids, abstraction alignment, multimodal fusion, and “long-thinking” architectures are promising avenues to bridge the gap toward reliable, transparent, and generalizable AI reasoning.</p>
+
+<h2 id="the-limits-of-logical-and-mathematical-reasoning-in-ai">The Limits of Logical and Mathematical Reasoning in AI</h2>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Contemporary AI systems demonstrate superhuman performance in tasks like image classification and language translation, yet they often fail at <strong>formal logical deductions</strong> and <strong>complex mathematical proofs</strong>, producing plausible but incorrect solutions (<a href="https://time.com/7272092/ai-tool-anthropic-claude-brain-scanner/?utm_source=chatgpt.com" title="How This Tool Could Decode AI's Inner Mysteries">Time</a>). Researchers attribute these shortcomings to the stochastic, pattern-matching nature of large language models (LLMs) rather than true symbolic manipulation (<a href="https://gretel.ai/blog/gsm-symbolic-analyzing-llm-limitations-in-mathematical-reasoning?utm_source=chatgpt.com" title="GSM-Symbolic: Analyzing LLM Limitations in Mathematical ...">Gretel.ai</a>).</p>
+
+<h2 id="defining-reasoning-in-ai">Defining Reasoning in AI</h2>
+
+<h3 id="intelligence-as-skill-acquisition-efficiency">Intelligence as Skill-Acquisition Efficiency</h3>
+
+<p>François Chollet defines intelligence as <strong>“skill-acquisition efficiency”</strong>—the ability to rapidly learn new tasks and generalize to unseen scenarios—rather than raw benchmark scores (<a href="https://arxiv.org/pdf/2501.05435?utm_source=chatgpt.com" title="[PDF] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>). Under this metric, current AI systems fall short when faced with tasks requiring abstract reasoning beyond their training distribution (<a href="https://arxiv.org/abs/2501.05435?utm_source=chatgpt.com" title="[2501.05435] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>).</p>
+
+<h3 id="inductive-vs-deductive-reasoning">Inductive vs. Deductive Reasoning</h3>
+
+<ul>
+  <li><strong>Inductive reasoning:</strong> Inferring general rules from examples (e.g., “all swans are white” after seeing many white swans).</li>
+  <li><strong>Deductive reasoning:</strong> Applying general rules to specific cases (e.g., from “all mammals are warm-blooded” and “whales are mammals” deducing “whales are warm-blooded”).</li>
+</ul>
+
+<p>LLMs excel at statistical generalization, akin to induction, but struggle with strict, multi-step deductive chains that require precise logical operations (<a href="https://medium.com/%40Micheal-Lanham/is-chain-of-thought-prompting-still-useful-a67e2fa147d8?utm_source=chatgpt.com" title="Is Chain-of-Thought Prompting Still Useful? | by Micheal Lanham">Medium</a>).</p>
+
+<h2 id="heuristics-and-chain-of-thought">Heuristics and Chain-of-Thought</h2>
+
+<h3 id="reliance-on-heuristic-shortcuts">Reliance on Heuristic Shortcuts</h3>
+
+<p>To generate rapid responses, LLMs employ <strong>heuristic shortcuts</strong>—approximate rules rather than exhaustive search—which can yield inconsistent or erroneous outputs, especially on edge cases (<a href="https://bdtechtalks.substack.com/p/evaluating-the-limits-of-chain-of?utm_source=chatgpt.com" title="Evaluating the limits of chain-of-thought on planning - TechTalks">BD Tech Talks</a>).</p>
+
+<h3 id="chain-of-thought-cot-prompting">Chain-of-Thought (CoT) Prompting</h3>
+
+<p>CoT prompting—asking models to “think aloud”—can improve results on select planning and arithmetic tasks by guiding reasoning steps (<a href="https://medium.com/%40Micheal-Lanham/is-chain-of-thought-prompting-still-useful-a67e2fa147d8?utm_source=chatgpt.com" title="Is Chain-of-Thought Prompting Still Useful? | by Micheal Lanham">Medium</a>). However, it remains sensitive to prompt phrasing, propagates early mistakes through long chains, and does not generalize across all domains (<a href="https://bdtechtalks.substack.com/p/evaluating-the-limits-of-chain-of?utm_source=chatgpt.com" title="Evaluating the limits of chain-of-thought on planning - TechTalks">BD Tech Talks</a>).</p>
+
+<h2 id="benchmark-leakage-and-evaluation-challenges">Benchmark Leakage and Evaluation Challenges</h2>
+
+<h3 id="data-leakage-on-gsm-benchmarks">Data Leakage on GSM Benchmarks</h3>
+
+<p>Studies reveal that LLM “success” on arithmetic benchmarks like GSM8K often stems from <strong>memorization</strong> rather than reasoning: up to 8% accuracy drops occur when removing leaked examples from training data (<a href="https://arxiv.org/abs/2405.00332?utm_source=chatgpt.com" title="[2405.00332] A Careful Examination of Large Language Model ...">arXiv</a>). Rigorous leakage detection methods confirm that benchmark questions frequently appear verbatim in training corpora (<a href="https://arxiv.org/html/2404.18824v1?utm_source=chatgpt.com" title="Benchmarking Benchmark Leakage in Large Language Models - arXiv">arXiv</a>).</p>
+
+<h3 id="the-need-for-fresh-rigorous-benchmarks">The Need for Fresh, Rigorous Benchmarks</h3>
+
+<p>To more accurately assess reasoning capacity, new benchmarks must avoid overlap with training data and probe genuine out-of-distribution inference capabilities.</p>
+
+<h2 id="peering-inside-mathematical-circuits-vs-true-inference">Peering Inside: Mathematical Circuits vs. True Inference</h2>
+
+<p>Researchers dissect LLM internals to identify “mathematical circuits”—activation pathways correlated with arithmetic operations—but find these fragile under novel inputs, indicating mere pattern recognition rather than robust algorithmic understanding (<a href="https://gretel.ai/blog/gsm-symbolic-analyzing-llm-limitations-in-mathematical-reasoning?utm_source=chatgpt.com" title="GSM-Symbolic: Analyzing LLM Limitations in Mathematical ...">Gretel.ai</a>).</p>
+
+<h2 id="neuro-symbolic-and-hybrid-approaches">Neuro-Symbolic and Hybrid Approaches</h2>
+
+<h3 id="bridging-learning-and-logic">Bridging Learning and Logic</h3>
+
+<p><strong>Neuro-symbolic AI</strong> integrates neural networks’ pattern recognition with explicit symbolic reasoning, offering modular, interpretable systems that maintain logical consistency (<a href="https://arxiv.org/abs/2501.05435?utm_source=chatgpt.com" title="[2501.05435] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>). Yet seamless integration remains an open challenge, with ongoing research focusing on interface mechanisms and learning symbolic abstractions (<a href="https://medium.com/ai-advances/bridging-neural-and-symbolic-ai-a-step-toward-controlling-ais-reasoning-eb49ae748e01?utm_source=chatgpt.com" title="Bridging Neural and Symbolic AI: A Step Toward Controlling AI's ...">Medium</a>).</p>
+
+<h2 id="abstraction-alignment">Abstraction Alignment</h2>
+
+<p><strong>Abstraction alignment</strong> methods compare learned model representations with human-defined concepts to pinpoint misalignments and guide improvements, enhancing model quality metrics and interpretability (<a href="https://research.ibm.com/publications/abstraction-alignment-comparing-model-learned-and-human-encoded-conceptual-relationships?utm_source=chatgpt.com" title="Abstraction Alignment: Comparing Model-Learned and Human ...">IBM Research</a>). Effective abstraction learning enables AI to transfer principles across domains, a cornerstone for true generalization (<a href="https://medium.com/%40hounaine/abstraction-at-the-core-of-ai-programming-why-its-the-future-proof-skill-f193bce6ea28?utm_source=chatgpt.com" title="Abstraction at the Core of AI Programming: Why It's the Future-Proof ...">Medium</a>).</p>
+
+<h2 id="multimodal-fusion">Multimodal Fusion</h2>
+
+<h3 id="grounding-reasoning-in-diverse-inputs">Grounding Reasoning in Diverse Inputs</h3>
+
+<p>Combining <strong>textual</strong>, <strong>visual</strong>, and <strong>auditory</strong> data helps AI systems ground abstract concepts and reduces dependence on brittle textual patterns (<a href="https://marworkshop.github.io/cvpr25/?utm_source=chatgpt.com" title="MAR 2025 - Multimodal Algorithmic Reasoning">marworkshop.github.io</a>). Recent work, such as Jean Park’s Modality Importance Score at AAAI 2025, quantifies each modality’s contribution to reasoning performance (<a href="https://precise.seas.upenn.edu/news/20250324-jean-park-presents-groundbreaking-research-multimodal-ai-reasoning-aaai-2025?utm_source=chatgpt.com" title="Jean Park Presents Groundbreaking Research on Multimodal AI ...">precise.seas.upenn.edu</a>).</p>
+
+<h3 id="reinforcement-learning-for-multimodal-reasoning">Reinforcement Learning for Multimodal Reasoning</h3>
+
+<p>Surveys of RL-based methods in multimodal LLMs show enhanced reasoning across data types by incorporating feedback loops that refine decision pathways (<a href="https://quantumzeitgeist.com/reinforcement-learning-enhances-multimodal-ai-reasoning/?utm_source=chatgpt.com" title="Reinforcement Learning Enhances Multimodal AI Reasoning">Quantum Zeitgeist</a>).</p>
+
+<h2 id="long-thinking-architectures">“Long-Thinking” Architectures</h2>
+
+<p>Nvidia’s concept of <strong>“long thinking”</strong> envisions AI that deliberately allocates more computation time to deep reasoning processes—akin to human System 2 thinking—improving accuracy on complex tasks and enabling interactive problem-solving over extended durations (<a href="https://www.wsj.com/articles/get-ready-for-long-thinking-ais-next-leap-forward-2024e63c?utm_source=chatgpt.com" title="Get Ready for 'Long Thinking,' AI's Next Leap Forward">WSJ</a>).</p>
+
+<h2 id="interpretability-advances">Interpretability Advances</h2>
+
+<p>Anthropic’s new “brain-scanner” tool offers a window into LLM planning behavior, revealing that models like Claude plan words ahead in a shared conceptual space, a finding that challenges prior assumptions about token-by-token generation (<a href="https://time.com/7272092/ai-tool-anthropic-claude-brain-scanner/?utm_source=chatgpt.com" title="How This Tool Could Decode AI's Inner Mysteries">Time</a>).</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>While current AI systems remain largely “stochastic parrots,” ongoing advances in neuro-symbolic integration, abstraction learning, multimodal fusion, and long-thinking architectures show promise for endowing machines with genuine reasoning capabilities. Rigorous benchmarks, transparency tools, and interdisciplinary collaboration are essential to progress toward reliable, generalizable AI.</p>
+
+<hr />
+
+<h2 id="sources">Sources</h2>
+
+<ol>
+  <li>“Neuro-Symbolic AI in 2024: A Systematic Review,” arXiv, 2025. (<a href="https://arxiv.org/abs/2501.05435?utm_source=chatgpt.com" title="[2501.05435] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>)</li>
+  <li>“A Careful Examination of Large Language Model Mathematical Reasoning,” arXiv, 2024. (<a href="https://arxiv.org/abs/2405.00332?utm_source=chatgpt.com" title="[2405.00332] A Careful Examination of Large Language Model ...">arXiv</a>)</li>
+  <li>“Benchmarking Benchmark Leakage in Large Language Models,” arXiv, 2024. (<a href="https://arxiv.org/html/2404.18824v1?utm_source=chatgpt.com" title="Benchmarking Benchmark Leakage in Large Language Models - arXiv">arXiv</a>)</li>
+  <li>“Evaluating the Limits of Chain-of-Thought on Planning,” TechTalks, 2024. (<a href="https://bdtechtalks.substack.com/p/evaluating-the-limits-of-chain-of?utm_source=chatgpt.com" title="Evaluating the limits of chain-of-thought on planning - TechTalks">BD Tech Talks</a>)</li>
+  <li>Micheal Lanham, “Is Chain-of-Thought Prompting Still Useful?,” Medium, 2025. (<a href="https://medium.com/%40Micheal-Lanham/is-chain-of-thought-prompting-still-useful-a67e2fa147d8?utm_source=chatgpt.com" title="Is Chain-of-Thought Prompting Still Useful? | by Micheal Lanham">Medium</a>)</li>
+  <li>“GSM-Symbolic: Analyzing LLM Limitations in Mathematical Reasoning,” Gretel.ai, 2024. (<a href="https://gretel.ai/blog/gsm-symbolic-analyzing-llm-limitations-in-mathematical-reasoning?utm_source=chatgpt.com" title="GSM-Symbolic: Analyzing LLM Limitations in Mathematical ...">Gretel.ai</a>)</li>
+  <li>“Multimodal Algorithmic Reasoning,” CVPR Workshop, 2025. (<a href="https://marworkshop.github.io/cvpr25/?utm_source=chatgpt.com" title="MAR 2025 - Multimodal Algorithmic Reasoning">marworkshop.github.io</a>)</li>
+  <li>“Jean Park Presents Groundbreaking Research on Multimodal AI Reasoning at AAAI 2025,” UPenn, 2025. (<a href="https://precise.seas.upenn.edu/news/20250324-jean-park-presents-groundbreaking-research-multimodal-ai-reasoning-aaai-2025?utm_source=chatgpt.com" title="Jean Park Presents Groundbreaking Research on Multimodal AI ...">precise.seas.upenn.edu</a>)</li>
+  <li>“Reinforcement Learning Enhances Multimodal AI Reasoning,” Quantum Zeitgeist, 2025. (<a href="https://quantumzeitgeist.com/reinforcement-learning-enhances-multimodal-ai-reasoning/?utm_source=chatgpt.com" title="Reinforcement Learning Enhances Multimodal AI Reasoning">Quantum Zeitgeist</a>)</li>
+  <li>“Abstraction Alignment: Comparing Model-Learned and Human-Encoded Conceptual Relationships,” IBM Research, 2025. (<a href="https://research.ibm.com/publications/abstraction-alignment-comparing-model-learned-and-human-encoded-conceptual-relationships?utm_source=chatgpt.com" title="Abstraction Alignment: Comparing Model-Learned and Human ...">IBM Research</a>)</li>
+  <li>“Abstraction at the Core of AI Programming,” Medium, 2025. (<a href="https://medium.com/%40hounaine/abstraction-at-the-core-of-ai-programming-why-its-the-future-proof-skill-f193bce6ea28?utm_source=chatgpt.com" title="Abstraction at the Core of AI Programming: Why It's the Future-Proof ...">Medium</a>)</li>
+  <li>“Google’s Gemini 2.5 Pro Boosts AI Reasoning,” The Verge, Apr 2025. (<a href="https://www.theverge.com/news/635502/google-gemini-2-5-reasoning-ai-model?utm_source=chatgpt.com" title="Google says its new 'reasoning' Gemini AI models are the best ones yet">The Verge</a>)</li>
+  <li>“Get Ready for ‘Long Thinking,’ AI’s Next Leap Forward,” Wall Street Journal, 2025. (<a href="https://www.wsj.com/articles/get-ready-for-long-thinking-ais-next-leap-forward-2024e63c?utm_source=chatgpt.com" title="Get Ready for 'Long Thinking,' AI's Next Leap Forward">WSJ</a>)</li>
+  <li>“How This Tool Could Decode AI’s Inner Mysteries,” Time, 2025. (<a href="https://time.com/7272092/ai-tool-anthropic-claude-brain-scanner/?utm_source=chatgpt.com" title="How This Tool Could Decode AI's Inner Mysteries">Time</a>)</li>
+</ol>
+
+<hr />
+
+ 
+        </article>
+
+        <!-- Etiketler (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <a href="/blog-tags-rag/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        RAG
+                    </a>
+                
+                    <a href="/blog-tags-llm/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        LLM
+                    </a>
+                
+                    <a href="/blog-tags-production-ai/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Production AI
+                    </a>
+                
+                    <a href="/blog-tags-mlops/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        MLOps
+                    </a>
+                
+                    <a href="/blog-tags-vector-database/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Vector Database
+                    </a>
+                
+                    <a href="/blog-tags-embeddings/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Embeddings
+                    </a>
+                
+                    <a href="/blog-tags-information-retrieval/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Information Retrieval
+                    </a>
+                
+                    <a href="/blog-tags-langchain/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        LangChain
+                    </a>
+                
+                    <a href="/blog-tags-llamaindex/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        LlamaIndex
+                    </a>
+                
+                    <a href="/blog-tags-agentic-ai/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Agentic AI
+                    </a>
+                
+                    <a href="/blog-tags-evaluation/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Evaluation
+                    </a>
+                
+                    <a href="/blog-tags-scalability/" class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs hover:!bg-gray-300 dark:hover:!bg-gray-600">
+                        Scalability
+                    </a>
+                
+            </div>
+        </div>
+        
+
+        <!-- İsteğe Bağlı: Paylaşım Butonları -->
+        <!--
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Share this post</h3>
+            <div class="flex space-x-4">
+                <a href="https://twitter.com/intent/tweet?text=The+Limits+of+Logical+and+Mathematical+Reasoning+in+AI&url=http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/&title=The+Limits+of+Logical+and+Mathematical+Reasoning+in+AI&summary=Explore+why+modern+AI+systems+falter+on+formal+logic+and+complex+mathematical+tasks%2C+and+discover+emerging+solutions+like+neuro-symbolic+integration%2C+abstraction+alignment%2C+and+multimodal+reasoning.&source=Serdar+%C3%87a%C4%9Flar+%7C+AI%2FML+Engineering+Lead+%26+Solutions+Architect" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+            </div>
+        </div>
+        -->
+
+        <!-- İsteğe Bağlı: Önceki/Sonraki Yazı Linkleri -->
+        <!--
+        <nav class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex justify-between text-sm">
+            
+                <a href="/blog/2025-05-03-ollama-vs-vllm/" class="text-blue-600 hover:underline">« Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi</a>
+            
+            
+                 <span> </span> {# Boşluk bırakmak için #}
+            
+        </nav>
+        -->
+
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   AI/ML Engineering Lead & Solutions Architect architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar | AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <!-- Veya Jekyll Rouge kullanıyorsanız JS gerekmez -->
+    
+
+</body>
+</html>

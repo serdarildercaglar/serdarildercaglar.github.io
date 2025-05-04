@@ -2,27 +2,13 @@
 layout: post
 title: "The Limits of Logical and Mathematical Reasoning in AI"
 date: 2025-05-04 09:00:00 +0300
-author: Serdar ÇAĞLAR
 category: AI Engineering
-tags: 
-  - RAG
-  - LLM
-  - Production AI
-  - MLOps
-  - Vector Database
-  - Embeddings
-  - Information Retrieval
-  - LangChain
-  - LlamaIndex
-  - Agentic AI
-  - Evaluation
-  - Scalability
-excerpt: "Explore the challenges AI faces in logical and mathematical reasoning and discover emerging solutions like neuro-symbolic systems, multimodal fusion, and long-thinking architectures."
+tags: [RAG, LLM, Production AI, MLOps, Vector Database, Embeddings, Information Retrieval, LangChain, LlamaIndex, Agentic AI, Evaluation, Scalability]
+excerpt: "Explore why modern AI systems falter on formal logic and complex mathematical tasks, and discover emerging solutions like neuro-symbolic integration, abstraction alignment, and multimodal reasoning."
 readTime: 18
 includeHighlight: true
-image: /assets/images/ai-reasoning-limits-cover.jpg
-canonical_url: https://medium.com/@serdarildercaglar/the-limits-of-logical-and-mathematical-reasoning-in-ai
 ---
+
 
 
 **Summary:** Modern AI excels at pattern recognition and language tasks but still faces significant hurdles in genuine logical inference and mathematical reasoning. Issues such as data-leakage on benchmarks, reliance on heuristics, and brittle chain-of-thought prompting highlight these limitations. Neuro-symbolic hybrids, abstraction alignment, multimodal fusion, and “long-thinking” architectures are promising avenues to bridge the gap toward reliable, transparent, and generalizable AI reasoning.

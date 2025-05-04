@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-04T12:55:10+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Serdar Çağlar | AI/ML Engineering Lead &amp;amp; Solutions Architect</title><subtitle>AI/ML Engineering Lead &amp; Solutions Architect architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.</subtitle><author><name>Serdar Çağlar</name></author><entry><title type="html">Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi</title><link href="http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/" rel="alternate" type="text/html" title="Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi" /><published>2025-05-03T11:00:00+03:00</published><updated>2025-05-03T11:00:00+03:00</updated><id>http://localhost:4000/blog/ollama-vs-vllm</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/"><![CDATA[<h1 id="üretim-ortamları-i̇çin-vllm-ve-ollama-karşılaştırması-hangisi-daha-uygun">Üretim Ortamları İçin vLLM ve Ollama Karşılaştırması: Hangisi Daha Uygun?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-04T13:18:37+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Serdar Çağlar | AI/ML Engineering Lead &amp;amp; Solutions Architect</title><subtitle>AI/ML Engineering Lead &amp; Solutions Architect architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.</subtitle><author><name>Serdar Çağlar</name></author><entry><title type="html">The Limits of Logical and Mathematical Reasoning in AI</title><link href="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/" rel="alternate" type="text/html" title="The Limits of Logical and Mathematical Reasoning in AI" /><published>2025-05-04T09:00:00+03:00</published><updated>2025-05-04T09:00:00+03:00</updated><id>http://localhost:4000/blog/limits-of-logical-and-mathematical-reasoning-in-ai</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/"><![CDATA[<p><strong>Summary:</strong> Modern AI excels at pattern recognition and language tasks but still faces significant hurdles in genuine logical inference and mathematical reasoning. Issues such as data-leakage on benchmarks, reliance on heuristics, and brittle chain-of-thought prompting highlight these limitations. Neuro-symbolic hybrids, abstraction alignment, multimodal fusion, and “long-thinking” architectures are promising avenues to bridge the gap toward reliable, transparent, and generalizable AI reasoning.</p>
+
+<h2 id="the-limits-of-logical-and-mathematical-reasoning-in-ai">The Limits of Logical and Mathematical Reasoning in AI</h2>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Contemporary AI systems demonstrate superhuman performance in tasks like image classification and language translation, yet they often fail at <strong>formal logical deductions</strong> and <strong>complex mathematical proofs</strong>, producing plausible but incorrect solutions (<a href="https://time.com/7272092/ai-tool-anthropic-claude-brain-scanner/?utm_source=chatgpt.com" title="How This Tool Could Decode AI's Inner Mysteries">Time</a>). Researchers attribute these shortcomings to the stochastic, pattern-matching nature of large language models (LLMs) rather than true symbolic manipulation (<a href="https://gretel.ai/blog/gsm-symbolic-analyzing-llm-limitations-in-mathematical-reasoning?utm_source=chatgpt.com" title="GSM-Symbolic: Analyzing LLM Limitations in Mathematical ...">Gretel.ai</a>).</p>
+
+<h2 id="defining-reasoning-in-ai">Defining Reasoning in AI</h2>
+
+<h3 id="intelligence-as-skill-acquisition-efficiency">Intelligence as Skill-Acquisition Efficiency</h3>
+
+<p>François Chollet defines intelligence as <strong>“skill-acquisition efficiency”</strong>—the ability to rapidly learn new tasks and generalize to unseen scenarios—rather than raw benchmark scores (<a href="https://arxiv.org/pdf/2501.05435?utm_source=chatgpt.com" title="[PDF] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>). Under this metric, current AI systems fall short when faced with tasks requiring abstract reasoning beyond their training distribution (<a href="https://arxiv.org/abs/2501.05435?utm_source=chatgpt.com" title="[2501.05435] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>).</p>
+
+<h3 id="inductive-vs-deductive-reasoning">Inductive vs. Deductive Reasoning</h3>
+
+<ul>
+  <li><strong>Inductive reasoning:</strong> Inferring general rules from examples (e.g., “all swans are white” after seeing many white swans).</li>
+  <li><strong>Deductive reasoning:</strong> Applying general rules to specific cases (e.g., from “all mammals are warm-blooded” and “whales are mammals” deducing “whales are warm-blooded”).</li>
+</ul>
+
+<p>LLMs excel at statistical generalization, akin to induction, but struggle with strict, multi-step deductive chains that require precise logical operations (<a href="https://medium.com/%40Micheal-Lanham/is-chain-of-thought-prompting-still-useful-a67e2fa147d8?utm_source=chatgpt.com" title="Is Chain-of-Thought Prompting Still Useful? | by Micheal Lanham">Medium</a>).</p>
+
+<h2 id="heuristics-and-chain-of-thought">Heuristics and Chain-of-Thought</h2>
+
+<h3 id="reliance-on-heuristic-shortcuts">Reliance on Heuristic Shortcuts</h3>
+
+<p>To generate rapid responses, LLMs employ <strong>heuristic shortcuts</strong>—approximate rules rather than exhaustive search—which can yield inconsistent or erroneous outputs, especially on edge cases (<a href="https://bdtechtalks.substack.com/p/evaluating-the-limits-of-chain-of?utm_source=chatgpt.com" title="Evaluating the limits of chain-of-thought on planning - TechTalks">BD Tech Talks</a>).</p>
+
+<h3 id="chain-of-thought-cot-prompting">Chain-of-Thought (CoT) Prompting</h3>
+
+<p>CoT prompting—asking models to “think aloud”—can improve results on select planning and arithmetic tasks by guiding reasoning steps (<a href="https://medium.com/%40Micheal-Lanham/is-chain-of-thought-prompting-still-useful-a67e2fa147d8?utm_source=chatgpt.com" title="Is Chain-of-Thought Prompting Still Useful? | by Micheal Lanham">Medium</a>). However, it remains sensitive to prompt phrasing, propagates early mistakes through long chains, and does not generalize across all domains (<a href="https://bdtechtalks.substack.com/p/evaluating-the-limits-of-chain-of?utm_source=chatgpt.com" title="Evaluating the limits of chain-of-thought on planning - TechTalks">BD Tech Talks</a>).</p>
+
+<h2 id="benchmark-leakage-and-evaluation-challenges">Benchmark Leakage and Evaluation Challenges</h2>
+
+<h3 id="data-leakage-on-gsm-benchmarks">Data Leakage on GSM Benchmarks</h3>
+
+<p>Studies reveal that LLM “success” on arithmetic benchmarks like GSM8K often stems from <strong>memorization</strong> rather than reasoning: up to 8% accuracy drops occur when removing leaked examples from training data (<a href="https://arxiv.org/abs/2405.00332?utm_source=chatgpt.com" title="[2405.00332] A Careful Examination of Large Language Model ...">arXiv</a>). Rigorous leakage detection methods confirm that benchmark questions frequently appear verbatim in training corpora (<a href="https://arxiv.org/html/2404.18824v1?utm_source=chatgpt.com" title="Benchmarking Benchmark Leakage in Large Language Models - arXiv">arXiv</a>).</p>
+
+<h3 id="the-need-for-fresh-rigorous-benchmarks">The Need for Fresh, Rigorous Benchmarks</h3>
+
+<p>To more accurately assess reasoning capacity, new benchmarks must avoid overlap with training data and probe genuine out-of-distribution inference capabilities.</p>
+
+<h2 id="peering-inside-mathematical-circuits-vs-true-inference">Peering Inside: Mathematical Circuits vs. True Inference</h2>
+
+<p>Researchers dissect LLM internals to identify “mathematical circuits”—activation pathways correlated with arithmetic operations—but find these fragile under novel inputs, indicating mere pattern recognition rather than robust algorithmic understanding (<a href="https://gretel.ai/blog/gsm-symbolic-analyzing-llm-limitations-in-mathematical-reasoning?utm_source=chatgpt.com" title="GSM-Symbolic: Analyzing LLM Limitations in Mathematical ...">Gretel.ai</a>).</p>
+
+<h2 id="neuro-symbolic-and-hybrid-approaches">Neuro-Symbolic and Hybrid Approaches</h2>
+
+<h3 id="bridging-learning-and-logic">Bridging Learning and Logic</h3>
+
+<p><strong>Neuro-symbolic AI</strong> integrates neural networks’ pattern recognition with explicit symbolic reasoning, offering modular, interpretable systems that maintain logical consistency (<a href="https://arxiv.org/abs/2501.05435?utm_source=chatgpt.com" title="[2501.05435] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>). Yet seamless integration remains an open challenge, with ongoing research focusing on interface mechanisms and learning symbolic abstractions (<a href="https://medium.com/ai-advances/bridging-neural-and-symbolic-ai-a-step-toward-controlling-ais-reasoning-eb49ae748e01?utm_source=chatgpt.com" title="Bridging Neural and Symbolic AI: A Step Toward Controlling AI's ...">Medium</a>).</p>
+
+<h2 id="abstraction-alignment">Abstraction Alignment</h2>
+
+<p><strong>Abstraction alignment</strong> methods compare learned model representations with human-defined concepts to pinpoint misalignments and guide improvements, enhancing model quality metrics and interpretability (<a href="https://research.ibm.com/publications/abstraction-alignment-comparing-model-learned-and-human-encoded-conceptual-relationships?utm_source=chatgpt.com" title="Abstraction Alignment: Comparing Model-Learned and Human ...">IBM Research</a>). Effective abstraction learning enables AI to transfer principles across domains, a cornerstone for true generalization (<a href="https://medium.com/%40hounaine/abstraction-at-the-core-of-ai-programming-why-its-the-future-proof-skill-f193bce6ea28?utm_source=chatgpt.com" title="Abstraction at the Core of AI Programming: Why It's the Future-Proof ...">Medium</a>).</p>
+
+<h2 id="multimodal-fusion">Multimodal Fusion</h2>
+
+<h3 id="grounding-reasoning-in-diverse-inputs">Grounding Reasoning in Diverse Inputs</h3>
+
+<p>Combining <strong>textual</strong>, <strong>visual</strong>, and <strong>auditory</strong> data helps AI systems ground abstract concepts and reduces dependence on brittle textual patterns (<a href="https://marworkshop.github.io/cvpr25/?utm_source=chatgpt.com" title="MAR 2025 - Multimodal Algorithmic Reasoning">marworkshop.github.io</a>). Recent work, such as Jean Park’s Modality Importance Score at AAAI 2025, quantifies each modality’s contribution to reasoning performance (<a href="https://precise.seas.upenn.edu/news/20250324-jean-park-presents-groundbreaking-research-multimodal-ai-reasoning-aaai-2025?utm_source=chatgpt.com" title="Jean Park Presents Groundbreaking Research on Multimodal AI ...">precise.seas.upenn.edu</a>).</p>
+
+<h3 id="reinforcement-learning-for-multimodal-reasoning">Reinforcement Learning for Multimodal Reasoning</h3>
+
+<p>Surveys of RL-based methods in multimodal LLMs show enhanced reasoning across data types by incorporating feedback loops that refine decision pathways (<a href="https://quantumzeitgeist.com/reinforcement-learning-enhances-multimodal-ai-reasoning/?utm_source=chatgpt.com" title="Reinforcement Learning Enhances Multimodal AI Reasoning">Quantum Zeitgeist</a>).</p>
+
+<h2 id="long-thinking-architectures">“Long-Thinking” Architectures</h2>
+
+<p>Nvidia’s concept of <strong>“long thinking”</strong> envisions AI that deliberately allocates more computation time to deep reasoning processes—akin to human System 2 thinking—improving accuracy on complex tasks and enabling interactive problem-solving over extended durations (<a href="https://www.wsj.com/articles/get-ready-for-long-thinking-ais-next-leap-forward-2024e63c?utm_source=chatgpt.com" title="Get Ready for 'Long Thinking,' AI's Next Leap Forward">WSJ</a>).</p>
+
+<h2 id="interpretability-advances">Interpretability Advances</h2>
+
+<p>Anthropic’s new “brain-scanner” tool offers a window into LLM planning behavior, revealing that models like Claude plan words ahead in a shared conceptual space, a finding that challenges prior assumptions about token-by-token generation (<a href="https://time.com/7272092/ai-tool-anthropic-claude-brain-scanner/?utm_source=chatgpt.com" title="How This Tool Could Decode AI's Inner Mysteries">Time</a>).</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>While current AI systems remain largely “stochastic parrots,” ongoing advances in neuro-symbolic integration, abstraction learning, multimodal fusion, and long-thinking architectures show promise for endowing machines with genuine reasoning capabilities. Rigorous benchmarks, transparency tools, and interdisciplinary collaboration are essential to progress toward reliable, generalizable AI.</p>
+
+<hr />
+
+<h2 id="sources">Sources</h2>
+
+<ol>
+  <li>“Neuro-Symbolic AI in 2024: A Systematic Review,” arXiv, 2025. (<a href="https://arxiv.org/abs/2501.05435?utm_source=chatgpt.com" title="[2501.05435] Neuro-Symbolic AI in 2024: A Systematic Review - arXiv">arXiv</a>)</li>
+  <li>“A Careful Examination of Large Language Model Mathematical Reasoning,” arXiv, 2024. (<a href="https://arxiv.org/abs/2405.00332?utm_source=chatgpt.com" title="[2405.00332] A Careful Examination of Large Language Model ...">arXiv</a>)</li>
+  <li>“Benchmarking Benchmark Leakage in Large Language Models,” arXiv, 2024. (<a href="https://arxiv.org/html/2404.18824v1?utm_source=chatgpt.com" title="Benchmarking Benchmark Leakage in Large Language Models - arXiv">arXiv</a>)</li>
+  <li>“Evaluating the Limits of Chain-of-Thought on Planning,” TechTalks, 2024. (<a href="https://bdtechtalks.substack.com/p/evaluating-the-limits-of-chain-of?utm_source=chatgpt.com" title="Evaluating the limits of chain-of-thought on planning - TechTalks">BD Tech Talks</a>)</li>
+  <li>Micheal Lanham, “Is Chain-of-Thought Prompting Still Useful?,” Medium, 2025. (<a href="https://medium.com/%40Micheal-Lanham/is-chain-of-thought-prompting-still-useful-a67e2fa147d8?utm_source=chatgpt.com" title="Is Chain-of-Thought Prompting Still Useful? | by Micheal Lanham">Medium</a>)</li>
+  <li>“GSM-Symbolic: Analyzing LLM Limitations in Mathematical Reasoning,” Gretel.ai, 2024. (<a href="https://gretel.ai/blog/gsm-symbolic-analyzing-llm-limitations-in-mathematical-reasoning?utm_source=chatgpt.com" title="GSM-Symbolic: Analyzing LLM Limitations in Mathematical ...">Gretel.ai</a>)</li>
+  <li>“Multimodal Algorithmic Reasoning,” CVPR Workshop, 2025. (<a href="https://marworkshop.github.io/cvpr25/?utm_source=chatgpt.com" title="MAR 2025 - Multimodal Algorithmic Reasoning">marworkshop.github.io</a>)</li>
+  <li>“Jean Park Presents Groundbreaking Research on Multimodal AI Reasoning at AAAI 2025,” UPenn, 2025. (<a href="https://precise.seas.upenn.edu/news/20250324-jean-park-presents-groundbreaking-research-multimodal-ai-reasoning-aaai-2025?utm_source=chatgpt.com" title="Jean Park Presents Groundbreaking Research on Multimodal AI ...">precise.seas.upenn.edu</a>)</li>
+  <li>“Reinforcement Learning Enhances Multimodal AI Reasoning,” Quantum Zeitgeist, 2025. (<a href="https://quantumzeitgeist.com/reinforcement-learning-enhances-multimodal-ai-reasoning/?utm_source=chatgpt.com" title="Reinforcement Learning Enhances Multimodal AI Reasoning">Quantum Zeitgeist</a>)</li>
+  <li>“Abstraction Alignment: Comparing Model-Learned and Human-Encoded Conceptual Relationships,” IBM Research, 2025. (<a href="https://research.ibm.com/publications/abstraction-alignment-comparing-model-learned-and-human-encoded-conceptual-relationships?utm_source=chatgpt.com" title="Abstraction Alignment: Comparing Model-Learned and Human ...">IBM Research</a>)</li>
+  <li>“Abstraction at the Core of AI Programming,” Medium, 2025. (<a href="https://medium.com/%40hounaine/abstraction-at-the-core-of-ai-programming-why-its-the-future-proof-skill-f193bce6ea28?utm_source=chatgpt.com" title="Abstraction at the Core of AI Programming: Why It's the Future-Proof ...">Medium</a>)</li>
+  <li>“Google’s Gemini 2.5 Pro Boosts AI Reasoning,” The Verge, Apr 2025. (<a href="https://www.theverge.com/news/635502/google-gemini-2-5-reasoning-ai-model?utm_source=chatgpt.com" title="Google says its new 'reasoning' Gemini AI models are the best ones yet">The Verge</a>)</li>
+  <li>“Get Ready for ‘Long Thinking,’ AI’s Next Leap Forward,” Wall Street Journal, 2025. (<a href="https://www.wsj.com/articles/get-ready-for-long-thinking-ais-next-leap-forward-2024e63c?utm_source=chatgpt.com" title="Get Ready for 'Long Thinking,' AI's Next Leap Forward">WSJ</a>)</li>
+  <li>“How This Tool Could Decode AI’s Inner Mysteries,” Time, 2025. (<a href="https://time.com/7272092/ai-tool-anthropic-claude-brain-scanner/?utm_source=chatgpt.com" title="How This Tool Could Decode AI's Inner Mysteries">Time</a>)</li>
+</ol>
+
+<hr />]]></content><author><name>Serdar Çağlar</name></author><category term="AI Engineering" /><category term="RAG" /><category term="LLM" /><category term="Production AI" /><category term="MLOps" /><category term="Vector Database" /><category term="Embeddings" /><category term="Information Retrieval" /><category term="LangChain" /><category term="LlamaIndex" /><category term="Agentic AI" /><category term="Evaluation" /><category term="Scalability" /><summary type="html"><![CDATA[Explore why modern AI systems falter on formal logic and complex mathematical tasks, and discover emerging solutions like neuro-symbolic integration, abstraction alignment, and multimodal reasoning.]]></summary></entry><entry><title type="html">Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi</title><link href="http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/" rel="alternate" type="text/html" title="Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi" /><published>2025-05-03T11:00:00+03:00</published><updated>2025-05-03T11:00:00+03:00</updated><id>http://localhost:4000/blog/ollama-vs-vllm</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/"><![CDATA[<h1 id="üretim-ortamları-i̇çin-vllm-ve-ollama-karşılaştırması-hangisi-daha-uygun">Üretim Ortamları İçin vLLM ve Ollama Karşılaştırması: Hangisi Daha Uygun?</h1>
 
 <p>Büyük Dil Modelleri (LLM’ler), yapay zeka alanında devrim yaratmaya devam ediyor, ancak bu güçlü modelleri üretim ortamlarına dağıtmak önemli zorlukları da beraberinde getiriyor. Özellikle performans, ölçeklenebilirlik ve maliyet etkinliği kritik faktörler haline geliyor. Bu noktada, <strong>vLLM vs Ollama</strong> gibi araçlar devreye giriyor. Her ikisi de LLM çıkarımını (inference) ve sunumunu (serving) optimize etmeyi amaçlayan popüler açık kaynaklı çözümler olsa da, farklı felsefeler ve güçlü yanlar sunuyorlar. Peki, üretim seviyesi bir dağıtım için hangisi daha uygun? Bu makalede, vLLM ve Ollama’yı üretim ortamı gereksinimleri açısından detaylı bir şekilde karşılaştıracağız.</p>
 
