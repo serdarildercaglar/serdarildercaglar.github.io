@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Üretim için vLLM mi Ollama mı? Detaylı Karşılaştırma ve Seçim Rehberi"
+title: "Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi"
 date: 2025-05-03 11:00:00 +0300
 category: AI Engineering
 Tags: [vLLM, Ollama, LLM Deployment, Production AI, LLM Inference, LLM Serving, Performance, Scalability, PagedAttention, Throughput, Latency, GPU Optimization, MLOps, Open Source, Local LLM, AI Infrastructure, Model Serving, Cost Optimization]
