@@ -361,6 +361,42 @@ exclude:
 #   style: compressed
 
 
+# DOSYA: .github/workflows/jekyll.yml
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Deploy branch'iniz master olduğu için
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Jekyll build
+        run: bundle exec jekyll build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: master  # Deploy branch'iniz master olduğu için
+
+
 /* DOSYA: assets/css/styles.css */
 /* Custom properties */
 :root {
@@ -16429,6 +16465,762 @@ FQDN = Fully Qualified Domain Names, are domain names that are written with the 
 
 
 <!-- DOSYA: vendor/bundle/ruby/3.2.0/gems/public_suffix-6.0.1/SECURITY.md -->
+# Security Policy
+
+## Supported Versions
+
+Security updates are provided only for the current minor version.
+
+If you are using a previous minor version, we recommend to upgrade to the current minor version. This project uses [semantic versioning](https://semver.org/), therefore you can upgrade to a more recent minor version without incurring into breaking changes.
+
+Exceptionally, we may support previous minor versions upon request if there are significant reasons preventing to immediately switch the latest minor version.
+
+Older major versions are no longer supported.
+
+
+## Reporting a Vulnerability
+
+To make a report, please email weppos@weppos.net.
+
+> [!IMPORTANT]  
+> Please consider encrypting your report with GPG using the key [0x420da82a989398df](https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x420da82a989398df).
+
+
+## Tracking Security Updates
+
+Information about security vulnerabilities are published in the [Security Advisories](https://github.com/weppos/publicsuffix-ruby/security/advisories) page.
+
+
+
+<!-- DOSYA: vendor/bundle/ruby/3.2.0/gems/public_suffix-6.0.2/CHANGELOG.md -->
+# Changelog
+
+This project uses [Semantic Versioning 2.0.0](https://semver.org/).
+
+
+## 6.0.2
+
+### Changed
+
+- Updated definitions.
+
+
+## 6.0.1
+
+### Changed
+
+- Updated definitions.
+
+
+## 6.0.0
+
+Same as 5.1.0. Re-releasing as a major version change due to a major ruby version requirement change.
+
+### Changed
+
+- Updated definitions.
+- Minimum Ruby version is 3.0
+
+
+## 5.1.1
+
+No significant changes. Releasing a mini version to address 5.1.0 release with major ruby requirement change (GH-315).
+
+
+## 5.1.0
+
+### Changed
+
+- Updated definitions.
+- Minimum Ruby version is 3.0
+
+
+## 5.0.5
+
+### Changed
+
+- Updated definitions.
+
+
+## 5.0.4
+
+### Changed
+
+- Reduced .gem file size (GH-258). [Thanks @ybiquitous]
+- Updated definitions.
+
+
+## 5.0.3
+
+### Fixed
+
+- Fixed automated release workflow.
+
+
+## 5.0.2
+
+### Changed
+
+- Updated definitions.
+
+
+## 5.0.1
+
+### Changed
+
+- Updated definitions.
+
+
+## 5.0.0
+
+### Changed
+
+- Minimum Ruby version is 2.6
+- Updated definitions.
+
+
+## 4.0.7
+
+### Fixes
+
+- Fixed YARD rake task (GH-179)
+
+### Changed
+
+- Updated definitions.
+
+
+## 4.0.6
+
+### Changed
+
+- Updated definitions.
+
+
+## 4.0.5
+
+### Changed
+
+- Updated definitions.
+
+
+## 4.0.4
+
+### Changed
+
+- Updated definitions.
+
+
+## 4.0.3
+
+### Fixed
+
+- Fixed 2.7 deprecations and warnings (GH-167). [Thanks @BrianHawley]
+
+
+## 4.0.2
+
+### Changed
+
+- Updated definitions.
+
+
+## 4.0.1
+
+### Changed
+
+- Updated definitions.
+
+
+## 4.0.0
+
+### Changed
+
+- Minimum Ruby version is 2.3
+
+
+## Release 3.1.1
+
+- CHANGED: Updated definitions.
+- CHANGED: Rolled back support for Ruby 2.3 (GH-161, GH-162)
+
+IMPORTANT: 3.x is the latest version compatible with Ruby 2.1 and Ruby 2.2.
+
+
+## Release 3.1.0
+
+- CHANGED: Updated definitions.
+- CHANGED: Minimum Ruby version is 2.3
+- CHANGED: Upgraded to Bundler 2.x
+
+
+## Release 3.0.3
+
+- CHANGED: Updated definitions.
+
+
+## Release 3.0.2
+
+- CHANGED: Updated definitions.
+
+
+## Release 3.0.1
+
+- CHANGED: Updated definitions.
+- CHANGED: Improve performance and avoid allocation (GH-146). [Thanks @robholland]
+
+
+## Release 3.0.0
+
+This new version includes a major redesign of the library internals, with the goal to drastically
+improve the lookup time while reducing storage space.
+
+For this reason, several public methods that are no longer applicable have been deprecated
+and/or removed. You can find more information at GH-133.
+
+- CHANGED: Updated definitions.
+- CHANGED: Dropped support for Ruby < 2.1
+- CHANGED: `PublicSuffix::List#rules` is now protected. You should not rely on it as the internal rule representation is subject to change to optimize performances.
+- CHANGED: Removed `PublicSuffix::List.clear`, it was an unnecessary accessor method. Use `PublicSuffix::List.default = nil` if you **really** need to reset the default list. You shouldn't.
+- CHANGED: `PublicSuffix::List#select` is now private. You should not use it, instead use `PublicSuffix::List#find`.
+- CHANGED: `PublicSuffix::List` no longer implements Enumerable. Instead, use `#each` to loop over, or get an Enumerator.
+- CHANGED: Redesigned internal list storage and lookup algorithm to achieve O(1) lookup time (see GH-133).
+
+
+## Release 2.0.5
+
+- CHANGED: Updated definitions.
+- CHANGED: Initialization performance improvements (GH-128). [Thanks @casperisfine]
+
+
+## Release 2.0.4
+
+- FIXED: Fix a bug that caused the GEM to be published with the wrong version number in the gemspec (GH-121).
+
+- CHANGED: Updated definitions.
+
+
+## Release 2.0.3
+
+- CHANGED: Updated definitions.
+
+
+## Release 2.0.2
+
+- CHANGED: Updated definitions.
+
+
+## Release 2.0.1
+
+- FIXED: Fix bug that prevented .valid? to reset the default rule
+
+
+## Release 2.0.0
+
+- NEW: Added PublicSuffix.domain # => sld.tld
+- NEW: Added the ability to disable the use of private domains either at runtime, in addition to the ability to not load the private domains section when reading the list (`private_domains: false`). This feature also superseded the `private_domains` class-level attribute, that is no longer available.
+
+- CHANGED: Considerable performance improvements (GH-92)
+- CHANGED: Updated definitions.
+- CHANGED: Removed deprecated PublicSuffix::InvalidDomain exception
+- CHANGED: If the suffix is now listed, then the prevaling rule is "*" as defined by the PSL algorithm (GH-91)
+- CHANGED: Input validation is performed only if you call `PublicSuffix.parse` or `PublicSuffix.list`
+- CHANGED: Input with leading dot is invalid per PSL acceptance tests
+- CHANGED: Removed `private_domains` class-level attribute. It is replaced by the `private_domains: false` option in the list parse method.
+- CHANGED: The default list now assumes you use UTF-8 for reading the input (GH-94),
+
+- REMOVED: Removed futile utility helpers such as `Domain#rule`, `Domain#is_a_domain?`, `Domain#is_a_subdomain?`, `Domain#valid?`. You can easily obtain the same result by having a custom method that reconstructs the logic, and/or calling `PublicSuffix.{domain|parse}(domain.to_s)`.
+
+
+## Release 1.5.3
+
+- FIXED: Don't duplicate rule indices when creating index (GH-77). [Thanks @ags]
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.5.2
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.5.1
+
+- FIXED: Ignore case for parsing and validating (GH-62)
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.5.0
+
+- CHANGED: Dropped support for Ruby < 2.0
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.4.6
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.4.5
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.4.4
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.4.3
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.4.2
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.4.1
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.4.0
+
+- CHANGED: Moved the definitions in the lib folder.
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.3.3
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.3.2
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.3.1
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.3.0
+
+- NEW: Ability to skip Private Domains (GH-28). [Thanks @rb2k]
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.2.1
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.2.0
+
+- NEW: Allow a custom List on `PublicSuffix.parse` (GH-26). [Thanks @itspriddle]
+
+- FIXED: PublicSuffix.parse and PublicSuffix.valid? crashes when input is nil (GH-20).
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.1.3
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.1.2
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.1.1
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.1.0
+
+- FIXED: #valid? and #parse consider URIs as valid domains (GH-15)
+
+- CHANGED: Updated definitions.
+
+- CHANGED: Removed deprecatd PublicSuffixService::RuleList.
+
+
+## Release 1.0.0
+
+- CHANGED: Updated definitions.
+
+
+## Release 1.0.0.rc1
+
+The library is now known as PublicSuffix.
+
+
+## Release 0.9.1
+
+- CHANGED: Renamed PublicSuffixService::RuleList to PublicSuffixService::List.
+
+- CHANGED: Renamed PublicSuffixService::List#list to PublicSuffixService::List#rules.
+
+- CHANGED: Renamed PublicSuffixService to PublicSuffix.
+
+- CHANGED: Updated definitions.
+
+
+## Release 0.9.0
+
+- CHANGED: Minimum Ruby version increased to Ruby 1.8.7.
+
+- CHANGED: rake/gempackagetask is deprecated.  Use rubygems/package_task instead.
+
+
+## Release 0.8.4
+
+- FIXED: Reverted bugfix for issue #12 for Ruby 1.8.6.
+  This is the latest version compatible with Ruby 1.8.6.
+
+
+## Release 0.8.3
+
+- FIXED: Fixed ArgumentError: invalid byte sequence in US-ASCII with Ruby 1.9.2 (#12).
+
+- CHANGED: Updated definitions (#11).
+
+- CHANGED: Renamed definitions.txt to definitions.dat.
+
+
+## Release 0.8.2
+
+- NEW: Added support for rubygems-test.
+
+- CHANGED: Integrated Bundler.
+
+- CHANGED: Updated definitions.
+
+
+## Release 0.8.1
+
+- FIXED: The files in the release 0.8.0 have wrong permission 600 and can't be loaded (#10).
+
+
+## Release 0.8.0
+
+- CHANGED: Update public suffix list to d1a5599b49fa 2010-10-25 15:10 +0100 (#9)
+
+- NEW: Add support for Fully Qualified Domain Names (#7)
+
+
+## Release 0.7.0
+
+- CHANGED: Using YARD to document the code instead of RDoc.
+
+- FIXED: RuleList cache is not recreated when a new rule is appended to the list (#6)
+
+- FIXED: PublicSuffixService.valid? should return false if the domain is not defined or not allowed (#4, #5)
+
+
+## Release 0.6.0
+
+- NEW:  PublicSuffixService.parse raises DomainNotAllowed when trying to parse a domain name
+  which exists, but is not allowed by the current definition list (#3)
+
+        PublicSuffixService.parse("nic.do")
+        # => PublicSuffixService::DomainNotAllowed
+
+- CHANGED: Renamed PublicSuffixService::InvalidDomain to PublicSuffixService::DomainInvalid
+
+
+## Release 0.5.2
+
+- CHANGED: Update public suffix list to 248ea690d671 2010-09-16 18:02 +0100
+
+
+## Release 0.5.1
+
+- CHANGED: Update public suffix list to 14dc66dd53c1 2010-09-15 17:09 +0100
+
+
+## Release 0.5.0
+
+- CHANGED: Improve documentation for Domain#domain and Domain#subdomain (#1).
+
+- CHANGED: Performance improvements (#2).
+
+
+## Release 0.4.0
+
+- CHANGED: Rename library from DomainName to PublicSuffixService to reduce the probability of name conflicts.
+
+
+## Release 0.3.1
+
+- Deprecated DomainName library.
+
+
+## Release 0.3.0
+
+- CHANGED: DomainName#domain and DomainName#subdomain are no longer alias of Domain#sld and Domain#tld.
+
+- CHANGED: Removed DomainName#labels and decoupled Rule from DomainName.
+
+- CHANGED: DomainName#valid? no longer instantiates new DomainName objects. This means less overhead.
+
+- CHANGED: Refactoring the entire DomainName API. Removed the internal on-the-fly parsing. Added a bunch of new methods to check and validate the DomainName.
+
+
+## Release 0.2.0
+
+- NEW: DomainName#valid?
+
+- NEW: DomainName#parse and DomainName#parse!
+
+- NEW: DomainName#valid_domain? and DomainName#valid_subdomain?
+
+- CHANGED: Make sure RuleList lookup is only performed once.
+
+
+## Release 0.1.0
+
+- Initial version
+
+
+
+<!-- DOSYA: vendor/bundle/ruby/3.2.0/gems/public_suffix-6.0.2/README.md -->
+# Public Suffix <small>for Ruby</small>
+
+<tt>PublicSuffix</tt> is a Ruby domain name parser based on the [Public Suffix List](https://publicsuffix.org/).
+
+[![Build Status](https://github.com/weppos/publicsuffix-ruby/actions/workflows/tests.yml/badge.svg)](https://github.com/weppos/publicsuffix-ruby/actions/workflows/tests.yml)
+[![Tidelift dependencies](https://tidelift.com/badges/package/rubygems/public_suffix)](https://tidelift.com/subscription/pkg/rubygems-public-suffix?utm_source=rubygems-public-suffix&utm_medium=referral&utm_campaign=enterprise)
+
+
+## Links
+
+- [Homepage](https://simonecarletti.com/code/publicsuffix-ruby)
+- [Repository](https://github.com/weppos/publicsuffix-ruby)
+- [API Documentation](https://rubydoc.info/gems/public_suffix)
+- [Introducing the Public Suffix List library for Ruby](https://simonecarletti.com/blog/2010/06/public-suffix-list-library-for-ruby/)
+
+
+## Requirements
+
+<tt>PublicSuffix</tt> requires **Ruby >= 3.0**. For an older versions of Ruby use a previous release.
+
+
+## Installation
+
+You can install the gem manually:
+
+```shell
+gem install public_suffix
+```
+
+Or use Bundler and define it as a dependency in your `Gemfile`:
+
+```ruby
+gem 'public_suffix'
+```
+
+## Usage
+
+Extract the domain out from a name:
+
+```ruby
+PublicSuffix.domain("google.com")
+# => "google.com"
+PublicSuffix.domain("www.google.com")
+# => "google.com"
+PublicSuffix.domain("www.google.co.uk")
+# => "google.co.uk"
+```
+
+Parse a domain without subdomains:
+
+```ruby
+domain = PublicSuffix.parse("google.com")
+# => #<PublicSuffix::Domain>
+domain.tld
+# => "com"
+domain.sld
+# => "google"
+domain.trd
+# => nil
+domain.domain
+# => "google.com"
+domain.subdomain
+# => nil
+```
+
+Parse a domain with subdomains:
+
+```ruby
+domain = PublicSuffix.parse("www.google.com")
+# => #<PublicSuffix::Domain>
+domain.tld
+# => "com"
+domain.sld
+# => "google"
+domain.trd
+# => "www"
+domain.domain
+# => "google.com"
+domain.subdomain
+# => "www.google.com"
+```
+
+Simple validation example:
+
+```ruby
+PublicSuffix.valid?("google.com")
+# => true
+
+PublicSuffix.valid?("www.google.com")
+# => true
+
+# Explicitly forbidden, it is listed as a private domain
+PublicSuffix.valid?("blogspot.com")
+# => false
+
+# Unknown/not-listed TLD domains are valid by default
+PublicSuffix.valid?("example.tldnotlisted")
+# => true
+```
+
+Strict validation (without applying the default * rule):
+
+```ruby
+PublicSuffix.valid?("example.tldnotlisted", default_rule: nil)
+# => false
+```
+
+
+## Fully Qualified Domain Names
+
+This library automatically recognizes Fully Qualified Domain Names. A FQDN is a domain name that end with a trailing dot.
+
+```ruby
+# Parse a standard domain name
+PublicSuffix.domain("www.google.com")
+# => "google.com"
+
+# Parse a fully qualified domain name
+PublicSuffix.domain("www.google.com.")
+# => "google.com"
+```
+
+## Private domains
+
+This library has support for switching off support for private (non-ICANN).
+
+```ruby
+# Extract a domain including private domains (by default)
+PublicSuffix.domain("something.blogspot.com")
+# => "something.blogspot.com"
+
+# Extract a domain excluding private domains
+PublicSuffix.domain("something.blogspot.com", ignore_private: true)
+# => "blogspot.com"
+
+# It also works for #parse and #valid?
+PublicSuffix.parse("something.blogspot.com", ignore_private: true)
+PublicSuffix.valid?("something.blogspot.com", ignore_private: true)
+```
+
+If you don't care about private domains at all, it's more efficient to exclude them when the list is parsed:
+
+```ruby
+# Disable support for private TLDs
+PublicSuffix::List.default = PublicSuffix::List.parse(File.read(PublicSuffix::List::DEFAULT_LIST_PATH), private_domains: false)
+# => "blogspot.com"
+PublicSuffix.domain("something.blogspot.com")
+# => "blogspot.com"
+```
+
+## Add domain to list
+
+If you want to manually add a domain to the list just run:
+
+```ruby
+PublicSuffix::List.default << PublicSuffix::Rule.factory('onmicrosoft.com')
+```
+
+## What is the Public Suffix List?
+
+The [Public Suffix List](https://publicsuffix.org) is a cross-vendor initiative to provide an accurate list of domain name suffixes.
+
+The Public Suffix List is an initiative of the Mozilla Project, but is maintained as a community resource. It is available for use in any software, but was originally created to meet the needs of browser manufacturers.
+
+A "public suffix" is one under which Internet users can directly register names. Some examples of public suffixes are ".com", ".co.uk" and "pvt.k12.wy.us". The Public Suffix List is a list of all known public suffixes.
+
+
+## Why the Public Suffix List is better than any available Regular Expression parser?
+
+Previously, browsers used an algorithm which basically only denied setting wide-ranging cookies for top-level domains with no dots (e.g. com or org). However, this did not work for top-level domains where only third-level registrations are allowed (e.g. co.uk). In these cases, websites could set a cookie for co.uk which will be passed onto every website registered under co.uk.
+
+Clearly, this was a security risk as it allowed websites other than the one setting the cookie to read it, and therefore potentially extract sensitive information.
+
+Since there is no algorithmic method of finding the highest level at which a domain may be registered for a particular top-level domain (the policies differ with each registry), the only method is to create a list of all top-level domains and the level at which domains can be registered. This is the aim of the effective TLD list.
+
+As well as being used to prevent cookies from being set where they shouldn't be, the list can also potentially be used for other applications where the registry controlled and privately controlled parts of a domain name need to be known, for example when grouping by top-level domains.
+
+Source: https://wiki.mozilla.org/Public_Suffix_List
+
+Not convinced yet? Check out [this real world example](https://stackoverflow.com/q/288810/123527).
+
+
+## Does <tt>PublicSuffix</tt> make requests to Public Suffix List website?
+
+No. <tt>PublicSuffix</tt> comes with a bundled list. It does not make any HTTP requests to parse or validate a domain.
+
+
+## Support
+
+Library documentation is auto-generated from the [README](https://github.com/weppos/publicsuffix-ruby/blob/master/README.md) and the source code, and it's available at https://rubydoc.info/gems/public_suffix.
+
+- The PublicSuffix bug tracker is here: https://github.com/weppos/publicsuffix-ruby/issues
+- The PublicSuffix code repository is here: https://github.com/weppos/publicsuffix-ruby. Contributions are welcome! Please include tests and/or feature coverage for every patch, and create a topic branch for every separate change you make.
+
+[Consider subscribing to Tidelift which provides Enterprise support for this project](https://tidelift.com/subscription/pkg/rubygems-public-suffix?utm_source=rubygems-public-suffix&utm_medium=referral&utm_campaign=readme) as part of the Tidelift Subscription. Tidelift subscriptions also help the maintainers by funding the project, which in turn allows us to ship releases, bugfixes, and security updates more often.
+
+
+## Security and Vulnerability Reporting
+
+Full information and description of our security policy please visit [`SECURITY.md`](SECURITY.md)
+
+
+## Changelog
+
+See the [CHANGELOG.md](CHANGELOG.md) file for details.
+
+
+## License
+
+Copyright (c) 2009-2025 Simone Carletti. This is Free Software distributed under the MIT license.
+
+The [Public Suffix List source](https://publicsuffix.org/list/) is subject to the terms of the Mozilla Public License, v. 2.0.
+
+## Definitions
+
+tld = Top level domain, this is in reference to the last segment of a domain, sometimes the part that is directly after the "dot" symbol. For example, `mozilla.org`, the `.org` portion is the tld.
+
+sld = Second level domain, a domain that is directly below a top-level domain. For example, in `https://www.mozilla.org/en-US/`, `mozilla` is the second-level domain of the .org tld.
+
+trd = Transit routing domain, or known as a subdomain. This is the part of the domain that is before the sld or root domain. For example, in `https://www.mozilla.org/en-US/`, `www` is the trd.
+
+FQDN = Fully Qualified Domain Names, are domain names that are written with the hostname and the domain name, and include the top-level domain, the format looks like `[hostname].[domain].[tld].` for ex. `[www].[mozilla].[org]`.
+
+
+
+<!-- DOSYA: vendor/bundle/ruby/3.2.0/gems/public_suffix-6.0.2/SECURITY.md -->
 # Security Policy
 
 ## Supported Versions

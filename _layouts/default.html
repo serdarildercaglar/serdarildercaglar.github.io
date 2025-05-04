@@ -3,49 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Analytics ve google ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6131416231697546"
-    crossorigin="anonymous"></script>
+
+    <!-- Google Analytics ve google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6131416231697546" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="ulI-UipVTfQgHN4YO2WdmK7ejarz3rgUCMAyecEqD7g" />
-    <!-- Sayfa Başlığı -->
-    <title>
-        {% if page.title %}
-            {{ page.title }} - {{ site.data.site.name | default: site.title }}
-        {% else %}
-            {{ site.data.site.name | default: site.title }} - {{ site.data.site.title | default: site.description }}
-        {% endif %}
-    </title>
-
-    <!-- SEO Meta Etiketleri (jekyll-seo-tag plugini kullanılmıyorsa manuel) -->
-    {% assign page_description = page.description | default: page.excerpt | default: site.description %}
-    <meta name="description" content="{{ page_description | strip_html | normalize_whitespace | truncate: 160 }}">
-    <meta name="keywords" content="{{ page.tags | join: ', ' | default: "Data Scientist, Machine Learning Engineer, AI Architect, LLM, RAG, MLOps, NLP, Real-time AI, Serdar Çağlar" }}">
-    <meta name="author" content="{{ site.data.site.name | default: site.title }}">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="{{ page.title | default: site.data.site.name }}">
-    <meta property="og:description" content="{{ page_description | strip_html | normalize_whitespace | truncate: 160 }}">
-    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-    <meta property="og:url" content="{{ page.url | absolute_url }}">
-    {% assign og_image = page.image | default: '/assets/images/og-image.jpg' | absolute_url %}
-    <meta property="og:image" content="{{ og_image }}">
-    <meta property="og:site_name" content="{{ site.data.site.name | default: site.title }}">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ page.title | default: site.data.site.name }}">
-    <meta name="twitter:description" content="{{ page_description | strip_html | normalize_whitespace | truncate: 160 }}">
-    {% assign twitter_image = page.twitter_image | default: '/assets/images/twitter-card.jpg' | absolute_url %}
-    <meta name="twitter:image" content="{{ twitter_image }}">
-    <!-- Varsa Twitter kullanıcı adınız: <meta name="twitter:site" content="@kullaniciadi"> -->
-    <meta name="twitter:creator" content="{{ site.data.site.name | default: site.title }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
     <!-- Styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
@@ -53,59 +17,14 @@
     <link href="{{ '/assets/css/styles.css' | relative_url }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
 
-    <!-- Syntax Highlighting CSS (Eğer post.html'de kullanılacaksa) -->
+    <!-- Syntax Highlighting CSS (Gerekiyorsa) -->
     {% if page.layout == 'post' or page.includeHighlight %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-        <!-- Veya Jekyll'in kendi Rouge highlighter'ı için stil dosyası -->
-        <!-- <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}"> -->
     {% endif %}
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "{{ site.data.site.name }}",
-        "jobTitle": "{{ site.data.site.title }}",
-        "description": "{{ site.description }}",
-        "url": "{{ site.url | absolute_url }}",
-        "email": "{{ site.email }}",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Istanbul",
-            "addressRegion": "Malatya",
-            "addressCountry": "TR"
-        },
-        "sameAs": [
-            "{{ site.data.site.social.linkedin }}",
-            "{{ site.data.site.social.github }}",
-            "{{ site.data.site.social.medium }}",
-            "{{ site.data.site.social.huggingface }}",
-            "{{ site.data.site.social.arxiv }}"
-        ],
-        "knowsAbout": ["Machine Learning", "AI Architecture", "Large Language Models", "RAG", "MLOps", "NLP", "Real-time AI", "Python", "PyTorch", "TensorFlow", "AWS", "Docker", "Kubernetes", "Vector Databases", "Speech Recognition", "Speech Synthesis"],
-        "alumniOf": [
-            {
-                "@type": "CollegeOrUniversity",
-                "name": "Anadolu University",
-                "description": "M.S., Measurement and Data Analytics (2024)"
-            },
-            {
-                "@type": "CollegeOrUniversity",
-                "name": "Gaziosmanpaşa University",
-                "description": "B.S., Education (2004-2008)"
-            }
-        ],
-         "worksFor": {
-            "@type": "Organization",
-            "name": "DopingTech (Contract)",
-            "jobTitle": "Senior Data Scientist"
-         }
-    }
-    </script>
-
-    <!-- jekyll-seo-tag plugini eklenirse bu etiketler otomatik yönetilir -->
+    <!-- Jekyll SEO Tag - Tüm önemli SEO etiketlerini bu üretir -->
     {% seo %}
+    <!-- Jekyll SEO Tag Bitiş -->
 
 </head>
 <body class="font-sans min-h-screen">

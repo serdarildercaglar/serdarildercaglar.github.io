@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics ve google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6131416231697546" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="ulI-UipVTfQgHN4YO2WdmK7ejarz3rgUCMAyecEqD7g" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Gerekiyorsa) -->
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Jekyll SEO Tag - Tüm önemli SEO etiketlerini bu üretir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi | Serdar Çağlar AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi" />
+<meta name="author" content="Serdar Çağlar" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Üretim ortamında LLM dağıtımı için vLLM ve Ollama’yı karşılaştırın. Performans, ölçeklenebilirlik, kullanım kolaylığı ve maliyet açısından hangisinin sizin için doğru olduğunu öğrenin" />
+<meta property="og:description" content="Üretim ortamında LLM dağıtımı için vLLM ve Ollama’yı karşılaştırın. Performans, ölçeklenebilirlik, kullanım kolaylığı ve maliyet açısından hangisinin sizin için doğru olduğunu öğrenin" />
+<link rel="canonical" href="http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/" />
+<meta property="og:url" content="http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/" />
+<meta property="og:site_name" content="Serdar Çağlar AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-03T11:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi" />
+<meta name="twitter:site" content="@serdarilder" />
+<meta name="twitter:creator" content="@Serdar Çağlar" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Serdar Çağlar"},"dateModified":"2025-05-03T11:00:00+03:00","datePublished":"2025-05-03T11:00:00+03:00","description":"Üretim ortamında LLM dağıtımı için vLLM ve Ollama’yı karşılaştırın. Performans, ölçeklenebilirlik, kullanım kolaylığı ve maliyet açısından hangisinin sizin için doğru olduğunu öğrenin","headline":"Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/favicon.png"},"name":"Serdar Çağlar"},"url":"http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Jekyll SEO Tag Bitiş -->
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar | AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Blog Post Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl"> <!-- İçeriği ortalamak ve sınırlamak için -->
+        <div class="mb-6">
+            <a href="/blog/" class="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Blog</span>
+            </a>
+        </div>
+        <!-- Post Meta -->
+        <div class="mb-4">
+            
+            <span class="text-sm font-semibold text-blue-600 uppercase">AI Engineering</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            
+            <time datetime="2025-05-03T11:00:00+03:00" class="text-sm text-gray-500 dark:text-gray-400">May 03, 2025</time>
+            
+            <span class="text-sm text-gray-500 dark:text-gray-400 mx-2">•</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">6 min read</span>
+            
+        </div>
+        <!-- Post Başlığı -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Üretim için vLLM mi Ollama mı? Karşılaştırma ve Seçim Rehberi</h1>
+         <!-- Yazar Bilgisi (isteğe bağlı, config'den veya sayfa front matter'dan gelebilir) -->
+         
+         
+         <div class="flex items-center mt-4">
+            <!-- Yazar resmi eklenebilir: <img src="..." alt="Serdar Çağlar" class="w-10 h-10 rounded-full mr-3"> -->
+            <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Serdar Çağlar</p>
+                <!-- Yazar unvanı eklenebilir -->
+            </div>
+         </div>
+         
+    </div>
+</header>
+
+<!-- Blog Post Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Tailwind Typography ile stilize edilmiş içerik alanı -->
+        <article class="prose dark:prose-invert lg:prose-xl mx-auto"> <!-- prose-xl daha büyük yazı tipi sağlar -->
+            <h1 id="üretim-ortamları-i̇çin-vllm-ve-ollama-karşılaştırması-hangisi-daha-uygun">Üretim Ortamları İçin vLLM ve Ollama Karşılaştırması: Hangisi Daha Uygun?</h1>
+
+<p>Büyük Dil Modelleri (LLM’ler), yapay zeka alanında devrim yaratmaya devam ediyor, ancak bu güçlü modelleri üretim ortamlarına dağıtmak önemli zorlukları da beraberinde getiriyor. Özellikle performans, ölçeklenebilirlik ve maliyet etkinliği kritik faktörler haline geliyor. Bu noktada, <strong>vLLM vs Ollama</strong> gibi araçlar devreye giriyor. Her ikisi de LLM çıkarımını (inference) ve sunumunu (serving) optimize etmeyi amaçlayan popüler açık kaynaklı çözümler olsa da, farklı felsefeler ve güçlü yanlar sunuyorlar. Peki, üretim seviyesi bir dağıtım için hangisi daha uygun? Bu makalede, vLLM ve Ollama’yı üretim ortamı gereksinimleri açısından detaylı bir şekilde karşılaştıracağız.</p>
+
+<h2 id="vllm-nedir">vLLM Nedir?</h2>
+
+<p><strong>vLLM</strong> (Virtual Large Language Model), özellikle LLM çıkarımını ve sunumunu hızlandırmak için tasarlanmış, yüksek performanslı bir açık kaynaklı kütüphanedir. UC Berkeley’deki Sky Computing Lab tarafından geliştirilen vLLM, özellikle <strong>PagedAttention</strong> adı verilen yenilikçi bir dikkat mekanizması yönetimi algoritması ile öne çıkar.</p>
+
+<h3 id="temel-özellikler">Temel Özellikler</h3>
+
+<ul>
+  <li><strong>PagedAttention:</strong> İşletim sistemlerindeki sanal bellek ve sayfalama konseptlerinden ilham alan PagedAttention, dikkat anahtar-değer (KV) önbelleğini verimli bir şekilde yönetir. Belleği bitişik olmayan bloklarda depolayarak bellek israfını önemli ölçüde azaltır (yaklaşık %4’e kadar) ve bellek paylaşımını kolaylaştırır. Bu, daha büyük batch boyutlarına ve daha yüksek GPU kullanımına olanak tanır.</li>
+  <li><strong>Sürekli Batchleme (Continuous Batching):</strong> Gelen istekleri dinamik olarak işleyerek GPU’nun boşta kalma süresini en aza indirir ve genel verimi (throughput) artırır. Statik batchlemenin aksine, bir batch’in dolmasını beklemez.</li>
+  <li><strong>Optimize Edilmiş CUDA Çekirdekleri:</strong> Performansı en üst düzeye çıkarmak için optimize edilmiş GPU çekirdekleri kullanır ve FlashAttention gibi kütüphanelerle entegredir.</li>
+  <li><strong>Geniş Model ve Donanım Desteği:</strong> Hugging Face modelleriyle sorunsuz entegrasyon sunar ve NVIDIA GPU’lar başta olmak üzere çeşitli donanımları destekler.</li>
+  <li><strong>Esnek Dağıtım Seçenekleri:</strong> Çevrimdışı çıkarım ve çevrimiçi sunum için kullanılabilir. OpenAI uyumlu bir API sunucusu sağlar.</li>
+  <li><strong>Diğer Optimizasyonlar:</strong> Kuantizasyon (GPTQ, AWQ vb.), tensör paralelliği, spekülatif kod çözme gibi ek performans artırıcı teknikler sunar.</li>
+</ul>
+
+<h3 id="üretim-i̇çin-avantajları">Üretim İçin Avantajları</h3>
+
+<ul>
+  <li><strong>Yüksek Verim (Throughput):</strong> PagedAttention ve sürekli batchleme sayesinde, Hugging Face Transformers gibi geleneksel yöntemlere göre 24 kata kadar daha yüksek verim sağlayabilir. Bu, aynı anda çok sayıda kullanıcıya hizmet vermek için kritiktir.</li>
+  <li><strong>Düşük Gecikme (Latency):</strong> Optimize edilmiş operasyonlar ve verimli kaynak kullanımı, istek başına yanıt süresini azaltır.</li>
+  <li><strong>Verimli Bellek Yönetimi:</strong> PagedAttention, özellikle uzun diziler veya karmaşık örnekleme algoritmaları (paralel örnekleme, beam search) için bellek kullanımını önemli ölçüde azaltır. Bu, daha büyük modelleri daha az kaynakla çalıştırmayı veya maliyetleri düşürmeyi mümkün kılar.</li>
+  <li><strong>Ölçeklenebilirlik:</strong> Yüksek eş zamanlı istekleri verimli bir şekilde yönetmek ve tensör paralelliği gibi özelliklerle dağıtık çıkarımı desteklemek üzere tasarlanmıştır.</li>
+  <li><strong>Maliyet Etkinliği:</strong> Daha az donanım kaynağıyla daha yüksek performans sunarak operasyonel maliyetleri düşürmeye yardımcı olur.</li>
+</ul>
+
+<h2 id="ollama-nedir">Ollama Nedir?</h2>
+
+<p><strong>Ollama</strong>, LLM’leri yerel makinenizde çalıştırmayı, yönetmeyi ve kurmayı basitleştiren açık kaynaklı bir araçtır. Docker’ın uygulama dağıtımını kolaylaştırması gibi, Ollama da LLM’leri paketleyerek ve bağımlılıkları yöneterek yerel kullanımı kolaylaştırmayı hedefler.</p>
+
+<h3 id="temel-özellikler-1">Temel Özellikler</h3>
+
+<ul>
+  <li><strong>Kolay Kurulum ve Kullanım:</strong> Karmaşık kurulumlara veya bulut bağımlılığına ihtiyaç duymadan LLM’leri yerel olarak çalıştırmayı sağlar. Tek komutla model indirme ve çalıştırma imkanı sunar.</li>
+  <li><strong>Model Kütüphanesi:</strong> Llama 3, Mistral, Phi-3 gibi popüler açık kaynaklı modelleri içeren geniş bir kütüphaneye sahiptir.</li>
+  <li><strong>Yerel API Sunucusu:</strong> Çalışan modellere programatik erişim için bir REST API ve OpenAI uyumlu bir endpoint sağlar.</li>
+  <li><strong>Platform Desteği:</strong> macOS, Linux ve Windows üzerinde çalışır.</li>
+  <li><strong>Yönetim Arayüzleri:</strong> Hem komut satırı arayüzü (CLI) hem de Open WebUI gibi üçüncü parti grafiksel kullanıcı arayüzleri (GUI) ile yönetilebilir.</li>
+  <li><strong>Özelleştirme:</strong> Modelleri Modelfile aracılığıyla özelleştirme imkanı sunar.</li>
+</ul>
+
+<h3 id="üretim-i̇çin-avantajları-ve-dezavantajları">Üretim İçin Avantajları ve Dezavantajları</h3>
+
+<ul>
+  <li><strong>Avantajları:</strong>
+    <ul>
+      <li><strong>Basit Dağıtım:</strong> Özellikle düşük trafikli veya dahili uygulamalar, geliştirme ve test ortamları için hızlı ve kolay bir başlangıç sunar.</li>
+      <li><strong>Gizlilik:</strong> Modeller yerelde çalıştığı için veri gizliliği ve kontrolü sağlar.</li>
+      <li><strong>Maliyet:</strong> Bulut tabanlı API’lere kıyasla, donanımınız olduğu sürece kullanım maliyeti yoktur.</li>
+    </ul>
+  </li>
+  <li><strong>Dezavantajları:</strong>
+    <ul>
+      <li><strong>Performans ve Ölçeklenebilirlik Sınırlamaları:</strong> Ollama öncelikle yerel kullanım için tasarlanmıştır ve vLLM gibi yüksek verim ve düşük gecikme için optimize edilmemiştir. Yüksek eş zamanlı istekler altında performansı düşebilir.</li>
+      <li><strong>Concurrency (Eş Zamanlılık):</strong> Eş zamanlı istekleri yönetme konusunda vLLM kadar gelişmiş değildir, ancak bu alanda iyileştirmeler yapılmaktadır. Yüksek yük altında ölçeklendirme için manuel olarak birden fazla Ollama örneği çalıştırmak gerekebilir.</li>
+      <li><strong>Gelişmiş Optimizasyon Eksikliği:</strong> PagedAttention veya gelişmiş batchleme gibi vLLM’de bulunan derinlemesine performans optimizasyonlarına sahip değildir.</li>
+      <li><strong>Üretim Odaklılık:</strong> İzleme, yönetim ve büyük ölçekli dağıtım senaryoları için vLLM kadar “üretime hazır” özellik seti sunmayabilir. Reddit gibi platformlarda kullanıcılar, Ollama’nın üretim için tam olarak hazır olup olmadığını tartışmaktadır.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="vllm-vs-ollama-üretim-odaklı-karşılaştırma">vLLM vs Ollama: Üretim Odaklı Karşılaştırma</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Özellik</th>
+      <th style="text-align: left">vLLM</th>
+      <th style="text-align: left">Ollama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Ana Odak Noktası</strong></td>
+      <td style="text-align: left">Yüksek performanslı, ölçeklenebilir LLM sunumu (üretim)</td>
+      <td style="text-align: left">Yerel LLM çalıştırma kolaylığı (geliştirme, yerel kullanım)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Performans</strong></td>
+      <td style="text-align: left">Çok Yüksek (PagedAttention, Continuous Batching)</td>
+      <td style="text-align: left">Orta (İyileşiyor, ancak vLLM’den yavaş)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Ölçeklenebilirlik</strong></td>
+      <td style="text-align: left">Yüksek (Dağıtık çıkarım, yüksek eş zamanlılık)</td>
+      <td style="text-align: left">Düşük/Orta (Manuel ölçeklendirme gerekebilir)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Kaynak Kullanımı</strong></td>
+      <td style="text-align: left">Çok Verimli (Özellikle bellek - PagedAttention)</td>
+      <td style="text-align: left">Orta (Kuantizasyon destekler, ancak vLLM kadar optimize değil)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Kurulum Kolaylığı</strong></td>
+      <td style="text-align: left">Orta (Üretim için konfigürasyon gerekebilir)</td>
+      <td style="text-align: left">Yüksek (Yerel kullanım için çok kolay)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>API Sunucusu</strong></td>
+      <td style="text-align: left">Evet (OpenAI uyumlu, üretim odaklı)</td>
+      <td style="text-align: left">Evet (OpenAI uyumlu, yerel odaklı)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Temel Teknoloji</strong></td>
+      <td style="text-align: left">PagedAttention, Gelişmiş Batchleme, Optimize Çekirdekler</td>
+      <td style="text-align: left">Model Paketleme, Basit API Sunucusu, llama.cpp entegrasyonu</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Tipik Kullanım</strong></td>
+      <td style="text-align: left">Yüksek trafikli uygulamalar, API servisleri, MLOps</td>
+      <td style="text-align: left">Yerel geliştirme, prototipleme, kişisel kullanım, düşük trafikli araçlar</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="hangi-durumda-hangisini-seçmeli">Hangi Durumda Hangisini Seçmeli?</h2>
+
+<p><strong>vLLM’i Seçin Eğer:</strong></p>
+
+<ul>
+  <li>Uygulamanız <strong>yüksek performans</strong>, <strong>düşük gecikme süresi</strong> ve <strong>yüksek verim</strong> gerektiriyorsa.</li>
+  <li>Çok sayıda <strong>eş zamanlı kullanıcıya</strong> hizmet vermeniz gerekiyorsa.</li>
+  <li><strong>Ölçeklenebilir</strong> bir üretim ortamına dağıtım yapıyorsanız.</li>
+  <li>GPU <strong>kaynaklarını verimli kullanmak</strong> ve <strong>maliyetleri optimize etmek</strong> istiyorsanız.</li>
+  <li>En gelişmiş LLM sunum optimizasyonlarına (PagedAttention vb.) ihtiyaç duyuyorsanız.</li>
+</ul>
+
+<p><strong>Ollama’yı Seçin Eğer:</strong></p>
+
+<ul>
+  <li><strong>Kurulum ve kullanım kolaylığı</strong> önceliğinizse.</li>
+  <li><strong>Yerel geliştirme</strong>, <strong>prototipleme</strong> veya <strong>test</strong> yapıyorsanız.</li>
+  <li>Düşük trafikli <strong>dahili araçlar</strong> veya <strong>kişisel projeler</strong> için bir çözüm arıyorsanız.</li>
+  <li><strong>Veri gizliliği</strong> kritik öneme sahipse ve modelleri tamamen yerel/özel altyapıda çalıştırmak istiyorsanız.</li>
+  <li>En yüksek performans birincil endişeniz değilse ve basitlik daha önemliyse.</li>
+</ul>
+
+<h2 id="sonuç">Sonuç</h2>
+
+<p>Hem vLLM hem de Ollama, LLM’lerle çalışmayı kolaylaştıran değerli açık kaynaklı araçlardır. Ancak <strong>üretim seviyesi dağıtımlar</strong> söz konusu olduğunda, odak noktaları belirgin şekilde ayrışır. <strong>vLLM</strong>, ham performans, verimlilik ve ölçeklenebilirlik arayan, yüksek talepli uygulamalar için açık ara daha güçlü bir seçenektir. PagedAttention gibi yenilikçi teknolojileri sayesinde, GPU kaynaklarını en üst düzeyde kullanarak maliyet etkin ve hızlı LLM sunumu sağlar.</p>
+
+<p><strong>Ollama</strong> ise, geliştiricilerin ve araştırmacıların LLM’leri yerel makinelerinde hızla ayağa kaldırmaları için mükemmel bir araçtır. Basitliği ve kullanım kolaylığı onu prototipleme, deney yapma ve gizliliğin öncelikli olduğu senaryolar için ideal kılar. Üretim ortamında kullanılabilir olsa da, genellikle vLLM’in sunduğu performans ve ölçeklenebilirlik seviyesine ulaşmak için ek çaba veya farklı mimari yaklaşımlar gerektirecektir.</p>
+
+<p>Sonuç olarak, <strong>vLLM vs Ollama</strong> seçiminiz, spesifik üretim ihtiyaçlarınıza, performans beklentilerinize, ölçeklendirme gereksinimlerinize ve ekibinizin teknik uzmanlığına bağlı olacaktır. Yüksek performans ve ölçeklenebilirlik kritikse vLLM, basitlik ve yerel kontrol öncelikliyse Ollama daha uygun bir başlangıç noktası olabilir.</p>
+
+<h2 id="kaynakça">Kaynakça</h2>
+
+<ul>
+  <li>vLLM Blog: Easy, Fast, and Cheap LLM Serving with PagedAttention - https://vllm.ai/blog/2023/06/20/pagedattention.html</li>
+  <li>What is vLLM: A Guide to Quick Inference - Hyperstack - https://hyperstack.cloud/blog/what-is-vllm</li>
+  <li>What is vLLM? - Red Hat - https://www.redhat.com/en/topics/ai/what-is-vllm</li>
+  <li>Why use Ollama? : r/LocalLLaMA - Reddit - https://www.reddit.com/r/LocalLLaMA/comments/190vybc/why_use_ollama/</li>
+  <li>Welcome to vLLM — vLLM Documentation - https://docs.vllm.ai/en/latest/</li>
+  <li>What is vLLM? - Hopsworks - https://www.hopsworks.ai/dictionary/what-is-vllm</li>
+  <li>Ollama vs vLLM: A Detailed Comparison of LLM Frameworks - DEV Community - https://dev.to/envizon/ollama-vs-vllm-a-detailed-comparison-of-llm-frameworks-1g4k</li>
+  <li>What is PagedAttention? - Hopsworks - https://www.hopsworks.ai/dictionary/what-is-pagedattention</li>
+  <li>What is Ollama: Everything You Need to Know - HostAdvice - https://hostadvice.com/tools/what-is-ollama/</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Ollama is your new best friend for running large language models</td>
+          <td>Okoone - https://okoone.com/blog/ollama-is-your-new-best-friend-for-running-large-language-models</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Paged Attention and vLLM</td>
+          <td>Continuum Labs - https://continuumlabs.ai/blog/paged-attention-vllm</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Why Ollama is Good for Running LLMs on Computer - Analytics India Magazine - https://analyticsindiamag.com/why-ollama-is-good-for-running-llms-on-computer/</li>
+  <li>Best LLMOps Tools: Comparison of Open-Source LLM Production Frameworks - Winder.AI - https://winder.ai/best-llmops-tools-comparison-of-open-source-llm-production-frameworks/</li>
+  <li>Best LLM Inference Engines and Servers to Deploy LLMs in Production - Koyeb - https://www.koyeb.com/blog/best-llm-inference-engines-and-servers-to-deploy-llms-in-production</li>
+  <li>LLM Inference as-a-Service vs. Self-Hosted: Which is Right for Your Business - https://www.sicara.ai/blog-technique/llm-inference-as-a-service-vs-self-hosted (Genel Dağıtım Modelleri Hakkında Bilgi)</li>
+  <li>RHEL AI - Asiye Yigit (vLLM’in kurumsal çözümlerde kullanımı örneği) - https://asiyeyigit.com/rhel-ai-703550e036d1</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Vllm Vs Ollama Reddit Discussion</td>
+          <td>Restackio - https://restack.io/community/vllm-vs-ollama-reddit-discussion</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Hibrit bulutta kurumsal yapay zeka güç kazanıyor - BT Haber (vLLM içeren kurumsal çözümler) - https://www.bthaber.com/hibrit-bulutta-kurumsal-yapay-zeka-guc-kazaniyor/</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>A guide to LLM inference and performance</td>
+          <td>Baseten Blog (Genel LLM çıkarım performansı hakkında bilgi) - https://www.baseten.co/blog/llm-inference-performance-engineering</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Types of Ollama Models: Which is the Best for You? - HostAdvice - https://hostadvice.com/tools/types-of-ollama-models/</li>
+  <li>Ollama vs. vLLM: The Definitive Guide to Local LLM Frameworks in 2025 - https://www.linkedin.com/pulse/ollama-vs-vllm-definitive-guide-local-frameworks-2025-abhishek-kumar-sinha-6h1pc</li>
+  <li>Part 3: Ollama for AI Model Serving - Cohorte Projects - https://cohorteprojects.com/blog/part-3-ollama-for-ai-model-serving</li>
+  <li>Creating embeddings using the REST API is much slower… - GitHub Issue (Ollama API performansı hakkında) - https://github.com/ollama/ollama/issues/7400</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>LLM Inference Performance Engineering: Best Practices</td>
+          <td>Databricks Blog (Genel LLM sunum metrikleri ve batchleme hakkında) - https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Modelleri Yerel Olarak Çalıştırmak İçin En İyi 7 LLM Aracı (Mayıs 2025) - Unite.AI (Ollama’nın diğer yerel araçlarla karşılaştırması) - https://www.unite.ai/tr/best-tools-to-run-llms-locally/</li>
+  <li>Vllm Vs Ollama Speed Comparison - Restack - https://restack.io/community/vllm-vs-ollama-speed-comparison</li>
+  <li>Ollama / Open WebUI gerçek bir üretim ortamında? : r/LocalLLaMA - Reddit (Ollama üretim tartışması) - https://www.reddit.com/r/LocalLLaMA/comments/1cq25q1/ollama_open_webui_in_a_true_production/</li>
+  <li>3 saniyede yerel AI kurulumu… - ServBay (Ollama’nın yerel geliştirme odaklılığı) - https://www.servbay.dev/tr/blog/Local-AI-setup-in-3-seconds-start-the-era-of-local-AI-development</li>
+  <li>LightOn, “Visual RAG”‘ı Platformuna Entegre Ettiğini Duyurdu - ActuIA (Genel RAG ve dağıtım hakkında bilgi) - https://www.actuia.com/tr/actualite/lighton-annonce-lintegration-de-visual-rag-a-sa-plateforme/</li>
+  <li>Using ollama in a production server - Reddit (Ollama üretim tartışması) - https://www.reddit.com/r/ollama/comments/18f7g4w/using_ollama_in_a_production_server/</li>
+  <li>How to make ollama production ready? - Reddit (Ollama üretim tartışması) - https://www.reddit.com/r/ollama/comments/18y3d6v/how_to_make_ollama_production_ready/</li>
+  <li>Ollama vs. vLLM: Choosing the Best Tool for AI Model Workflows - Collabnix - https://collabnix.com/ollama-vs-vllm-choosing-the-best-tool-for-ai-model-workflows/</li>
+  <li>Using Ollama to host an LLM on CPU-only equipment… - https://medium.com/@dbroeglin/using-ollama-to-host-an-llm-on-cpu-only-equipment-to-enable-a-local-chatbot-and-llm-api-695199375579 (Ollama’nın CPU kullanımı ve API’si)</li>
+  <li>vLLM ve OpenAI Python SDK ile Cloud Run GPU’larında LLM çıkarımı çalıştırma - Google Codelabs (vLLM dağıtım örneği) - https://codelabs.developers.google.com/codelabs/cloudrun-llm-vllm?hl=tr</li>
+  <li>Getting Started with Ollama: Running Local AI Models Eğitimi - Nobleprog Türkiye - https://www.nobleprog.com.tr/cc/getting-started-ollama-running-local-ai-models</li>
+  <li>AI Platform - HOSTKEY (Ollama içeren çözümler) - https://hostkey.com/tr/ai-platform/</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>LLM’ler için İstemi Önbelleğe Alma: Çıkarsamayı Hızlandırın</td>
+          <td>Ultralytics (vLLM’in kullandığı tekniklere benzer önbellekleme hakkında) - https://docs.ultralytics.com/tr/guides/prompt-caching/</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<hr />
+
+<p>#vLLM #Ollama #LLM #ÜretimOrtamı #LLMDeployment #YapayZeka #AI #Inference #Serving #PagedAttention #Performans #Ölçeklenebilirlik #AçıkKaynak #MLOps #YerelLLM</p>
+ 
+        </article>
+
+        <!-- Etiketler (varsa) -->
+        
+
+        <!-- İsteğe Bağlı: Paylaşım Butonları -->
+        <!--
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Share this post</h3>
+            <div class="flex space-x-4">
+                <a href="https://twitter.com/intent/tweet?text=%C3%9Cretim+i%C3%A7in+vLLM+mi+Ollama+m%C4%B1%3F+Kar%C5%9F%C4%B1la%C5%9Ft%C4%B1rma+ve+Se%C3%A7im+Rehberi&url=http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/2025-05-03-ollama-vs-vllm/&title=%C3%9Cretim+i%C3%A7in+vLLM+mi+Ollama+m%C4%B1%3F+Kar%C5%9F%C4%B1la%C5%9Ft%C4%B1rma+ve+Se%C3%A7im+Rehberi&summary=%C3%9Cretim+ortam%C4%B1nda+LLM+da%C4%9F%C4%B1t%C4%B1m%C4%B1+i%C3%A7in+vLLM+ve+Ollama%27y%C4%B1+kar%C5%9F%C4%B1la%C5%9Ft%C4%B1r%C4%B1n.+Performans%2C+%C3%B6l%C3%A7eklenebilirlik%2C+kullan%C4%B1m+kolayl%C4%B1%C4%9F%C4%B1+ve+maliyet+a%C3%A7%C4%B1s%C4%B1ndan+hangisinin+sizin+i%C3%A7in+do%C4%9Fru+oldu%C4%9Funu+%C3%B6%C4%9Frenin&source=Serdar+%C3%87a%C4%9Flar+%7C+AI%2FML+Engineering+Lead+%26+Solutions+Architect" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+            </div>
+        </div>
+        -->
+
+        <!-- İsteğe Bağlı: Önceki/Sonraki Yazı Linkleri -->
+        <!--
+        <nav class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex justify-between text-sm">
+            
+                <a href="/blog/2025-04-26-revolutionizing-cancer-research-deep-dive-relation-extraction-model/" class="text-blue-600 hover:underline">« Revolutionizing Cancer Research: A Deep Dive into Our Cancer-Gene Relation Extraction Model</a>
+            
+            
+                 <span> </span> {# Boşluk bırakmak için #}
+            
+        </nav>
+        -->
+
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   AI/ML Engineering Lead & Solutions Architect architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar | AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <!-- Veya Jekyll Rouge kullanıyorsanız JS gerekmez -->
+    
+
+</body>
+</html>
