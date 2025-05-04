@@ -20,15 +20,16 @@ twitter:
 
 logo: /assets/images/favicon.png # Site logosunun yolu. JSON-LD için önemli. Favicon veya başka bir logo olabilir.
 
+# Site sosyal medya linkleri
 social:
-  name: Serdar Çağlar # Sosyal medyada kullanılan isim (site.title'dan farklıysa)
+  name: Serdar Çağlar
   links:
-    # jekyll-seo-tag'in JSON-LD (sameAs) için kullanacağı sosyal medya linkleri
-    - https://www.linkedin.com/in/serdarildercaglar/
-    - https://github.com/serdarildercaglar
-    - https://medium.com/@serdarildercaglar
-    - https://huggingface.co/serdarcaglar
-    - https://x.com/serdarilder 
+    linkedin: https://www.linkedin.com/in/serdarildercaglar/
+    github: https://github.com/serdarildercaglar
+    medium: https://medium.com/@serdarildercaglar
+    huggingface: https://huggingface.co/serdarcaglar
+    twitter: https://x.com/serdarilder
+    arxiv: https://arxiv.org/search/?searchtype=author&query=Caglar%2C+S  # Eğer arXiv profiliniz varsa
 # --------------------------------------------------------
 
 # Build Ayarları

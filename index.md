@@ -231,21 +231,25 @@
                 <div class="mt-8">
                     <h4 class="font-semibold mb-4">Connect with me</h4>
                     <div class="flex space-x-6">
-                        {% if site.data.site.social.linkedin %}
-                        <a href="{{ site.data.site.social.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        {% if site.social.links.linkedin %}
+                        <a href="{{ site.social.links.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         {% endif %}
-                        {% if site.data.site.social.github %}
-                        <a href="{{ site.data.site.social.github }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        
+                        {% if site.social.links.github %}
+                        <a href="{{ site.social.links.github }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         {% endif %}
-                        {% if site.data.site.social.medium %}
-                         <a href="{{ site.data.site.social.medium }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="Medium"><i class="fab fa-medium"></i></a>
-                         {% endif %}
-                         {% if site.data.site.social.arxiv %}
-                        <a href="{{ site.data.site.social.arxiv }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="arXiv"><i class="ai ai-arxiv"></i></a>
+                        
+                        {% if site.social.links.medium %}
+                        <a href="{{ site.social.links.medium }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="Medium"><i class="fab fa-medium"></i></a>
                         {% endif %}
-                        {% if site.data.site.social.huggingface %}
-                         <a href="{{ site.data.site.social.huggingface }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="Hugging Face">🤗</a>
-                         {% endif %}
+                        
+                        {% if site.social.links.arxiv %}
+                        <a href="{{ site.social.links.arxiv }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="arXiv"><i class="ai ai-arxiv"></i></a>
+                        {% endif %}
+                        
+                        {% if site.social.links.huggingface %}
+                        <a href="{{ site.social.links.huggingface }}" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-blue-600" aria-label="Hugging Face">🤗</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
