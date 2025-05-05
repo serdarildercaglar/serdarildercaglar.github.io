@@ -7,20 +7,29 @@
 ---
 
 <!-- Hero Section -->
-<header class="pt-24 pb-12 px-6">
-    <div class="container mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-6">
-            <span class="gradient-text">{{ site.data.site.title }}</span>
-        </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            Architecting and deploying enterprise-scale AI solutions, specializing in Large Language Models (LLMs), RAG architectures, MLOps, and real-time AI systems. Proven track record in healthcare, education, and legal sectors.
-            <!-- Alternatif olarak site.description kullanılabilir: {{ site.description }} -->
-        </p>
+<header class="pt-24 pb-12 px-6 relative overflow-hidden">
+    <!-- Background element -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 z-0 opacity-70"></div>
+    
+    <!-- Decorative dots/grid pattern -->
+    <div class="absolute inset-0 z-0 opacity-10">
+        <div class="grid-pattern"></div> <!-- CSS-controlled pattern -->
+    </div>
+    
+    <div class="container mx-auto text-center relative z-10">
+        <div class="animate-fade-in-up">
+            <h1 class="text-5xl font-bold mb-6">
+                <span class="gradient-text">{{ site.data.site.title }}</span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Architecting and deploying enterprise-scale AI solutions, specializing in Large Language Models (LLMs), RAG architectures, MLOps, and real-time AI systems. Proven track record in healthcare, education, and legal sectors.
+            </p>
+        </div>
         <div class="flex justify-center space-x-6">
-            <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+            <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition transform hover:-translate-y-1 shadow-md">
                 View Projects
             </a>
-            <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition">
+            <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition transform hover:-translate-y-1 shadow-sm">
                 Contact Me
             </a>
         </div>
