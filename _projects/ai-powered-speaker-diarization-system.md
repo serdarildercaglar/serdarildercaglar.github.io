@@ -5,8 +5,7 @@ excerpt: A practical speaker diarization system that automatically identifies di
 icon: fas fa-microphone-alt
 tags: [AI, Speech Recognition, Speaker Diarization, Conversation Analytics, NLP, AWS, Vue.js]
 layout: project
-featured: true
-order: 5
+featured: false
 ---
 <!-- Overview -->
 
