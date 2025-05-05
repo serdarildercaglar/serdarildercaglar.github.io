@@ -1,4 +1,381 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-04T13:18:37+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Serdar Çağlar | AI/ML Engineering Lead &amp;amp; Solutions Architect</title><subtitle>AI/ML Engineering Lead &amp; Solutions Architect architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.</subtitle><author><name>Serdar Çağlar</name></author><entry><title type="html">The Limits of Logical and Mathematical Reasoning in AI</title><link href="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/" rel="alternate" type="text/html" title="The Limits of Logical and Mathematical Reasoning in AI" /><published>2025-05-04T09:00:00+03:00</published><updated>2025-05-04T09:00:00+03:00</updated><id>http://localhost:4000/blog/limits-of-logical-and-mathematical-reasoning-in-ai</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/"><![CDATA[<p><strong>Summary:</strong> Modern AI excels at pattern recognition and language tasks but still faces significant hurdles in genuine logical inference and mathematical reasoning. Issues such as data-leakage on benchmarks, reliance on heuristics, and brittle chain-of-thought prompting highlight these limitations. Neuro-symbolic hybrids, abstraction alignment, multimodal fusion, and “long-thinking” architectures are promising avenues to bridge the gap toward reliable, transparent, and generalizable AI reasoning.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-05T23:15:06+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Serdar Çağlar | AI/ML Engineering Lead &amp;amp; Solutions Architect</title><subtitle>AI/ML Engineering Lead &amp; Solutions Architect architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems.</subtitle><author><name>Serdar Çağlar</name></author><entry><title type="html">OpenAI Agent SDK ve Pydantic AI: Python ile Yapay Zeka Uygulamaları için Kapsamlı Karşılaştırma</title><link href="http://localhost:4000/blog/2025-05-05-openai-agent-sdk-vs-pydanticai/" rel="alternate" type="text/html" title="OpenAI Agent SDK ve Pydantic AI: Python ile Yapay Zeka Uygulamaları için Kapsamlı Karşılaştırma" /><published>2025-05-05T11:00:00+03:00</published><updated>2025-05-05T11:00:00+03:00</updated><id>http://localhost:4000/blog/openai-agent-sdk-vs-pydanticai</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-05-openai-agent-sdk-vs-pydanticai/"><![CDATA[<h1 id="openai-agent-sdk-ve-pydantic-ai-python-ile-yapay-zeka-uygulamaları-için-kapsamlı-karşılaştırma">OpenAI Agent SDK ve Pydantic AI: Python ile Yapay Zeka Uygulamaları için Kapsamlı Karşılaştırma</h1>
+
+<p>Yapay Zeka (AI) ve özellikle Büyük Dil Modelleri (LLM’ler) ile uygulama geliştirmek, basit bir API çağrısından çok daha fazlasını gerektirir. Geliştiricilerin konuşma akışını yönetmek, harici araçlarla etkileşim kurmak, veri tutarlılığını sağlamak ve karmaşık iş akışlarını düzenlemek için sağlam araçlara ihtiyacı vardır. Python ekosisteminde bu zorluklara yanıt veren iki önemli kütüphane öne çıkıyor: <strong>OpenAI Agent SDK</strong> ve <strong>Pydantic AI</strong>.</p>
+
+<p>Her ikisi de yapay zeka odaklı uygulamaların geliştirilmesini basitleştirmeyi amaçlasa da, sürecin farklı yönlerini hedef alırlar. Temel felsefelerini, özelliklerini, ideal kullanım senaryolarını ve kodlama yaklaşımlarını anlamak, projeniz için doğru aracı seçmede kritik öneme sahiptir. Bu makale, bilinçli bir karar vermenize yardımcı olmak için OpenAI Agent SDK ve Pydantic AI’yi derinlemesine karşılaştıracak ve kod örnekleriyle temel farkları gösterecektir.</p>
+
+<h2 id="temel-felsefeler-ve-tasarım-hedefleri">Temel Felsefeler ve Tasarım Hedefleri</h2>
+
+<p>Her iki kütüphanenin de temelinde farklı motivasyonlar yatar:</p>
+
+<ul>
+  <li>
+    <p><strong>OpenAI Agent SDK:</strong> OpenAI tarafından geliştirilen bu SDK, özellikle <em>agentic</em> (ajansı olan) uygulamaların geliştirilmesini kolaylaştırmak için tasarlanmıştır. Yani, özerk karar verme, araç kullanma ve görev yürütme yeteneğine sahip AI sistemleri oluşturmaya odaklanır. [1, 4, 5, 19] Amacı, tekli ve çoklu ajan iş akışlarını oluşturmak, düzenlemek (orkestrasyon), hata ayıklamak ve izlemek için hafif ama güçlü bir araç seti sunmaktır. [1, 6] Temel hedef, çok adımlı görevleri yerine getirebilen, harici kaynakları kullanabilen ve daha otonom çalışabilen AI ajanları oluşturma sürecini kolaylaştırmaktır. [18, 24] SDK, OpenAI’nin Assistant API’si üzerine inşa edilmiştir ancak ajan döngüsü, durum yönetimi ve devir teslim (handoff) gibi konularda daha üst düzey soyutlamalar sağlar. [1, 4, 13]</p>
+  </li>
+  <li>
+    <p><strong>Pydantic AI:</strong> Popüler Pydantic veri doğrulama kütüphanesinin arkasındaki ekip tarafından geliştirilen Pydantic AI, Pydantic’in ergonomik, tür-güvenli (type-safe) geliştirme deneyimini Üretken Yapay Zeka (Generative AI) uygulamaları alanına taşımayı hedefler. [2, 3, 15] Temel gücü, LLM’lerden gelen <strong>çıktıları güvenilir bir şekilde yapılandırmak ve doğrulamak</strong> için Pydantic’in güçlü doğrulama yeteneklerinden yararlanmaktır. [8, 12, 16] Bir ajan çerçevesi olarak işlev görse de, Pydantic temeli onu özellikle AI modellerinden tutarlı, şemaya uygun veriler gerektiren görevler için güçlü kılar. [3, 21]</p>
+  </li>
+</ul>
+
+<h2 id="özellik-karşılaştırması">Özellik Karşılaştırması</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Özellik</th>
+      <th style="text-align: left">OpenAI Agent SDK</th>
+      <th style="text-align: left">Pydantic AI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Ana Odak Noktası</strong></td>
+      <td style="text-align: left">Ajan orkestrasyonu, çok adımlı görevler, araç kullanımı, otonom iş akışları. [1, 6]</td>
+      <td style="text-align: left">Yapılandırılmış LLM çıktısı, veri doğrulama, tür güvenliği, Pydantic tabanlı ajan çerçevesi. [2, 3, 8]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Temel Gücü</strong></td>
+      <td style="text-align: left">Karmaşık, potansiyel olarak çoklu ajan sistemleri kurma, OpenAI ekosistemi entegrasyonu (Assistant API, İzleme). [1, 4, 25]</td>
+      <td style="text-align: left">LLM’lerden güvenilir, şemaya uygun, tür-güvenli veriler sağlama; Pythonic geliştirici deneyimi. [2, 15, 16]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Köken</strong></td>
+      <td style="text-align: left">OpenAI</td>
+      <td style="text-align: left">Pydantic Ekibi</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Ekosistem</strong></td>
+      <td style="text-align: left">OpenAI API’leri (Assistant/Responses API) ve İzleme Panosu ile sıkı entegrasyon, ancak sağlayıcıdan bağımsız olmayı hedefler. [1, 13, 25]</td>
+      <td style="text-align: left">Pydantic ekosistemi (Logfire, FastAPI) ile derin entegrasyon. Güçlü model bağımsızlığı. [2, 3, 11]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Kapsam</strong></td>
+      <td style="text-align: left"><em>Ajan döngüsü</em>, <em>orkestrasyon</em> ve <em>durum yönetimine</em> odaklı. [4, 6]</td>
+      <td style="text-align: left">Öncelikli olarak bir <em>veri doğrulama ve yapılandırma katmanı</em>, ajan çerçevesine genişletilmiş. [2, 8]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Olgunluk</strong></td>
+      <td style="text-align: left">Üretim ortamına hazır olarak konumlandırılan, aktif geliştirilen SDK (Assistant API temelli). [1, 5]</td>
+      <td style="text-align: left">Olgun Pydantic temeli üzerine kurulu, aktif olarak geliştirilen yeni bir çerçeve. [2, 11, 15]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Soyutlamalar</strong></td>
+      <td style="text-align: left">Assistant API üzerine Pythonic, ajan odaklı soyutlamalar sağlar. [4, 6]</td>
+      <td style="text-align: left">Tanıdık Python desenlerini kullanır, FastAPI benzeri ergonomiyi hedefler. [2, 15]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Araç Tanımlama</strong></td>
+      <td style="text-align: left">Python fonksiyonlarını araçlara dönüştürme (Pydantic ile argüman doğrulaması, Assistant API aracılığıyla). [1, 4]</td>
+      <td style="text-align: left">Python fonksiyonlarını Pydantic modelleriyle tanımlanan argümanlarla araçlara dönüştürme (<code class="language-plaintext highlighter-rouge">Tool.from_function</code>). [2]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Güvenlik</strong></td>
+      <td style="text-align: left">Girdi/çıktı doğrulaması için özel <code class="language-plaintext highlighter-rouge">Guardrails</code> mekanizması. [1]</td>
+      <td style="text-align: left">Pydantic’in veri doğrulama yetenekleri dolaylı olarak çıktı güvenliği sağlar; özel girdi/çıktı filtreleme mekanizması yoktur.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Model Desteği</strong></td>
+      <td style="text-align: left">OpenAI API formatıyla uyumlu modeller, OpenAI modelleriyle en iyi entegrasyon. [1]</td>
+      <td style="text-align: left">Geniş model yelpazesi (OpenAI, Anthropic, Gemini, Ollama, Groq, Cohere vb.). [2, 3]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Gözlemlenebilirlik</strong></td>
+      <td style="text-align: left">OpenAI İzleme Panosu (Dashboard) ile entegrasyon. [1]</td>
+      <td style="text-align: left">Pydantic Logfire ile entegrasyon. [2]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="başlarken-kod-örnekleri">Başlarken: Kod Örnekleri</h2>
+
+<p>Teorik farkları daha net anlamak için temel kullanım senaryolarına ilişkin kod örneklerine bakalım.</p>
+
+<h3 id="temel-kurulum-ve-ajan-tanımlama">Temel Kurulum ve Ajan Tanımlama</h3>
+
+<p><strong>OpenAI Agent SDK:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Not: Bu kod parçacığı kavramsal olup, SDK'nın tam yapısı
+# ve 'Responses API' kullanımı daha fazla kurulum gerektirebilir.
+# SDK, Assistant API üzerine ajan yönetimi için ek soyutlamalar sunar.
+# Gerçek kullanım için resmi belgelere başvurun.
+</span>
+<span class="kn">from</span> <span class="n">openai.agents</span> <span class="kn">import</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">AssistantResponseHandler</span> <span class="c1"># Varsayımsal importlar
+</span><span class="kn">import</span> <span class="n">os</span>
+<span class="kn">from</span> <span class="n">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="c1"># OpenAI istemcisini kur
+</span><span class="n">client</span> <span class="o">=</span> <span class="nc">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">OPENAI_API_KEY</span><span class="sh">"</span><span class="p">))</span>
+
+<span class="c1"># SDK genellikle bir Assistant ID veya yapılandırma ile başlar.
+# Ajan sınıfı veya fonksiyonları, durumu ve döngüyü yönetmeye yardımcı olur.
+# Örn: assistant = client.beta.assistants.create(...)
+#      agent = Agent(client=client, assistant_id=assistant.id) # SDK'ya özgü olabilir
+</span>
+<span class="c1"># Etkileşim genellikle bir 'thread' üzerinden yapılır ve SDK tarafından yönetilebilir.
+# thread = client.beta.threads.create()
+# message = client.beta.threads.messages.create(...)
+</span>
+<span class="c1"># Yanıt işleme ve araç çağrıları için handler'lar kullanılabilir.
+# class MyEventHandler(AssistantResponseHandler):
+#     # ... olay işleyicileri ...
+</span>
+<span class="c1"># SDK, 'run' veya benzeri bir metotla akışı başlatabilir.
+# run_result = agent.run(thread_id=thread.id, handler=MyEventHandler())
+</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">OpenAI Agent SDK, Assistant API üzerine ajan yaşam döngüsü yönetimi için soyutlamalar ekler.</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Kaynak: [1, 4, 13, 25]</em></p>
+
+<p><strong>Pydantic AI:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="n">pydantic_ai</span> <span class="kn">import</span> <span class="n">PydanticAI</span>
+<span class="kn">from</span> <span class="n">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span> <span class="c1"># Veya başka bir LLM istemcisi
+</span>
+<span class="c1"># LLM İstemcisini başlat (örneğin OpenAI)
+</span><span class="n">llm</span> <span class="o">=</span> <span class="nc">OpenAI</span><span class="p">()</span> <span class="c1"># API anahtarının ortam değişkenlerinde ayarlandığını varsayar
+</span>
+<span class="c1"># İsteğe bağlı: Çıktı yapısını tanımla
+</span><span class="k">class</span> <span class="nc">UserInfo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Kullanıcının adı</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Kullanıcının yaşı</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># PydanticAI örneğini oluştur
+</span><span class="n">pai_agent</span> <span class="o">=</span> <span class="nc">PydanticAI</span><span class="p">(</span><span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span> <span class="n">output_model</span><span class="o">=</span><span class="n">UserInfo</span><span class="p">)</span>
+
+<span class="c1"># Basit bir sorgu ile ajanı çalıştır
+</span><span class="n">prompt</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Benim adım Ali ve 30 yaşındayım.</span><span class="sh">"</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">user_info</span> <span class="o">=</span> <span class="n">pai_agent</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">user_info</span><span class="p">)</span>
+    <span class="c1"># Çıktı (yaklaşık): UserInfo(name='Ali', age=30)
+</span><span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Hata oluştu: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><em>Kaynak: [2, 3, 15]</em></p>
+
+<p><strong>Gözlem:</strong> Pydantic AI’nin başlangıç kurulumu, özellikle doğrudan yapılandırılmış çıktı hedeflendiğinde daha basittir. OpenAI Agent SDK, OpenAI’nin Assistant API iş akışları üzerine kuruludur ve bu akışları yönetmek için ek kolaylıklar sunar.</p>
+
+<h3 id="araç-tanımlama">Araç Tanımlama</h3>
+
+<p><strong>OpenAI Agent SDK:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># SDK içinde araçlar genellikle Assistant API aracılığıyla tanımlanır.
+# Fonksiyonlar Python'da tanımlanır ve JSON şeması oluşturulur.
+# Bu şema, Assistant oluşturulurken veya güncellenirken kullanılır.
+</span>
+<span class="k">def</span> <span class="nf">get_current_weather</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sh">"</span><span class="s">celsius</span><span class="sh">"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Belirtilen konum için mevcut hava durumunu getirir.</span><span class="sh">"""</span>
+    <span class="c1"># Gerçek API çağrısı veya mantık burada yer alır
+</span>    <span class="k">if</span> <span class="sh">"</span><span class="s">ankara</span><span class="sh">"</span> <span class="ow">in</span> <span class="n">location</span><span class="p">.</span><span class="nf">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Ankara</span><span class="sh">'</span><span class="s">da hava 25 derece </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s">.</span><span class="sh">"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s"> için hava durumu bilgisi bulunamadı.</span><span class="sh">"</span>
+
+<span class="c1"># Bu fonksiyonun JSON şeması (OpenAI formatında) Assistant'a sağlanır.
+# Ajan (LLM), bu aracı ne zaman çağıracağına karar verir.
+# SDK, bu fonksiyonu çağırmak ve sonucu ajana geri göndermek için
+# gerekli Responses API akışını ve durum yönetimini kolaylaştırır.
+</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">OpenAI Agent SDK</span><span class="sh">'</span><span class="s">da araçlar Assistant API ile tanımlanır ve SDK tarafından yönetilir.</span><span class="sh">"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><em>Kaynak: [1, 4, 13, 25]</em></p>
+
+<p><strong>Pydantic AI:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="n">pydantic_ai</span> <span class="kn">import</span> <span class="n">PydanticAI</span><span class="p">,</span> <span class="n">Tool</span>
+<span class="kn">from</span> <span class="n">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="c1"># LLM İstemcisi
+</span><span class="n">llm</span> <span class="o">=</span> <span class="nc">OpenAI</span><span class="p">()</span>
+
+<span class="c1"># Araç olarak kullanılacak Python fonksiyonu
+</span><span class="k">def</span> <span class="nf">get_current_weather</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sh">"</span><span class="s">celsius</span><span class="sh">"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Belirtilen konum için mevcut hava durumunu getirir.</span><span class="sh">"""</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Araç çağrıldı: location=</span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s">, unit=</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span> <span class="c1"># Hata ayıklama için
+</span>    <span class="k">if</span> <span class="sh">"</span><span class="s">istanbul</span><span class="sh">"</span> <span class="ow">in</span> <span class="n">location</span><span class="p">.</span><span class="nf">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="s">İstanbul</span><span class="sh">'</span><span class="s">da hava 28 derece </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s">.</span><span class="sh">"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s"> için hava durumu bilgisi bulunamadı.</span><span class="sh">"</span>
+
+<span class="c1"># PydanticAI örneği oluştur ve aracı tanıt
+# `Tool.from_function` Pydantic modellerini otomatik çıkarabilir
+</span><span class="n">weather_tool</span> <span class="o">=</span> <span class="n">Tool</span><span class="p">.</span><span class="nf">from_function</span><span class="p">(</span><span class="n">get_current_weather</span><span class="p">)</span>
+
+<span class="c1"># PydanticAI ajanı (araç kullanıma odaklı)
+</span><span class="n">pai_agent</span> <span class="o">=</span> <span class="nc">PydanticAI</span><span class="p">(</span><span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">weather_tool</span><span class="p">])</span>
+
+<span class="c1"># Aracı kullanması gereken bir sorgu
+</span><span class="n">prompt</span> <span class="o">=</span> <span class="sh">"</span><span class="s">İstanbul</span><span class="sh">'</span><span class="s">da hava nasıl?</span><span class="sh">"</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">pai_agent</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span> <span class="c1"># LLM, aracı kullanmaya karar verir ve PydanticAI çağırır
+</span>    <span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="c1"># Çıktı (yaklaşık): İstanbul'da hava 28 derece celsius.
+</span><span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Hata oluştu: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><em>Kaynak: [2, 21]</em></p>
+
+<p><strong>Gözlem:</strong> Her iki kütüphane de Python fonksiyonlarını araç olarak kullanmayı sağlar. Pydantic AI, <code class="language-plaintext highlighter-rouge">Tool.from_function</code> ile doğrudan bir entegrasyon sunarken, OpenAI Agent SDK, Assistant API’nin araç tanım ve yürütme mekanizmasına dayanır ve bu süreci yönetir.</p>
+
+<h3 id="yapılandırılmış-çıktı-pydantic-ainin-güçlü-yanı">Yapılandırılmış Çıktı (Pydantic AI’nin Güçlü Yanı)</h3>
+
+<p>Bu alan Pydantic AI’nin temel gücünü gösterir.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="n">pydantic_ai</span> <span class="kn">import</span> <span class="n">PydanticAI</span>
+<span class="kn">from</span> <span class="n">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+<span class="kn">import</span> <span class="n">json</span>
+
+<span class="c1"># LLM İstemcisi
+</span><span class="n">llm</span> <span class="o">=</span> <span class="nc">OpenAI</span><span class="p">()</span>
+
+<span class="c1"># İstenen çıktı yapısını Pydantic modeli ile tanımla
+</span><span class="k">class</span> <span class="nc">Recipe</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">recipe_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Tarifin adı</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">ingredients</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Gerekli malzemelerin listesi</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">steps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Tarifin adımları</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">prep_time_minutes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Hazırlık süresi (dakika)</span><span class="sh">"</span><span class="p">)</span> <span class="c1"># '...' ile zorunlu alan
+</span>
+<span class="c1"># PydanticAI örneğini bu modelle oluştur
+</span><span class="n">pai_agent</span> <span class="o">=</span> <span class="nc">PydanticAI</span><span class="p">(</span><span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span> <span class="n">output_model</span><span class="o">=</span><span class="n">Recipe</span><span class="p">)</span>
+
+<span class="c1"># Yapılandırılmış bilgi çıkarılacak metin
+</span><span class="n">prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+Menemen Tarifi:
+Malzemeler: 3 domates, 2 sivri biber, 2 yumurta, tuz, karabiber, sıvı yağ.
+Yapılışı: Biberleri doğra ve yağda kavur. Domatesleri rendele ekle, suyu çekene kadar pişir. Yumurtaları kır karıştır. Tuz ve karabiber ekle. Pişince servis yap.
+Hazırlık Süresi: Yaklaşık 15 dakika.
+</span><span class="sh">"""</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">recipe_data</span> <span class="o">=</span> <span class="n">pai_agent</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span> <span class="c1"># PydanticAI LLM'i yönlendirir ve çıktıyı doğrular
+</span>    <span class="nf">print</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">recipe_data</span><span class="p">.</span><span class="nf">model_dump</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+    <span class="c1"># Çıktı (JSON formatında, Pydantic modeli örneği):
+</span>    <span class="c1"># {
+</span>    <span class="c1">#   "recipe_name": "Menemen Tarifi",
+</span>    <span class="c1">#   "ingredients": [
+</span>    <span class="c1">#     "3 domates",
+</span>    <span class="c1">#     "2 sivri biber",
+</span>    <span class="c1">#     "2 yumurta",
+</span>    <span class="c1">#     "tuz",
+</span>    <span class="c1">#     "karabiber",
+</span>    <span class="c1">#     "sıvı yağ"
+</span>    <span class="c1">#   ],
+</span>    <span class="c1">#   "steps": [
+</span>    <span class="c1">#     "Biberleri doğra ve yağda kavur.",
+</span>    <span class="c1">#     "Domatesleri rendele ekle, suyu çekene kadar pişir.",
+</span>    <span class="c1">#     "Yumurtaları kır karıştır.",
+</span>    <span class="c1">#     "Tuz ve karabiber ekle.",
+</span>    <span class="c1">#     "Pişince servis yap."
+</span>    <span class="c1">#   ],
+</span>    <span class="c1">#   "prep_time_minutes": 15
+</span>    <span class="c1"># }
+</span>
+<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Hata oluştu: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span> <span class="c1"># Örneğin, LLM gerekli alanı çıkaramazsa doğrulama hatası alınabilir.
+</span>
+</code></pre></div></div>
+
+<p><em>Kaynak: [2, 3, 8, 15]</em></p>
+
+<p><strong>Gözlem:</strong> Pydantic AI, Pydantic modellerini kullanarak LLM çıktısını tanımlanan şemaya göre otomatik olarak yapılandırma ve doğrulama konusunda son derece etkilidir. OpenAI Agent SDK ile benzer bir yapılandırma, function calling ve ardından Pydantic ile manuel doğrulama ile yapılabilir, ancak Pydantic AI bunu çekirdek bir özellik olarak sunar.</p>
+
+<h3 id="ajan-etkileşimi-ve-orkestrasyon">Ajan Etkileşimi ve Orkestrasyon</h3>
+
+<p><strong>OpenAI Agent SDK:</strong> SDK, özellikle <code class="language-plaintext highlighter-rouge">Handoffs</code> gibi mekanizmalarla ajanlar arası işbirliği ve görev devrini kolaylaştırmaya odaklanır. [1] Bu, bir ajanın belirli bir alt görevi uzmanlaşmış başka bir ajana devretmesini sağlar. Kod yapısı, Assistant API’nin <code class="language-plaintext highlighter-rouge">run</code> ve <code class="language-plaintext highlighter-rouge">stream</code> mekanizmalarına dayanır ve olay işleyicileri (event handlers) aracılığıyla araç çağrıları ve yanıtlarla etkileşim kurar. [4, 13, 25] SDK, bu etkileşimleri ve durum yönetimini basitleştirmeyi amaçlar.</p>
+
+<p><strong>Pydantic AI:</strong> Daha basit ajan etkileşimleri için <code class="language-plaintext highlighter-rouge">run</code> metodu yeterlidir. Daha karmaşık, durum bilgisi olan (stateful) veya çok adımlı etkileşimler için, geliştiricinin standart Python kontrol akışı (döngüler, koşullar vb.) kullanarak kendi mantığını oluşturması beklenir. [2] Pydantic AI, bu orkestrasyon için OpenAI Agent SDK kadar özel mekanizmalar sunmaz, ancak Pydantic’in veri odaklı yaklaşımı, adımlar arasında yapılandırılmış veri aktarımını kolaylaştırır.</p>
+
+<p><strong>Gözlem:</strong> Çoklu ajan orkestrasyonu, karmaşık otonom iş akışları ve durum yönetimi için OpenAI Agent SDK daha özel ve odaklanmış araçlar sunar. Pydantic AI, yapılandırılmış veri alışverişi üzerine kurulu, geliştirici tarafından yönetilen akışlar ve özellikle veri odaklı görevler için daha uygundur.</p>
+
+<h2 id="özetle-temel-farklılaştırıcılar">Özetle Temel Farklılaştırıcılar</h2>
+
+<ul>
+  <li><strong>Odak:</strong> OpenAI Agent SDK <strong>orkestrasyon, otonomi ve durum yönetimine</strong> odaklanırken, Pydantic AI <strong>yapılandırılmış veri, doğrulama ve tür güvenliğine</strong> odaklanır.</li>
+  <li><strong>Güçlü Yan:</strong> OpenAI Agent SDK’nın gücü <strong>karmaşık ajan etkileşimleri, çoklu ajan senaryoları ve OpenAI ekosistemi entegrasyonunda</strong>, Pydantic AI’nin gücü ise <strong>güvenilir, şemaya uygun çıktılar ve model bağımsızlığında</strong> yatar.</li>
+  <li><strong>Yaklaşım:</strong> OpenAI Agent SDK, Assistant API üzerine kurulu <strong>olay güdümlü ve durum yönetimi odaklı bir yaklaşım</strong> sunarken, Pydantic AI daha çok <strong>veri odaklı, Pythonic ve Pydantic tabanlı</strong> bir yaklaşım benimser.</li>
+</ul>
+
+<h2 id="ekosistem-ve-entegrasyon">Ekosistem ve Entegrasyon</h2>
+
+<ul>
+  <li><strong>OpenAI Agent SDK:</strong> Doğal olarak OpenAI ekosistemiyle (GPT modelleri, Assistant API, İzleme Panosu) sıkı bir şekilde entegredir. [1, 25] Diğer LLM sağlayıcılarını destekleme potansiyeli olsa da, en sorunsuz ve özellik açısından zengin deneyim OpenAI ile yaşanır.</li>
+  <li><strong>Pydantic AI:</strong> Güçlü bir <strong>model bağımsızlığına</strong> sahiptir ve çeşitli LLM sağlayıcıları için yerleşik destek sunar. [2, 3] Pydantic, FastAPI gibi popüler kütüphanelerle derin entegrasyonu sayesinde mevcut Python projelerine kolayca dahil edilebilir. Pydantic Logfire ile gözlemlenebilirlik ve hata ayıklama entegrasyonu sunar. [2]</li>
+</ul>
+
+<h2 id="hangi-çerçeveyi-seçmelisiniz">Hangi Çerçeveyi Seçmelisiniz?</h2>
+
+<ul>
+  <li>
+    <p><strong>OpenAI Agent SDK’yı seçin, eğer:</strong></p>
+
+    <ul>
+      <li>Karmaşık, çok adımlı, durum bilgisi gerektiren ve potansiyel olarak <strong>çoklu ajan</strong> içeren sistemler kuruyorsanız. [1, 28]</li>
+      <li>OpenAI’nin yerleşik araçlarını (web arama, dosya arama vb.), <strong>Assistant API’nin yeteneklerini (kalıcı thread’ler gibi)</strong> ve <strong>İzleme Panosunu</strong> yoğun olarak kullanmak istiyorsanız. [1, 25]</li>
+      <li>Projenizin ana odağı <strong>ajanların otonomisi</strong>, görev devri (handoffs), karar verme döngüsü ve araçlarla durum bilgisi olan etkileşimi ise. [4, 6, 18]</li>
+      <li>Çerçeve içinde yönetilen <strong>girdi/çıktı güvenlik kontrollerine</strong> (Guardrails) ihtiyacınız varsa. [1]</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Pydantic AI’yı seçin, eğer:</strong></p>
+
+    <ul>
+      <li>LLM’lerden <strong>güvenilir, yapılandırılmış (JSON gibi) ve doğrulanmış çıktı</strong> almak en yüksek önceliğinizse. [2, 8, 16]</li>
+      <li><strong>Tür güvenliği</strong> ve mevcut Python/Pydantic/FastAPI ekosisteminizle sorunsuz entegrasyon kritikse. [2, 15]</li>
+      <li><strong>Farklı LLM sağlayıcıları</strong> (OpenAI, Anthropic, Gemini, yerel modeller vb.) arasında kolayca geçiş yapabilme esnekliğine ihtiyacınız varsa. [3, 11]</li>
+      <li>Veri doğrulama ve Pythonic desenlere odaklanan, Pydantic Logfire ile entegre bir geliştirme ve hata ayıklama deneyimini tercih ediyorsanız. [2]</li>
+      <li>Uygulamanızın temelini <strong>yapılandırılmış veri çıkarma, dönüştürme veya üretme</strong> oluşturuyorsa. [3, 21]</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="sonuç-daha-akıllı-ve-güvenilir-yapay-zeka-uygulamalarına-doğru">Sonuç: Daha Akıllı ve Güvenilir Yapay Zeka Uygulamalarına Doğru</h2>
+
+<p>Hem <strong>OpenAI Agent SDK</strong> hem de <strong>Pydantic AI</strong>, Python geliştiricileri için yapay zeka uygulamaları oluşturma araç setinde değerli ilerlemeler sunmaktadır. OpenAI Agent SDK, özellikle OpenAI ekosistemi içinde otonom, durum bilgisi olan ve işbirliği yapabilen ajanları düzenlemek için odaklanmış bir çerçeve sağlarken; Pydantic AI, veri doğrulama dünyasından doğarak LLM’lerle yapılandırılmış, güvenilir ve tür-güvenli veri etkileşimleri sağlama konusunda mükemmeldir ve tanıdık bir Pythonic hissi ile sağlam, modelden bağımsız bir çerçeve sunar.</p>
+
+<p>En iyi seçim, projenizin özel ihtiyaçlarına, önceliklerinize ve mevcut teknoloji yığınınıza bağlıdır. Ajan otonomisi, karmaşık orkestrasyon ve OpenAI ekosistemi öncelikliyse, Agent SDK güçlü bir adaydır. Eğer uygulamanızın temel taşı öngörülebilir, doğrulanmış ve yapılandırılmış verilerse ve model esnekliği önemliyse, Pydantic AI ikna edici avantajlar sunar. Bu iki kütüphanenin farklı güçlü yönlerini anlayarak, geliştiriciler daha yetenekli, güvenilir ve bakımı kolay yapay zeka sistemleri oluşturmak için doğru aracı seçebilirler.</p>
+
+<h2 id="kaynaklar">Kaynaklar</h2>
+
+<ul>
+  <li>[1] https://openai.com/index/new-tools-for-building-agents/</li>
+  <li>[2] https://docs.pydantic.dev/pydantic-ai/</li>
+  <li>[3] https://www.projectpro.io/article/pydantic-ai/1014</li>
+  <li>[4] https://openai.github.io/openai-agents-python/</li>
+  <li>[5] https://github.com/openai/openai-agents-python</li>
+  <li>[6] https://getstream.io/blog/openai-agents-sdk/</li>
+  <li>[7] https://jxnl.github.io/instructor/ (Pydantic ile yapılandırılmış çıktı için ilgili bir kütüphane)</li>
+  <li>[8] https://paul.simmering.org/the-best-library-for-structured-llm-output/</li>
+  <li>[9] https://pydantic.dev/</li>
+  <li>[10] https://github.com/instructor-ai/instructor</li>
+  <li>[11] https://pypi.org/project/pydantic-ai/</li>
+  <li>[12] https://www.reddit.com/r/LocalLLaMA/comments/177gtnb/every_way_to_get_structured_output_from_llms/</li>
+  <li>[13] https://dev.to/aws-builders/mastering-openais-new-agents-sdk-responses-api-part-1-2938</li>
+  <li>[14] https://www.youtube.com/watch?v=UODanVjQogA (Pydantic AI Tanıtımı)</li>
+  <li>[15] https://python.plainenglish.io/pydanticai-a-comprehensive-guide-to-building-production-ready-ai-applications-b910a99a445b</li>
+  <li>[16] https://hub.athina.ai/blog/top-5-open-source-libraries-to-structure-llm-outputs</li>
+  <li>[17] https://www.youtube.com/watch?v=yCQP0hBG7iA (Pydantic AI ile ilgili video)</li>
+  <li>[18] https://www.aibusiness.com/nlp/how-openai-agents-sdk-can-automate-91-of-your-work</li>
+  <li>[19] https://www.zdnet.com/article/why-openais-new-ai-agent-tools-could-change-how-you-code/</li>
+  <li>[20] https://www.youtube.com/watch?v=26jQf4bOkfY (OpenAI Agent SDK Tanıtımı)</li>
+  <li>[21] https://saptaks.blog/ai-agents-with-pydantic-ai-and-mcp-servers/</li>
+  <li>[22] https://cioafrica.co/artificial-intelligence/openai-launches-tools-for-ai-agent-development/</li>
+  <li>[23] https://derekarmstrong.dev/pydantic-ai/</li>
+  <li>[24] https://www.datacamp.com/tutorial/openai-agents-sdk-tutorial</li>
+  <li>[25] https://platform.openai.com/docs/agents</li>
+  <li>[26] https://medium.com/@nikhilmk/ai-sdk-by-vercel-vs-pydantic-ai-a-tale-of-two-frameworks-for-modern-ai-development-d60f24186ac8 (İlgili başka bir karşılaştırma)</li>
+  <li>[27] https://sourceforge.net/software/compare/OpenAI-Agents-SDK-vs-PydanticAI/</li>
+  <li>[28] https://aws.plainenglish.io/7-most-trending-frameworks-for-building-multi-agent-ai-applications-791a430f660a</li>
+  <li>[29] https://www.reddit.com/r/LLMDevs/comments/1ae793v/smolagents_vs_openai_swarm_vs_pydantic_al_vs/ (Topluluk tartışmaları)</li>
+  <li>[30] https://adasci.org/building-agentic-ai-applications-using-openai-agents-sdk/</li>
+</ul>]]></content><author><name>Serdar Çağlar</name></author><category term="AI Engineering" /><summary type="html"><![CDATA[Yapay Zeka (AI) ve özellikle Büyük Dil Modelleri (LLM'ler) ile uygulama geliştirmek, basit bir API çağrısından çok daha fazlasını gerektirir. Geliştiricilerin konuşma akışını yönetmek, harici araçlarla etkileşim kurmak, veri tutarlılığını sağlamak ve karmaşık iş akışlarını düzenlemek için sağlam araçlara ihtiyacı vardır.]]></summary></entry><entry><title type="html">The Limits of Logical and Mathematical Reasoning in AI</title><link href="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/" rel="alternate" type="text/html" title="The Limits of Logical and Mathematical Reasoning in AI" /><published>2025-05-04T09:00:00+03:00</published><updated>2025-05-04T09:00:00+03:00</updated><id>http://localhost:4000/blog/limits-of-logical-and-mathematical-reasoning-in-ai</id><content type="html" xml:base="http://localhost:4000/blog/2025-05-04-limits-of-logical-and-mathematical-reasoning-in-ai/"><![CDATA[<p><strong>Summary:</strong> Modern AI excels at pattern recognition and language tasks but still faces significant hurdles in genuine logical inference and mathematical reasoning. Issues such as data-leakage on benchmarks, reliance on heuristics, and brittle chain-of-thought prompting highlight these limitations. Neuro-symbolic hybrids, abstraction alignment, multimodal fusion, and “long-thinking” architectures are promising avenues to bridge the gap toward reliable, transparent, and generalizable AI reasoning.</p>
 
 <h2 id="the-limits-of-logical-and-mathematical-reasoning-in-ai">The Limits of Logical and Mathematical Reasoning in AI</h2>
 

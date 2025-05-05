@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Dil önceliği: sayfa -> site -> default -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics ve google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6131416231697546" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="ulI-UipVTfQgHN4YO2WdmK7ejarz3rgUCMAyecEqD7g" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- arXiv ikonu için -->
+
+    <!-- Syntax Highlighting CSS (Gerekiyorsa) -->
+    
+
+    <!-- Jekyll SEO Tag - Tüm önemli SEO etiketlerini bu üretir -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Speaker Diarization &amp; Role Analysis System | Serdar Çağlar AI/ML Engineering Lead &amp; Solutions Architect</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Speaker Diarization &amp; Role Analysis System" />
+<meta name="author" content="Serdar Çağlar" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="A practical speaker diarization system that automatically identifies different speakers in audio conversations, determines their roles, extracts names, and provides accurate transcriptions for business intelligence and conversation analytics." />
+<meta property="og:description" content="A practical speaker diarization system that automatically identifies different speakers in audio conversations, determines their roles, extracts names, and provides accurate transcriptions for business intelligence and conversation analytics." />
+<link rel="canonical" href="http://localhost:4000/projects/ai-powered-speaker-diarization-system/" />
+<meta property="og:url" content="http://localhost:4000/projects/ai-powered-speaker-diarization-system/" />
+<meta property="og:site_name" content="Serdar Çağlar AI/ML Engineering Lead &amp; Solutions Architect" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-01T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Speaker Diarization &amp; Role Analysis System" />
+<meta name="twitter:site" content="@serdarilder" />
+<meta name="twitter:creator" content="@Serdar Çağlar" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Serdar Çağlar"},"dateModified":"2025-05-01T00:00:00+03:00","datePublished":"2025-05-01T00:00:00+03:00","description":"A practical speaker diarization system that automatically identifies different speakers in audio conversations, determines their roles, extracts names, and provides accurate transcriptions for business intelligence and conversation analytics.","headline":"Speaker Diarization &amp; Role Analysis System","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/projects/ai-powered-speaker-diarization-system/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/favicon.png"},"name":"Serdar Çağlar"},"url":"http://localhost:4000/projects/ai-powered-speaker-diarization-system/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Jekyll SEO Tag Bitiş -->
+
+</head>
+<body class="font-sans min-h-screen">
+
+    <!-- _includes/navigation.html -->
+<nav class="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Site Adı/Logo -->
+            <a href="/" class="text-2xl font-bold gradient-text">Serdar Çağlar | AI/ML Engineering Lead & Solutions Architect</a>
+
+            <!-- Masaüstü Navigasyon Linkleri -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="/#publications" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
+                <a href="/#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                <!-- Dark Mode Butonu -->
+                <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none text-xl transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobil Menü İçeriği -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 pb-4">
+        <a href="/#about" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="/#projects" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="/#publications" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Publications</a>
+        <a href="/#blog" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Blog</a>
+        <a href="/#contact" class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <div class="px-6 pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+            <!-- Mobil Dark Mode Butonu -->
+            <button id="darkModeToggleMobile" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-300 focus:outline-none text-xl transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Ana içerik buraya gelecek -->
+    <main>
+        <!-- Project Header -->
+<header class="pt-24 pb-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto max-w-4xl">
+        <div class="flex items-center mb-6">
+            <a href="/projects/" class="text-blue-600 hover:text-blue-800 mr-4 inline-flex items-center text-sm">
+                <i class="fas fa-arrow-left mr-2"></i><span>Back to Projects</span>
+            </a>
+        </div>
+        <h1 class="text-4xl font-bold mb-2">Speaker Diarization & Role Analysis System</h1>
+        
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Completed/Published: <time datetime="2025-05-01T00:00:00+03:00">May 2025</time>
+            </p>
+        
+        
+            <p class="text-xl text-gray-600 dark:text-gray-300">A practical speaker diarization system that automatically identifies different speakers in audio conversations, determines their roles, extracts names, and provides accurate transcriptions for business intelligence and conversation analytics.</p>
+        
+    </div>
+</header>
+
+<!-- Project Content -->
+<main class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <article class="prose dark:prose-invert lg:prose-lg mx-auto">
+            <!-- Overview -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-4">
+        This project delivers a practical speaker diarization system that goes beyond simple transcription. The system automatically distinguishes between different speakers in audio conversations, assigns appropriate roles to each speaker (Customer, Representative, Technical Support, etc.), extracts names when possible, and provides accurate transcriptions - all through an intuitive web interface built with Vue.js and AWS serverless architecture.
+    </p>
+    <div class="bg-blue-50 dark:bg-blue-900 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-2">Key Advantages</h3>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+            <li>Advanced speaker separation even with overlapping voices or similar tones.</li>
+            <li>Automatic role identification based on speech patterns and conversation context.</li>
+            <li>Name extraction from conversation introductions and references.</li>
+            <li>Support for multiple audio formats (WAV, MP3, AIFF, AAC, OGG, FLAC).</li>
+            <li>Scalable serverless architecture using AWS Lambda and S3.</li>
+            <li>Clean, intuitive user interface built with Vue.js.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Applications -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Applications</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-headset text-3xl text-blue-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Customer Service Analytics</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Analyze customer calls to improve service quality, identify training needs, and monitor compliance with scripts and protocols.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-chart-line text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Sales Call Intelligence</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Gain insights from sales conversations to identify successful tactics, improve pitch effectiveness, and understand customer objections.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-hospital-user text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Healthcare Consultations</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+               Analyze telemedicine calls to ensure quality care, document patient-doctor interactions, and support medical transcription.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+             <i class="fas fa-graduation-cap text-3xl text-blue-600 mb-4"></i>
+             <h3 class="text-lg font-semibold mb-2">Training &amp; Education</h3>
+             <p class="text-gray-600 dark:text-gray-300">
+                 Support communication skills training by providing detailed breakdowns of interactions for feedback and improvement.
+             </p>
+        </div>
+    </div>
+</section>
+
+<!-- Performance & Capabilities -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Performance &amp; Capabilities</h2>
+     <p class="text-gray-700 dark:text-gray-300 mb-4">
+        The speaker diarization system leverages advanced audio processing techniques and linguistic pattern recognition to distinguish between speakers in conversation recordings. By analyzing speech patterns, conversation flow, and contextual cues, the system provides detailed insights about who said what and in what capacity.
+    </p>
+    <div class="bg-green-50 dark:bg-green-900 p-6 rounded-lg mb-6">
+         <h3 class="text-lg font-semibold mb-2">Key Features</h3>
+         <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+             <li>Speaker Separation: Distinguishes between different speakers in audio conversations.</li>
+             <li>Role Classification: Automatically identifies speaker roles (Representative, Customer, etc.).</li>
+             <li>Name Extraction: Identifies speaker names from greetings and introductions when available.</li>
+             <li>Multi-Format Support: Processes WAV, MP3, AIFF, AAC, OGG, and FLAC audio formats.</li>
+             <li>Real-time Processing Status: Provides visual feedback during processing.</li>
+             <li>Structured Output: Delivers organized JSON data for easy integration with analysis tools.</li>
+         </ul>
+     </div>
+</section>
+
+<!-- Technical Architecture -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Technical Architecture</h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-4">
+        The system employs a serverless architecture for scalability and cost efficiency. Audio files stored in S3 are processed by a Lambda function that integrates with third-party speech recognition APIs and applies custom NLP rules for speaker identification, role detection, and name extraction.
+    </p>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Frontend</h3>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+                <li>Vue.js single-page application</li>
+                <li>Tailwind CSS for responsive design</li>
+                <li>Modern UI with real-time processing status</li>
+                <li>Result visualization with speaker highlighting</li>
+                <li>Copy and export functionality</li>
+                <li>Automatic MIME type detection from file extension</li>
+            </ul>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Backend</h3>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+                <li>AWS Lambda for orchestration and processing</li>
+                <li>S3 for audio file storage and retrieval</li>
+                <li>Third-party speech-to-text services integration</li>
+                <li>Custom rules-based speaker identification</li>
+                <li>Pattern-matching algorithms for role assignment</li>
+                <li>Name extraction through conversation context analysis</li>
+                <li>Structured JSON response format</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Target Users -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Target Users</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-building text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Call Centers</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Organizations seeking to analyze customer interactions, improve service quality, and monitor representative performance.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-briefcase text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Sales Teams</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Sales managers and teams looking to extract insights from customer conversations to improve conversion rates.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md">
+            <i class="fas fa-hospital text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Healthcare Providers</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Medical professionals using telemedicine who need accurate documentation of patient interactions.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Key Benefits -->
+
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Key Benefits</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+            <h3 class="text-lg font-semibold mb-2">Enhanced Analytics</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Goes beyond basic transcription by providing structured data about who said what, enabling deeper conversation analytics and insights.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+             <h3 class="text-lg font-semibold mb-2">Time Efficiency</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+                Eliminates the need for manual speaker identification and role assignment, significantly reducing the time required to analyze conversations.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+             <h3 class="text-lg font-semibold mb-2">Accuracy</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+               Leverages advanced deep learning techniques to achieve high accuracy in distinguishing speakers even with similar voices or in noisy environments.
+            </p>
+        </div>
+        <div class="card p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-800">
+             <h3 class="text-lg font-semibold mb-2">Scalability</h3>
+             <p class="text-gray-600 dark:text-gray-300">
+                 Serverless architecture allows for processing of both individual files and large batches of recordings with consistent performance.
+             </p>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies Used -->
+
+<section>
+    <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
+    <div class="flex flex-wrap gap-2">
+        <span class="tech-tag">Vue.js</span>
+        <span class="tech-tag">Tailwind CSS</span>
+        <span class="tech-tag">AWS Lambda</span>
+        <span class="tech-tag">AWS S3</span>
+        <span class="tech-tag">Speaker Diarization</span>
+        <span class="tech-tag">Speech Recognition</span>
+        <span class="tech-tag">Natural Language Processing</span>
+        <span class="tech-tag">Audio Processing</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">RESTful API</span>
+    </div>
+
+</section>
+
+        </article>
+
+        <!-- Tags (varsa) -->
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-semibold mb-4">Technologies & Concepts</h3>
+            <div class="flex flex-wrap gap-2">
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">AI</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Speech Recognition</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Speaker Diarization</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Conversation Analytics</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">NLP</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">AWS</span>
+                
+                    <span class="tech-tag !bg-gray-200 !text-gray-700 dark:!bg-gray-700 dark:!text-gray-300 text-xs">Vue.js</span>
+                
+            </div>
+        </div>
+        
+    </div>
+</main>
+    </main>
+
+    <!-- _includes/footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 py-12 px-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">About Me</h3>
+                <p class="mb-4 text-sm">
+                   AI/ML Engineering Lead & Solutions Architect architecting and deploying enterprise-scale AI solutions, specializing in LLMs, RAG, MLOps, NLP, and real-time AI systems. specializing in LLMs, RAG, MLOps, and real-time AI systems.
+                </p>
+                <div class="flex space-x-4">
+                    
+                    
+                    
+                     
+                    
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="/#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                    <li><a href="/#publications" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a></li>
+                    <li><a href="/#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+                    <li><a href="/#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    <li><a href="/assets/cv/cv-serdar-caglar.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" download>Download CV</a></li>
+                </ul>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Expertise</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                        <li>LLM Architecture & Fine-tuning</li>
+                        <li>RAG System Design</li>
+                        <li>MLOps & Deployment</li>
+                        <li>Real-time AI Systems</li>
+                        <li>NLP Solutions</li>
+                    
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+                <ul class="space-y-2 text-sm">
+                    
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mr-2 mt-1 flex-shrink-0"></i>
+                        <a href="mailto:serdarildercaglar@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400 break-all transition-colors">serdarildercaglar@gmail.com</a>
+                    </li>
+                    
+                    
+                     <li class="flex items-start">
+                        <i class="fas fa-globe mr-2 mt-1 flex-shrink-0"></i>
+                         <span>Remote Collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>© 2025 Serdar Çağlar | AI/ML Engineering Lead & Solutions Architect. All rights reserved.</p>
+            <!-- İsteğe bağlı: Jekyll ile oluşturulduğunu belirten bir not -->
+            <!-- <p class="mt-2 text-xs text-gray-500 dark:text-gray-500">Powered by Jekyll</p> -->
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 invisible z-[1000]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Syntax Highlighting JS (Eğer post.html'de kullanılacaksa) -->
+    
+
+</body>
+</html>

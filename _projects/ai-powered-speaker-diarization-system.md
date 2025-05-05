@@ -6,7 +6,7 @@ icon: fas fa-microphone-alt
 tags: [AI, Speech Recognition, Speaker Diarization, Conversation Analytics, NLP, AWS, Vue.js]
 layout: project
 featured: true
-order: 2
+order: 5
 ---
 <!-- Overview -->
 
@@ -29,6 +29,7 @@ order: 2
 </section>
 
 <!-- Applications -->
+
 <section class="mb-12">
     <h2 class="text-2xl font-bold mb-4">Applications</h2>
     <div class="grid md:grid-cols-2 gap-6">
@@ -64,6 +65,7 @@ order: 2
 </section>
 
 <!-- Performance & Capabilities -->
+
 <section class="mb-12">
     <h2 class="text-2xl font-bold mb-4">Performance & Capabilities</h2>
      <p class="text-gray-700 dark:text-gray-300 mb-4">
@@ -83,6 +85,7 @@ order: 2
 </section>
 
 <!-- Technical Architecture -->
+
 <section class="mb-12">
     <h2 class="text-2xl font-bold mb-4">Technical Architecture</h2>
     <p class="text-gray-700 dark:text-gray-300 mb-4">
@@ -116,6 +119,7 @@ order: 2
 </section>
 
 <!-- Target Users -->
+
 <section class="mb-12">
     <h2 class="text-2xl font-bold mb-4">Target Users</h2>
     <div class="grid md:grid-cols-3 gap-6">
@@ -144,6 +148,7 @@ order: 2
 </section>
 
 <!-- Key Benefits -->
+
 <section class="mb-12">
     <h2 class="text-2xl font-bold mb-4">Key Benefits</h2>
     <div class="grid md:grid-cols-2 gap-6">
@@ -175,6 +180,7 @@ order: 2
 </section>
 
 <!-- Technologies Used -->
+
 <section>
     <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
     <div class="flex flex-wrap gap-2">
@@ -189,5 +195,5 @@ order: 2
         <span class="tech-tag">Python</span>
         <span class="tech-tag">RESTful API</span>
     </div>
-     
+
 </section>
