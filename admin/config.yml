@@ -3,19 +3,98 @@ backend:
   repo: serdarildercaglar/serdarildercaglar.github.io
   branch: main
 
+# Editorial workflow - draft/review/publish
+publish_mode: editorial_workflow
+
+# Media storage
 media_folder: "assets/images"
 public_folder: "/assets/images"
 
+# Site URL (Netlify)
+site_url: https://dazzling-lebkuchen-05719c.netlify.app
+display_url: https://dazzling-lebkuchen-05719c.netlify.app
+
 collections:
   - name: "blog"
-    label: "Blog Posts"
+    label: "📝 Blog Posts"
+    label_singular: "Blog Post"
     folder: "_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "{{year}}/{{month}}/{{day}}/{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
+      - { label: "Title", name: "title", widget: "string", hint: "Blog post başlığı" }
+      - { label: "Publish Date", name: "date", widget: "datetime", default: "" }
+      - { label: "Categories", name: "categories", widget: "select", multiple: true, options: ["AI", "ML", "RAG", "MLOps", "Data Science", "Python"], default: ["AI"] }
+      - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Virgülle ayırın" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "Kısa açıklama (SEO için)" }
+      - { label: "Featured Image", name: "header_image", widget: "image", required: false }
+      - { label: "Featured Post", name: "featured", widget: "boolean", default: false }
+      - { label: "Author Profile", name: "author_profile", widget: "hidden", default: true }
+      - { label: "Read Time", name: "read_time", widget: "hidden", default: true }
+      - { label: "Comments", name: "comments", widget: "boolean", default: false }
+      - { label: "Share", name: "share", widget: "hidden", default: true }
+      - { label: "Related Posts", name: "related", widget: "hidden", default: true }
+      - { label: "Body", name: "body", widget: "markdown", hint: "Markdown formatında yazın" }
+
+  - name: "portfolio"
+    label: "💼 Portfolio Projects"
+    label_singular: "Portfolio Project"
+    folder: "_portfolio"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "portfolio/{{slug}}"
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Categories", name: "categories", widget: "list", default: ["AI"] }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Short Description", name: "excerpt", widget: "text", hint: "Kısa proje açıklaması" }
+      - { label: "Project Image", name: "header_image", widget: "image", required: false }
+      - { label: "Gallery", name: "gallery", widget: "list", required: false, fields: [
+          { label: "Image", name: "image_path", widget: "image" },
+          { label: "Alt Text", name: "alt", widget: "string" },
+          { label: "Title", name: "title", widget: "string", required: false }
+        ]}
+      - { label: "Tech Stack", name: "tech_stack", widget: "list", required: false, hint: "Kullanılan teknolojiler" }
+      - { label: "GitHub Repository", name: "github_url", widget: "string", required: false }
+      - { label: "Live Demo", name: "demo_url", widget: "string", required: false }
+      - { label: "Project Date", name: "date", widget: "datetime" }
+      - { label: "Featured Project", name: "featured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "📄 Pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "_pages/about.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about/" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Header Image", name: "header_image", widget: "image", required: false }
+          - { label: "Author Profile", name: "author_profile", widget: "hidden", default: true }
+          - { label: "Body", name: "body", widget: "markdown" }
+      
+      - label: "Contact Page"
+        name: "contact"
+        file: "_pages/contact.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/contact/" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "config"
+    label: "⚙️ Site Config"
+    files:
+      - label: "Navigation Menu"
+        name: "navigation"
+        file: "_data/navigation.yml"
+        fields:
+          - label: "Main Navigation"
+            name: "main"
+            widget: "list"
+            fields:
+              - { label: "Menu Title", name: "title", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
