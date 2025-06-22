@@ -2,36 +2,55 @@
 ---
 layout: home
 author_profile: true
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.5"
+  excerpt: "AI/ML Engineering Lead & Solutions Architect"
+feature_row:
+  - image_path: /assets/images/rag-systems.jpg
+    alt: "RAG Systems"
+    title: "Production-Grade RAG"
+    excerpt: "Scalable Retrieval-Augmented Generation systems for enterprise applications"
+    url: "/portfolio/rag-systems/"
+    btn_label: "Learn More"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/ml-ops.jpg
+    alt: "MLOps"
+    title: "MLOps Solutions"
+    excerpt: "End-to-end machine learning operations and deployment pipelines"
+    url: "/portfolio/mlops/"
+    btn_label: "Learn More"  
+    btn_class: "btn--primary"
+  - image_path: /assets/images/ai-architecture.jpg
+    alt: "AI Architecture"
+    title: "AI Architecture"
+    excerpt: "Designing scalable AI systems for production environments"
+    url: "/portfolio/ai-architecture/"
+    btn_label: "Learn More"
+    btn_class: "btn--primary"
 ---
 
-# Serdar İlder Çağlar
+## Welcome to My Portfolio
 
-## AI/ML Engineering Lead & Solutions Architect
+I'm an **AI/ML Engineering Lead** and **Solutions Architect** passionate about building production-grade AI systems. I specialize in:
 
-Merhaba! **AI/ML Engineering** ve **Solutions Architecture** alanında uzmanlaşmış bir mühendisim.
+- 🤖 **Retrieval-Augmented Generation (RAG)** systems
+- 🚀 **MLOps** and deployment pipelines  
+- 🏗️ **AI Architecture** for enterprise applications
+- 📊 **Data Engineering** and ML infrastructure
 
-### 🚀 Uzmanlık Alanlarım
+{% include feature_row %}
 
-- **🤖 RAG Sistemleri** - Production-grade Retrieval-Augmented Generation
-- **🔧 MLOps** - Machine Learning operasyonları ve deployment  
-- **🏗️ AI Mimarisi** - Ölçeklenebilir yapay zeka sistemleri
-- **📊 Veri Mühendisliği** - ML altyapısı ve veri işleme
+## Latest Blog Posts
 
-### 📝 Son Blog Yazım
+Stay tuned for insights on AI engineering, RAG systems, and production ML best practices.
 
-**"Architecting Production-Grade RAG: From Core Concepts to Advanced Strategies"**
+## Let's Connect
 
-Production ortamında robust, ölçeklenebilir ve verimli RAG sistemleri inşa etme üzerine derinlemesine bir inceleme.
+Feel free to reach out for collaborations, consulting, or just to discuss the latest in AI/ML engineering!
 
-### 📫 İletişim
-
-- **📧 Email:** [serdarildercaglar@gmail.com](mailto:serdarildercaglar@gmail.com)
-- **💼 LinkedIn:** [linkedin.com/in/serdarildercaglar](https://www.linkedin.com/in/serdarildercaglar/)
-- **🤗 Hugging Face:** [huggingface.co/serdarcaglar](https://huggingface.co/serdarcaglar)
-- **💻 GitHub:** [github.com/serdarildercaglar](https://github.com/serdarildercaglar)
-
----
-
-*"Building AI systems that not only work in the lab, but thrive in production."*
+- 📧 [serdarildercaglar@gmail.com](mailto:serdarildercaglar@gmail.com)
+- 💼 [LinkedIn](https://www.linkedin.com/in/serdarildercaglar/)
+- 🤗 [Hugging Face](https://huggingface.co/serdarcaglar)
 
 ---
