@@ -1,14 +1,10 @@
 backend:
   name: github
   repo: serdarildercaglar/serdarildercaglar.github.io
-  branch: main # Branch to update (optional; defaults to master)
+  branch: main
 
-# This line should *not* be indented
-publish_mode: editorial_workflow
-
-# This line should *not* be indented
-media_folder: "assets/images" # Media files will be stored in the repo under assets/images
-public_folder: "/assets/images" # The src attribute for uploaded media will begin with /assets/images
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
 collections:
   - name: "blog"
@@ -19,67 +15,7 @@ collections:
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Categories", name: "categories", widget: "list", default: ["AI", "ML"] }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
-      - { label: "Header Image", name: "header_image", widget: "image", required: false }
-      - { label: "Featured", name: "featured", widget: "boolean", default: false }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "portfolio"
-    label: "Portfolio Projects"
-    folder: "_portfolio"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Excerpt", name: "excerpt", widget: "text" }
-      - { label: "Header Image", name: "header_image", widget: "image", required: false }
-      - { label: "Gallery", name: "gallery", widget: "list", required: false, fields: [
-          { label: "Image", name: "image_path", widget: "image" },
-          { label: "Alt Text", name: "alt", widget: "string" },
-          { label: "Title", name: "title", widget: "string", required: false }
-        ]}
-      - { label: "Tech Stack", name: "tech_stack", widget: "list", required: false }
-      - { label: "GitHub Repository", name: "github_url", widget: "string", required: false }
-      - { label: "Live Demo", name: "demo_url", widget: "string", required: false }
       - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Categories", name: "categories", widget: "list", default: ["AI"] }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "pages"
-    label: "Pages"
-    files:
-      - label: "About Page"
-        name: "about"
-        file: "_pages/about.md"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about/" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", required: false }
-          - { label: "Body", name: "body", widget: "markdown" }
-      
-      - label: "Contact Page"
-        name: "contact"
-        file: "_pages/contact.md"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/contact/" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "config"
-    label: "Site Config"
-    files:
-      - label: "Navigation"
-        name: "navigation"
-        file: "_data/navigation.yml"
-        fields:
-          - label: "Main Navigation"
-            name: "main"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "URL", name: "url", widget: "string" }
