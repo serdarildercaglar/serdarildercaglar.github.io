@@ -1,6 +1,5 @@
-# Theme
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
-minimal_mistakes_skin: "contrast"
+# Site Settings
+minimal_mistakes_skin: "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale: "tr-TR"
@@ -12,6 +11,9 @@ description: "AI/ML Engineering, RAG Systems, Production ML Solutions"
 url: "https://serdarildercaglar.github.io"
 baseurl: ""
 repository: "serdarildercaglar/serdarildercaglar.github.io"
+teaser: # path of fallback teaser image
+logo: # path of logo image to display in the masthead
+masthead_title: # overrides the website title displayed in the masthead
 breadcrumbs: true
 
 # Site Author
@@ -44,6 +46,9 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/serdarildercaglar"
+    - label: "Hugging Face"
+      icon: "fas fa-fw fa-robot"
+      url: "https://huggingface.co/serdarcaglar"
 
 # Reading Files
 include:
@@ -74,6 +79,8 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - /docs # ignore Minimal Mistakes /docs
+  - /test # ignore Minimal Mistakes /test
 keep_files:
   - .git
   - .svn
@@ -109,8 +116,16 @@ paginate: 5
 paginate_path: /page:num/
 timezone: Europe/Istanbul
 
-# Plugins
+# Plugins (previously gems:)
 plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# mimic GitHub Pages with --safe
+whitelist:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -141,7 +156,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: false
+      comments: true
       share: true
       related: true
   # _pages
@@ -151,3 +166,37 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: false
+      share: true
+
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:name/
+
+# SEO
+google_site_verification: # Google Search Console verification
+bing_site_verification: # Bing Webmaster Tools verification
+
+# Social Sharing
+twitter:
+  username: # Add if you have Twitter
+
+# Analytics
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: # Add your Google Analytics ID
+
+# Comments
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: # Add your Disqus shortname if you want comments
